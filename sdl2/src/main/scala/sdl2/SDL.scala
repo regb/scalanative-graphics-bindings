@@ -454,7 +454,7 @@ object SDL {
   def SDL_GetWindowPixelFormat(window: Ptr[SDL_Window]): UInt = extern
 
   def SDL_CreateWindow(title: CString,
-                       x: CInt, y: CInt, w: Int, h: Int,
+                       x: CInt, y: CInt, w: CInt, h: CInt,
                        flags: UInt): Ptr[SDL_Window] = extern
   def SDL_CreateWindowFrom(data: Ptr[Byte]): Ptr[SDL_Window] = extern
 
@@ -508,7 +508,7 @@ object SDL {
   //                                                 SDL_HitTest callback,
   //                                                 void *callback_data);
 
-  def SDL_DestroyWindow(window: Ptr[SDL_Window]) = extern
+  def SDL_DestroyWindow(window: Ptr[SDL_Window]): Unit = extern
 
   def SDL_IsScreenSaverEnabled(): SDL_bool = extern
   def SDL_EnableScreenSaver(): Unit = extern

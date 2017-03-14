@@ -110,8 +110,7 @@ object Snake extends App {
 
   def cleanup(): Unit = {
     SDL_DestroyRenderer(renderer)
-    //TODO: seem to crash scala-native
-    //SDL_DestroyWindow(window)
+    SDL_DestroyWindow(window)
     SDL_Quit()
   }
 
