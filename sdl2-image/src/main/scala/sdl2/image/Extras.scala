@@ -26,8 +26,6 @@ object Extras {
   val IMG_INIT_WEBP: CInt = 0x00000008
   /* End IMG_InitFlags */
 
-  //TODO: compiler crashes
-  //def IMG_SetError(fmt: CString, args: CVararg*): CInt = SDL_SetError(fmt, args:_*)
   def IMG_GetError(): CString = SDL_GetError()
 
 }
