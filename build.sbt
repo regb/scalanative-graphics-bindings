@@ -18,3 +18,10 @@ lazy val sdl2Image = (project in file("./sdl2-image"))
     name := "sdl2-image"
   )
   .dependsOn(sdl2)
+
+lazy val opengl = (project in file("./opengl"))
+  .enablePlugins(ScalaNativePlugin)
+  .settings(commonSettings: _*)
+  .settings(
+    name := "opengl"
+  )
