@@ -12,7 +12,7 @@ object GL {
   type GLenum = CUnsignedInt
   type GLboolean = CChar
   type GLbitfield = CInt
-  type GLvoid = Unit
+  //type GLvoid = Unit
   type GLbyte = CChar
   type GLshort = CShort
   type GLint = CInt
@@ -86,12 +86,15 @@ object GL {
   def glDepthMask(flag: GLboolean): Unit = extern
   def glDepthRange(near_val: GLclampd, far_val: GLclampd): Unit = extern
 
+  /*
+   * Accumulation Buffer
+   */
+  def glClearAccum(red: GLfloat, green: GLfloat, blue: GLfloat, alpha: GLfloat): Unit = extern
+  def glAccum(op: GLenum, value: GLfloat): Unit = extern
 
-
-
-
-
-
+  /*
+   * Transformation
+   */
   def glMatrixMode(mode: GLenum): Unit = extern
   def glOrtho(left: GLdouble, right: GLdouble, bottom: GLdouble, top: GLdouble,
               near_val: GLdouble, far_val: GLdouble): Unit = extern
@@ -101,13 +104,32 @@ object GL {
   def glPushMatrix(): Unit = extern
   def glPopMatrix(): Unit = extern
   def glLoadIdentity(): Unit = extern
+  def glLoadMatrixd(m: Ptr[GLdouble]): Unit = extern
+  def glLoadMatrixf(m: Ptr[GLfloat]): Unit = extern
+  def glMultMatrixd(m: Ptr[GLdouble]): Unit = extern
+  def glMultMatrixf(m: Ptr[GLfloat]): Unit = extern
+  def glRotated(angle: GLdouble, x: GLdouble, y: GLdouble, z: GLdouble): Unit = extern
+  def glRotatef(angle: GLfloat, x: GLfloat, y: GLfloat, z: GLfloat): Unit = extern
+  def glScaled(x: GLdouble, y: GLdouble, z: GLdouble): Unit = extern
+  def glScalef(x: GLfloat, y: GLfloat, z: GLfloat): Unit = extern
+  def glTranslated(x: GLdouble, y: GLdouble, z: GLdouble): Unit = extern
+  def glTranslatef(x: GLfloat, y: GLfloat, z: GLfloat): Unit = extern
 
-
+  /*
+   * Display Lists
+   */
+  def glIsList(list: GLuint): GLboolean = extern
+  def glDeleteLists(list: GLuint, range: GLsizei): Unit = extern
+  def glGenLists(range: GLsizei): GLuint = extern
+  def glNewList(list: GLuint, mode: GLenum): Unit = extern
+  def glEndList(): Unit = extern
+  def glCallList(list: GLuint): Unit = extern
+  def glCallLists(n: GLsizei, type_ : GLenum, lists: Ptr[Byte]): Unit = extern
+  def glListBase(base: GLuint): Unit = extern
 
   /*
    * Drawing Functions
    */
-
   def glBegin(mode: GLenum): Unit = extern
   def glEnd(): Unit = extern
 
@@ -120,5 +142,85 @@ object GL {
   def glVertex3f(x: GLfloat, y: GLfloat, z: GLfloat): Unit = extern
   def glVertex3i(x: GLint, y: GLint, z: GLint): Unit = extern
   def glVertex3s(x: GLshort, y: GLshort, z: GLshort): Unit = extern
+
+  def glVertex4d(x: GLdouble, y: GLdouble, z: GLdouble, w: GLdouble): Unit = extern
+  def glVertex4f(x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat): Unit = extern
+  def glVertex4i(x: GLint, y: GLint, z: GLint, w: GLint): Unit = extern
+  def glVertex4s(x: GLshort, y: GLshort, z: GLshort, w: GLshort): Unit = extern
+
+  def glVertex2dv(v: Ptr[GLdouble]): Unit = extern
+  def glVertex2fv(v: Ptr[GLfloat]): Unit = extern
+  def glVertex2iv(v: Ptr[GLint]): Unit = extern
+  def glVertex2sv(v: Ptr[GLshort]): Unit = extern
+
+  def glVertex3dv(v: Ptr[GLdouble]): Unit = extern
+  def glVertex3fv(v: Ptr[GLfloat]): Unit = extern
+  def glVertex3iv(v: Ptr[GLint]): Unit = extern
+  def glVertex3sv(v: Ptr[GLshort]): Unit = extern
+
+  def glVertex4dv(v: Ptr[GLdouble]): Unit = extern
+  def glVertex4fv(v: Ptr[GLfloat]): Unit = extern
+  def glVertex4iv(v: Ptr[GLint]): Unit = extern
+  def glVertex4sv(v: Ptr[GLshort]): Unit = extern
+
+  def glNormal3b(nx: GLbyte, ny: GLbyte, nz: GLbyte): Unit = extern
+  def glNormal3d(nx: GLdouble, ny: GLdouble, nz: GLdouble): Unit = extern
+  def glNormal3f(nx: GLfloat, ny: GLfloat, nz: GLfloat): Unit = extern
+  def glNormal3i(nx: GLint, ny: GLint, nz: GLint): Unit = extern
+  def glNormal3s(nx: GLshort, ny: GLshort, nz: GLshort): Unit = extern
+
+  def glNormal3bv(v: Ptr[GLbyte]): Unit = extern
+  def glNormal3dv(v: Ptr[GLdouble]): Unit = extern
+  def glNormal3fv(v: Ptr[GLfloat]): Unit = extern
+  def glNormal3iv(v: Ptr[GLint]): Unit = extern
+  def glNormal3sv(v: Ptr[GLshort]): Unit = extern
+
+  def glIndexd(c: GLdouble): Unit = extern
+  def glIndexf(c: GLfloat): Unit = extern
+  def glIndexi(c: GLint): Unit = extern
+  def glIndexs(c: GLshort): Unit = extern
+  def glIndexub(c: GLubyte): Unit = extern
+
+  def glIndexdv(c: Ptr[GLdouble]): Unit = extern
+  def glIndexfv(c: Ptr[GLfloat]): Unit = extern
+  def glIndexiv(c: Ptr[GLint]): Unit = extern
+  def glIndexsv(c: Ptr[GLshort]): Unit = extern
+  def glIndexubv(c: Ptr[GLubyte]): Unit = extern
+
+  def glColor3b(red: GLbyte, green: GLbyte, blue: GLbyte): Unit = extern
+  def glColor3d(red: GLdouble, green: GLdouble, blue: GLdouble): Unit = extern
+  def glColor3f(red: GLfloat, green: GLfloat, blue: GLfloat): Unit = extern
+  def glColor3i(red: GLint, green: GLint, blue: GLint): Unit = extern
+  def glColor3s(red: GLshort, green: GLshort, blue: GLshort): Unit = extern
+  def glColor3ub(red: GLubyte, green: GLubyte, blue: GLubyte): Unit = extern
+  def glColor3ui(red: GLuint, green: GLuint, blue: GLuint): Unit = extern
+  def glColor3us(red: GLushort, green: GLushort, blue: GLushort): Unit = extern
+
+  def glColor4b(red: GLbyte, green: GLbyte, blue: GLbyte, alpha: GLbyte): Unit = extern
+  def glColor4d(red: GLdouble, green: GLdouble, blue: GLdouble, alpha: GLdouble): Unit = extern
+  def glColor4f(red: GLfloat, green: GLfloat, blue: GLfloat, alpha: GLfloat): Unit = extern
+  def glColor4i(red: GLint, green: GLint, blue: GLint, alpha: GLint): Unit = extern
+  def glColor4s(red: GLshort, green: GLshort, blue: GLshort, alpha: GLshort): Unit = extern
+  def glColor4ub(red: GLubyte, green: GLubyte, blue: GLubyte, alpha: GLubyte): Unit = extern
+  def glColor4ui(red: GLuint, green: GLuint, blue: GLuint, alpha: GLuint): Unit = extern
+  def glColor4us(red: GLushort, green: GLushort, blue: GLushort, alpha: GLushort): Unit = extern
+
+  def glColor3bv(v: Ptr[GLbyte]): Unit = extern
+  def glColor3dv(v: Ptr[GLdouble]): Unit = extern
+  def glColor3fv(v: Ptr[GLfloat]): Unit = extern
+  def glColor3iv(v: Ptr[GLint]): Unit = extern
+  def glColor3sv(v: Ptr[GLshort]): Unit = extern
+  def glColor3ubv(v: Ptr[GLubyte]): Unit = extern
+  def glColor3uiv(v: Ptr[GLuint]): Unit = extern
+  def glColor3usv(v: Ptr[GLushort]): Unit = extern
+
+  def glColor4bv(v: Ptr[GLbyte]): Unit = extern
+  def glColor4dv(v: Ptr[GLdouble]): Unit = extern
+  def glColor4fv(v: Ptr[GLfloat]): Unit = extern
+  def glColor4iv(v: Ptr[GLint]): Unit = extern
+  def glColor4sv(v: Ptr[GLshort]): Unit = extern
+  def glColor4ubv(v: Ptr[GLubyte]): Unit = extern
+  def glColor4uiv(v: Ptr[GLuint]): Unit = extern
+  def glColor4usv(v: Ptr[GLushort]): Unit = extern
 
 }
