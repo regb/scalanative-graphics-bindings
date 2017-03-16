@@ -56,6 +56,38 @@ object GL {
   def glDisable(cap: GLenum): Unit = extern
   def glIsEnabled(cap: GLenum): GLboolean = extern
 
+  def glEnableClientState(cap: GLenum): Unit = extern
+  def glDisableClientState(cap: GLenum): Unit = extern
+
+  def glGetBooleanv(pname: GLenum, params: Ptr[GLboolean]): Unit = extern
+  def glGetDoublev(pname: GLenum, params: Ptr[GLdouble]): Unit = extern
+  def glGetFloatv(pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetIntegerv(pname: GLenum, params: Ptr[GLint]): Unit = extern
+
+  def glPushAttrib(mask: GLbitfield): Unit = extern
+  def glPopAttrib(): Unit = extern
+
+  def glPushClientAttrib(mask: GLbitfield): Unit = extern
+  def glPopClientAttrib(): Unit = extern
+
+  def glRenderMode(mode: GLenum): GLint = extern
+  def glGetError(): GLenum = extern
+  def glGetString(name: GLenum): Ptr[GLubyte] = extern
+  def glFinish(): Unit = extern
+  def glFlush(): Unit = extern
+  def glHint(target: GLenum, mode: GLenum): Unit = extern
+
+  /*
+   * Depth Buffer
+   */
+  
+  def glClearDepth(depth: GLclampd): Unit = extern
+  def glDepthFunc(func: GLenum): Unit = extern
+  def glDepthMask(flag: GLboolean): Unit = extern
+  def glDepthRange(near_val: GLclampd, far_val: GLclampd): Unit = extern
+
+
+
 
 
 
