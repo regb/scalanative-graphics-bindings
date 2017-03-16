@@ -5,25 +5,24 @@ import scalanative.native._
 @extern
 object GL {
 
-  //TODO: not sure this is the right defs. It could be that my local
-  //      header file has definitions that match the right size expected by
-  //      OpenGL. For example GLint might be expected to be always 4-byte
-  //      in any machine, so it should rather be defined as Int
-  type GLenum = CUnsignedInt
-  type GLboolean = CChar
-  type GLbitfield = CInt
+  //OpenGL defines its own names for standard size ints/double. They
+  //should be guaranteed to be the same size across platforms, which
+  //pretty much matches the Scala types
+  type GLenum = UInt
+  type GLboolean = UByte
+  type GLbitfield = Int
   //type GLvoid = Unit
-  type GLbyte = CChar
-  type GLshort = CShort
-  type GLint = CInt
-  type GLubyte = CUnsignedChar
-  type GLushort = CUnsignedShort
-  type GLuint = CUnsignedInt
-  type GLsizei = CInt
-  type GLfloat = CFloat
-  type GLclampf = CFloat
-  type GLdouble = CDouble
-  type GLclampd = CDouble
+  type GLbyte = Byte
+  type GLshort = Short
+  type GLint = Int
+  type GLubyte = UByte
+  type GLushort = UShort
+  type GLuint = UInt
+  type GLsizei = UInt
+  type GLfloat = Float
+  type GLclampf = Float
+  type GLdouble = Double
+  type GLclampd = Double
 
   /*
    * Miscellaneous
