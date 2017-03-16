@@ -26,9 +26,37 @@ object GL {
   type GLdouble = CDouble
   type GLclampd = CDouble
 
-
+  /*
+   * Miscellaneous
+   */
+  def glClearIndex(c: GLfloat): Unit = extern
   def glClearColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf): Unit = extern
   def glClear(mask: GLbitfield): Unit = extern
+  def glIndexMask(mask: GLuint): Unit = extern
+  def glColorMask(red: GLboolean, green: GLboolean, blue: GLboolean, alpha: GLboolean): Unit = extern
+  def glAlphaFunc(func: GLenum, ref: GLclampf): Unit = extern
+  def glBlendFunc(sfactor: GLenum, dfactor: GLenum): Unit = extern
+  def glLogicOp(opcode: GLenum): Unit = extern
+  def glCullFace(mode: GLenum): Unit = extern
+  def glFrontFace(mode: GLenum): Unit = extern
+  def glPointSize(size: GLfloat): Unit = extern
+  def glLineWidth(width: GLfloat): Unit = extern
+  def glLineStipple(factor: GLint, pattern: GLushort): Unit = extern
+  def glPolygonMode(face: GLenum, mode: GLenum): Unit = extern
+  def glPolygonOffset(factor: GLfloat, units: GLfloat): Unit = extern
+  def glPolygonStipple(mask: Ptr[GLubyte]): Unit = extern
+  def glGetPolygonStipple(mask: Ptr[GLubyte]): Unit = extern
+  def glEdgeFlag(flag: GLboolean): Unit = extern
+  def glEdgeFlagv(flag: Ptr[GLboolean]): Unit = extern
+  def glScissor(x: GLint, y: GLint, width: GLsizei, height: GLsizei): Unit = extern
+  def glClipPlane(plane: GLenum, equation: Ptr[GLdouble]): Unit = extern
+  def glGetClipPlane(plane: GLenum, equation: Ptr[GLdouble]): Unit = extern
+  def glDrawBuffer(mode: GLenum): Unit = extern
+  def glReadBuffer(mode: GLenum): Unit = extern
+  def glEnable(cap: GLenum): Unit = extern
+  def glDisable(cap: GLenum): Unit = extern
+  def glIsEnabled(cap: GLenum): GLboolean = extern
+
 
 
 

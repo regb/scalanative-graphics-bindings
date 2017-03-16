@@ -11,9 +11,6 @@ object Main {
 
     SDL_Init(SDL_INIT_VIDEO)
 
-    coolName(c"hello %s", c"native")
-    stdio.printf(SDL_GetError())
-
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2)
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1)
 
