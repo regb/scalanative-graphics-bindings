@@ -3,7 +3,6 @@ package gl
 import scalanative.native._
 
 @extern
-@link("GL")
 object GL {
 
   //TODO: not sure this is the right defs. It could be that my local
