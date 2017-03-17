@@ -136,27 +136,22 @@ object GL {
   def glVertex2f(x: GLfloat, y: GLfloat): Unit = extern
   def glVertex2i(x: GLint, y: GLint): Unit = extern
   def glVertex2s(x: GLshort, y: GLshort): Unit = extern
-
   def glVertex3d(x: GLdouble, y: GLdouble, z: GLdouble): Unit = extern
   def glVertex3f(x: GLfloat, y: GLfloat, z: GLfloat): Unit = extern
   def glVertex3i(x: GLint, y: GLint, z: GLint): Unit = extern
   def glVertex3s(x: GLshort, y: GLshort, z: GLshort): Unit = extern
-
   def glVertex4d(x: GLdouble, y: GLdouble, z: GLdouble, w: GLdouble): Unit = extern
   def glVertex4f(x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat): Unit = extern
   def glVertex4i(x: GLint, y: GLint, z: GLint, w: GLint): Unit = extern
   def glVertex4s(x: GLshort, y: GLshort, z: GLshort, w: GLshort): Unit = extern
-
   def glVertex2dv(v: Ptr[GLdouble]): Unit = extern
   def glVertex2fv(v: Ptr[GLfloat]): Unit = extern
   def glVertex2iv(v: Ptr[GLint]): Unit = extern
   def glVertex2sv(v: Ptr[GLshort]): Unit = extern
-
   def glVertex3dv(v: Ptr[GLdouble]): Unit = extern
   def glVertex3fv(v: Ptr[GLfloat]): Unit = extern
   def glVertex3iv(v: Ptr[GLint]): Unit = extern
   def glVertex3sv(v: Ptr[GLshort]): Unit = extern
-
   def glVertex4dv(v: Ptr[GLdouble]): Unit = extern
   def glVertex4fv(v: Ptr[GLfloat]): Unit = extern
   def glVertex4iv(v: Ptr[GLint]): Unit = extern
@@ -167,7 +162,6 @@ object GL {
   def glNormal3f(nx: GLfloat, ny: GLfloat, nz: GLfloat): Unit = extern
   def glNormal3i(nx: GLint, ny: GLint, nz: GLint): Unit = extern
   def glNormal3s(nx: GLshort, ny: GLshort, nz: GLshort): Unit = extern
-
   def glNormal3bv(v: Ptr[GLbyte]): Unit = extern
   def glNormal3dv(v: Ptr[GLdouble]): Unit = extern
   def glNormal3fv(v: Ptr[GLfloat]): Unit = extern
@@ -179,7 +173,6 @@ object GL {
   def glIndexi(c: GLint): Unit = extern
   def glIndexs(c: GLshort): Unit = extern
   def glIndexub(c: GLubyte): Unit = extern
-
   def glIndexdv(c: Ptr[GLdouble]): Unit = extern
   def glIndexfv(c: Ptr[GLfloat]): Unit = extern
   def glIndexiv(c: Ptr[GLint]): Unit = extern
@@ -194,7 +187,6 @@ object GL {
   def glColor3ub(red: GLubyte, green: GLubyte, blue: GLubyte): Unit = extern
   def glColor3ui(red: GLuint, green: GLuint, blue: GLuint): Unit = extern
   def glColor3us(red: GLushort, green: GLushort, blue: GLushort): Unit = extern
-
   def glColor4b(red: GLbyte, green: GLbyte, blue: GLbyte, alpha: GLbyte): Unit = extern
   def glColor4d(red: GLdouble, green: GLdouble, blue: GLdouble, alpha: GLdouble): Unit = extern
   def glColor4f(red: GLfloat, green: GLfloat, blue: GLfloat, alpha: GLfloat): Unit = extern
@@ -203,7 +195,6 @@ object GL {
   def glColor4ub(red: GLubyte, green: GLubyte, blue: GLubyte, alpha: GLubyte): Unit = extern
   def glColor4ui(red: GLuint, green: GLuint, blue: GLuint, alpha: GLuint): Unit = extern
   def glColor4us(red: GLushort, green: GLushort, blue: GLushort, alpha: GLushort): Unit = extern
-
   def glColor3bv(v: Ptr[GLbyte]): Unit = extern
   def glColor3dv(v: Ptr[GLdouble]): Unit = extern
   def glColor3fv(v: Ptr[GLfloat]): Unit = extern
@@ -212,7 +203,6 @@ object GL {
   def glColor3ubv(v: Ptr[GLubyte]): Unit = extern
   def glColor3uiv(v: Ptr[GLuint]): Unit = extern
   def glColor3usv(v: Ptr[GLushort]): Unit = extern
-
   def glColor4bv(v: Ptr[GLbyte]): Unit = extern
   def glColor4dv(v: Ptr[GLdouble]): Unit = extern
   def glColor4fv(v: Ptr[GLfloat]): Unit = extern
@@ -221,5 +211,87 @@ object GL {
   def glColor4ubv(v: Ptr[GLubyte]): Unit = extern
   def glColor4uiv(v: Ptr[GLuint]): Unit = extern
   def glColor4usv(v: Ptr[GLushort]): Unit = extern
+  
+  def glTexCoord1d(s: GLdouble): Unit = extern
+  def glTexCoord1f(s: GLfloat): Unit = extern
+  def glTexCoord1i(s: GLint): Unit = extern
+  def glTexCoord1s(s: GLshort): Unit = extern
+  def glTexCoord2d(s: GLdouble, t: GLdouble): Unit = extern
+  def glTexCoord2f(s: GLfloat, t: GLfloat): Unit = extern
+  def glTexCoord2i(s: GLint, t: GLint): Unit = extern
+  def glTexCoord2s(s: GLshort, t: GLshort): Unit = extern
+  def glTexCoord3d(s: GLdouble, t: GLdouble, r: GLdouble): Unit = extern
+  def glTexCoord3f(s: GLfloat, t: GLfloat, r: GLfloat): Unit = extern
+  def glTexCoord3i(s: GLint, t: GLint, r: GLint): Unit = extern
+  def glTexCoord3s(s: GLshort, t: GLshort, r: GLshort): Unit = extern
+  def glTexCoord4d(s: GLdouble, t: GLdouble, r: GLdouble, q: GLdouble): Unit = extern
+  def glTexCoord4f(s: GLfloat, t: GLfloat, r: GLfloat, q: GLfloat): Unit = extern
+  def glTexCoord4i(s: GLint, t: GLint, r: GLint, q: GLint): Unit = extern
+  def glTexCoord4s(s: GLshort, t: GLshort, r: GLshort, q: GLshort): Unit = extern
+  def glTexCoord1dv(v: Ptr[GLdouble]): Unit = extern
+  def glTexCoord1fv(v: Ptr[GLfloat]): Unit = extern
+  def glTexCoord1iv(v: Ptr[GLint]): Unit = extern
+  def glTexCoord1sv(v: Ptr[GLshort]): Unit = extern
+  def glTexCoord2dv(v: Ptr[GLdouble]): Unit = extern
+  def glTexCoord2fv(v: Ptr[GLfloat]): Unit = extern
+  def glTexCoord2iv(v: Ptr[GLint]): Unit = extern
+  def glTexCoord2sv(v: Ptr[GLshort]): Unit = extern
+  def glTexCoord3dv(v: Ptr[GLdouble]): Unit = extern
+  def glTexCoord3fv(v: Ptr[GLfloat]): Unit = extern
+  def glTexCoord3iv(v: Ptr[GLint]): Unit = extern
+  def glTexCoord3sv(v: Ptr[GLshort]): Unit = extern
+  def glTexCoord4dv(v: Ptr[GLdouble]): Unit = extern
+  def glTexCoord4fv(v: Ptr[GLfloat]): Unit = extern
+  def glTexCoord4iv(v: Ptr[GLint]): Unit = extern
+  def glTexCoord4sv(v: Ptr[GLshort]): Unit = extern
+
+  def glRasterPos2d(x: GLdouble, y: GLdouble): Unit = extern
+  def glRasterPos2f(x: GLfloat, y: GLfloat): Unit = extern
+  def glRasterPos2i(x: GLint, y: GLint): Unit = extern
+  def glRasterPos2s(x: GLshort, y: GLshort): Unit = extern
+  def glRasterPos3d(x: GLdouble, y: GLdouble, z: GLdouble): Unit = extern
+  def glRasterPos3f(x: GLfloat, y: GLfloat, z: GLfloat): Unit = extern
+  def glRasterPos3i(x: GLint, y: GLint, z: GLint): Unit = extern
+  def glRasterPos3s(x: GLshort, y: GLshort, z: GLshort): Unit = extern
+  def glRasterPos4d(x: GLdouble, y: GLdouble, z: GLdouble, w: GLdouble): Unit = extern
+  def glRasterPos4f(x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat): Unit = extern
+  def glRasterPos4i(x: GLint, y: GLint, z: GLint, w: GLint): Unit = extern
+  def glRasterPos4s(x: GLshort, y: GLshort, z: GLshort, w: GLshort): Unit = extern
+  def glRasterPos2dv(v: Ptr[GLdouble]): Unit = extern
+  def glRasterPos2fv(v: Ptr[GLfloat]): Unit = extern
+  def glRasterPos2iv(v: Ptr[GLint]): Unit = extern
+  def glRasterPos2sv(v: Ptr[GLshort]): Unit = extern
+  def glRasterPos3dv(v: Ptr[GLdouble]): Unit = extern
+  def glRasterPos3fv(v: Ptr[GLfloat]): Unit = extern
+  def glRasterPos3iv(v: Ptr[GLint]): Unit = extern
+  def glRasterPos3sv(v: Ptr[GLshort]): Unit = extern
+  def glRasterPos4dv(v: Ptr[GLdouble]): Unit = extern
+  def glRasterPos4fv(v: Ptr[GLfloat]): Unit = extern
+  def glRasterPos4iv(v: Ptr[GLint]): Unit = extern
+  def glRasterPos4sv(v: Ptr[GLshort]): Unit = extern
+
+  def glRectd(x1: GLdouble, y1: GLdouble, x2: GLdouble, y2: GLdouble): Unit = extern
+  def glRectf(x1: GLfloat, y1: GLfloat, x2: GLfloat, y2: GLfloat): Unit = extern
+  def glRecti(x1: GLint, y1: GLint, x2: GLint, y2: GLint): Unit = extern
+  def glRects(x1: GLshort, y1: GLshort, x2: GLshort, y2: GLshort): Unit = extern
+  def glRectdv(v1: Ptr[GLdouble], v2: Ptr[GLdouble]): Unit = extern
+  def glRectfv(v1: Ptr[GLfloat], v2: Ptr[GLfloat]): Unit = extern
+  def glRectiv(v1: Ptr[GLint], v2: Ptr[GLint]): Unit = extern
+  def glRectsv(v1: Ptr[GLshort], v2: Ptr[GLshort]): Unit = extern
+
+  /*
+   * Vertex Arrays  (1.1)
+   */
+  def glVertexPointer(size: GLint, type_ : GLenum, stride: GLsizei, ptr: Ptr[Byte]): Unit = extern
+  def glNormalPointer(type_ :  GLenum, stride: GLsizei, ptr: Ptr[Byte]): Unit = extern
+  def glColorPointer(size: GLint, type_ : GLenum, stride: GLsizei, ptr: Ptr[Byte]): Unit = extern
+  def glIndexPointer(type_ : GLenum, stride: GLsizei, ptr: Ptr[Byte]): Unit = extern
+  def glTexCoordPointer(size: GLint, type_ : GLenum, stride: GLsizei, ptr: Ptr[Byte]): Unit = extern
+  def glEdgeFlagPointer(stride: GLsizei, ptr: Ptr[Byte]): Unit = extern
+  def glGetPointerv(pname: GLenum, params: Ptr[Ptr[Byte]]): Unit = extern
+  def glArrayElement(i: GLint): Unit = extern
+  def glDrawArrays(mode: GLenum, first: GLint, count: GLsizei): Unit = extern
+  def glDrawElements(mode: GLenum, count: GLsizei, type_ : GLenum, indices: Ptr[Byte]): Unit = extern
+  def glInterleavedArrays(format: GLenum, stride: GLsizei, pointer: Ptr[Byte]): Unit = extern
 
 }
