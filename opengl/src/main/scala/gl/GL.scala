@@ -294,4 +294,90 @@ object GL {
   def glDrawElements(mode: GLenum, count: GLsizei, type_ : GLenum, indices: Ptr[Byte]): Unit = extern
   def glInterleavedArrays(format: GLenum, stride: GLsizei, pointer: Ptr[Byte]): Unit = extern
 
+  /*
+   * Lighting
+   */
+  def glShadeModel(mode: GLenum): Unit = extern
+  def glLightf(light: GLenum, pname: GLenum, param: GLfloat): Unit = extern
+  def glLighti(light: GLenum, pname: GLenum, param: GLint): Unit = extern
+  def glLightfv(light: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glLightiv(light: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetLightfv(light: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetLightiv(light: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glLightModelf(pname: GLenum, param: GLfloat): Unit = extern
+  def glLightModeli(pname: GLenum, param: GLint): Unit = extern
+  def glLightModelfv(pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glLightModeliv(pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glMaterialf(face: GLenum, pname: GLenum, param: GLfloat): Unit = extern
+  def glMateriali(face: GLenum, pname: GLenum, param: GLint): Unit = extern
+  def glMaterialfv(face: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glMaterialiv(face: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetMaterialfv(face: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetMaterialiv(face: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glColorMaterial(face: GLenum, mode: GLenum): Unit = extern
+
+  /*
+   * Raster functions
+   */
+  def glPixelZoom(xfactor: GLfloat, yfactor: GLfloat): Unit = extern
+  def glPixelStoref(pname: GLenum, param: GLfloat): Unit = extern
+  def glPixelStorei(pname: GLenum, param: GLint): Unit = extern
+  def glPixelTransferf(pname: GLenum, param: GLfloat): Unit = extern
+  def glPixelTransferi(pname: GLenum, param: GLint): Unit = extern
+  def glPixelMapfv(map: GLenum, mapsize: GLsizei, values: Ptr[GLfloat]): Unit = extern
+  def glPixelMapuiv(map: GLenum, mapsize: GLsizei, values: Ptr[GLuint]): Unit = extern
+  def glPixelMapusv(map: GLenum, mapsize: GLsizei, values: Ptr[GLushort]): Unit = extern
+  def glGetPixelMapfv(map: GLenum, values: Ptr[GLfloat]): Unit = extern
+  def glGetPixelMapuiv(map: GLenum, values: Ptr[GLuint]): Unit = extern
+  def glGetPixelMapusv(map: GLenum, values: Ptr[GLushort]): Unit = extern
+  def glBitmap(width: GLsizei, height: GLsizei, xorig: GLfloat, yorig: GLfloat,
+               xmove: GLfloat, ymove: GLfloat, bitmap: Ptr[GLubyte]): Unit = extern
+  def glReadPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei,
+                   format: GLenum, type_ : GLenum, pixels: Ptr[Byte]): Unit = extern
+  def glDrawPixels(width: GLsizei, height: GLsizei, format: GLenum, type_ : GLenum, pixels: Ptr[Byte]): Unit = extern
+  def glCopyPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, type_ : GLenum): Unit = extern
+
+  /*
+   * Stenciling
+   */
+  def glStencilFunc(func: GLenum, ref: GLint, mask: GLuint): Unit = extern
+  def glStencilMask(mask: GLuint): Unit = extern
+  def glStencilOp(fail: GLenum, zfail: GLenum, zpass: GLenum): Unit = extern
+  def glClearStencil(s: GLint): Unit = extern
+
+  /*
+   * Texture mapping
+   */
+  def glTexGend(coord: GLenum, pname: GLenum, param: GLdouble): Unit = extern
+  def glTexGenf(coord: GLenum, pname: GLenum, param: GLfloat): Unit = extern
+  def glTexGeni(coord: GLenum, pname: GLenum, param: GLint): Unit = extern
+  def glTexGendv(coord: GLenum, pname: GLenum, params: Ptr[GLdouble]): Unit = extern
+  def glTexGenfv(coord: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glTexGeniv(coord: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetTexGendv(coord: GLenum, pname: GLenum, params: Ptr[GLdouble]): Unit = extern
+  def glGetTexGenfv(coord: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetTexGeniv(coord: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glTexEnvf(target: GLenum, pname: GLenum, param: GLfloat): Unit = extern
+  def glTexEnvi(target: GLenum, pname: GLenum, param: GLint): Unit = extern
+  def glTexEnvfv(target: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glTexEnviv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetTexEnvfv(target: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetTexEnviv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glTexParameterf(target: GLenum, pname: GLenum, param: GLfloat): Unit = extern
+  def glTexParameteri(target: GLenum, pname: GLenum, param: GLint): Unit = extern
+  def glTexParameterfv(target: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glTexParameteriv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetTexParameterfv(target: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetTexParameteriv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetTexLevelParameterfv(target: GLenum, level: GLint, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetTexLevelParameteriv(target: GLenum, level: GLint, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  
+  def glTexImage1D(target: GLenum, level: GLint, internalFormat: GLint, width: GLsizei,
+                   border: GLint, format: GLenum, type_ : GLenum, pixels: Ptr[Byte]): Unit = extern
+  def glTexImage2D(target: GLenum, level: GLint, internalFormat: GLint, width: GLsizei,
+                   height: GLsizei, border: GLint, format: GLenum, type_ : GLenum, 
+                   pixels: Ptr[Byte]): Unit = extern
+  def glGetTexImage(target: GLenum, level: GLint, format: GLenum, type_ : GLenum, pixels: Ptr[Byte]): Unit = extern
+  
+
 }
