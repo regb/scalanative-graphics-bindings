@@ -374,10 +374,28 @@ object GL {
   
   def glTexImage1D(target: GLenum, level: GLint, internalFormat: GLint, width: GLsizei,
                    border: GLint, format: GLenum, type_ : GLenum, pixels: Ptr[Byte]): Unit = extern
-  def glTexImage2D(target: GLenum, level: GLint, internalFormat: GLint, width: GLsizei,
-                   height: GLsizei, border: GLint, format: GLenum, type_ : GLenum, 
-                   pixels: Ptr[Byte]): Unit = extern
+  def glTexImage2D(target: GLenum, level: GLint, internalFormat: GLint, width: GLsizei, height: GLsizei,
+                   border: GLint, format: GLenum, type_ : GLenum, pixels: Ptr[Byte]): Unit = extern
   def glGetTexImage(target: GLenum, level: GLint, format: GLenum, type_ : GLenum, pixels: Ptr[Byte]): Unit = extern
   
+  /* 1.1 functions */
+  def glGenTextures(n: GLsizei, textures: Ptr[GLuint]): Unit = extern
+  def glDeleteTextures(n: GLsizei, textures: Ptr[GLuint]): Unit = extern
+  def glBindTexture(target: GLenum, texture: GLuint): Unit = extern
+  def glPrioritizeTextures(n: GLsizei, textures: Ptr[GLuint], priorities: Ptr[GLclampf]): Unit = extern
+  def glAreTexturesResident(n: GLsizei, textures: Ptr[GLuint], residences: Ptr[GLboolean]): GLboolean = extern
+  def glIsTexture(texture: GLuint): GLboolean = extern
+  def glTexSubImage1D(target: GLenum, level: GLint, xoffset: GLint, width: GLsizei,
+                      format: GLenum, type_ : GLenum, pixels: Ptr[Byte]): Unit = extern
+  def glTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei,
+                      height: GLsizei, format: GLenum, type_ : GLenum, pixels: Ptr[Byte]): Unit = extern
+  def glCopyTexImage1D(target: GLenum, level: GLint, internalformat: GLenum,
+                       x: GLint, y: GLint, width: GLsizei, border: GLint): Unit = extern
+  def glCopyTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, x: GLint, y: GLint,
+                       width: GLsizei, height: GLsizei, border: GLint): Unit = extern
+  def glCopyTexSubImage1D(target: GLenum, level: GLint, xoffset: GLint,
+                          x: GLint, y: GLint, width: GLsizei): Unit = extern
+  def glCopyTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint,
+                          x: GLint, y: GLint, width: GLsizei, height: GLsizei): Unit = extern
 
 }

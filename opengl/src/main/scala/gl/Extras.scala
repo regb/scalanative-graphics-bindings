@@ -256,16 +256,16 @@ object Extras {
   val GL_SELECTION_BUFFER_SIZE: UShort = 0x0DF4.toUShort
 
   /* Fog */
-  val GL_FOG: UShort = 0x0B60.toUShort
-  val GL_FOG_MODE: UShort = 0x0B65.toUShort
-  val GL_FOG_DENSITY: UShort = 0x0B62.toUShort
-  val GL_FOG_COLOR: UShort = 0x0B66.toUShort
-  val GL_FOG_INDEX: UShort = 0x0B61.toUShort
-  val GL_FOG_START: UShort = 0x0B63.toUShort
-  val GL_FOG_END: UShort = 0x0B64.toUShort
-  val GL_LINEAR: UShort = 0x2601.toUShort
-  val GL_EXP: UShort = 0x0800.toUShort
-  val GL_EXP2: UShort = 0x0801.toUShort
+  val GL_FOG: Short = 0x0B60.toShort
+  val GL_FOG_MODE: Short = 0x0B65.toShort
+  val GL_FOG_DENSITY: Short = 0x0B62.toShort
+  val GL_FOG_COLOR: Short = 0x0B66.toShort
+  val GL_FOG_INDEX: Short = 0x0B61.toShort
+  val GL_FOG_START: Short = 0x0B63.toShort
+  val GL_FOG_END: Short = 0x0B64.toShort
+  val GL_LINEAR: Short = 0x2601.toShort
+  val GL_EXP: Short = 0x0800.toShort
+  val GL_EXP2: Short = 0x0801.toShort
   
   /* Logic Ops */
   val GL_LOGIC_OP: UShort = 0x0BF1.toUShort
@@ -611,5 +611,50 @@ object Extras {
   val GL_CLIENT_VERTEX_ARRAY_BIT: UInt = 0x00000002.toUInt
   val GL_ALL_CLIENT_ATTRIB_BITS: UInt = 0xFFFFFFFF.toUInt
   val GL_CLIENT_ALL_ATTRIB_BITS: UInt = 0xFFFFFFFF.toUInt
+
+  /*
+   * OpenGL 1.2
+   */
+  val GL_RESCALE_NORMAL: UShort = 0x803A.toUShort
+  val GL_CLAMP_TO_EDGE: UShort = 0x812F.toUShort
+  val GL_MAX_ELEMENTS_VERTICES: UShort = 0x80E8.toUShort
+  val GL_MAX_ELEMENTS_INDICES: UShort = 0x80E9.toUShort
+  val GL_BGR: UShort = 0x80E0.toUShort
+  val GL_BGRA: UShort = 0x80E1.toUShort
+  val GL_UNSIGNED_BYTE_3_3_2: UShort = 0x8032.toUShort
+  val GL_UNSIGNED_BYTE_2_3_3_REV: UShort = 0x8362.toUShort
+  val GL_UNSIGNED_SHORT_5_6_5: UShort = 0x8363.toUShort
+  val GL_UNSIGNED_SHORT_5_6_5_REV: UShort = 0x8364.toUShort
+  val GL_UNSIGNED_SHORT_4_4_4_4: UShort = 0x8033.toUShort
+  val GL_UNSIGNED_SHORT_4_4_4_4_REV: UShort = 0x8365.toUShort
+  val GL_UNSIGNED_SHORT_5_5_5_1: UShort = 0x8034.toUShort
+  val GL_UNSIGNED_SHORT_1_5_5_5_REV: UShort = 0x8366.toUShort
+  val GL_UNSIGNED_INT_8_8_8_8: UShort = 0x8035.toUShort
+  val GL_UNSIGNED_INT_8_8_8_8_REV: UShort = 0x8367.toUShort
+  val GL_UNSIGNED_INT_10_10_10_2: UShort = 0x8036.toUShort
+  val GL_UNSIGNED_INT_2_10_10_10_REV: UShort = 0x8368.toUShort
+  val GL_LIGHT_MODEL_COLOR_CONTROL: UShort = 0x81F8.toUShort
+  val GL_SINGLE_COLOR: UShort = 0x81F9.toUShort
+  val GL_SEPARATE_SPECULAR_COLOR: UShort = 0x81FA.toUShort
+  val GL_TEXTURE_MIN_LOD: UShort = 0x813A.toUShort
+  val GL_TEXTURE_MAX_LOD: UShort = 0x813B.toUShort
+  val GL_TEXTURE_BASE_LEVEL: UShort = 0x813C.toUShort
+  val GL_TEXTURE_MAX_LEVEL: UShort = 0x813D.toUShort
+  val GL_SMOOTH_POINT_SIZE_RANGE: UShort = 0x0B12.toUShort
+  val GL_SMOOTH_POINT_SIZE_GRANULARITY: UShort = 0x0B13.toUShort
+  val GL_SMOOTH_LINE_WIDTH_RANGE: UShort = 0x0B22.toUShort
+  val GL_SMOOTH_LINE_WIDTH_GRANULARITY: UShort = 0x0B23.toUShort
+  val GL_ALIASED_POINT_SIZE_RANGE: UShort = 0x846D.toUShort
+  val GL_ALIASED_LINE_WIDTH_RANGE: UShort = 0x846E.toUShort
+  val GL_PACK_SKIP_IMAGES: UShort = 0x806B.toUShort
+  val GL_PACK_IMAGE_HEIGHT: UShort = 0x806C.toUShort
+  val GL_UNPACK_SKIP_IMAGES: UShort = 0x806D.toUShort
+  val GL_UNPACK_IMAGE_HEIGHT: UShort = 0x806E.toUShort
+  val GL_TEXTURE_3D: UShort = 0x806F.toUShort
+  val GL_PROXY_TEXTURE_3D: UShort = 0x8070.toUShort
+  val GL_TEXTURE_DEPTH: UShort = 0x8071.toUShort
+  val GL_TEXTURE_WRAP_R: UShort = 0x8072.toUShort
+  val GL_MAX_3D_TEXTURE_SIZE: UShort = 0x8073.toUShort
+  val GL_TEXTURE_BINDING_3D: UShort = 0x806A.toUShort
 
 }
