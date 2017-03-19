@@ -371,7 +371,6 @@ object GL {
   def glGetTexParameteriv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
   def glGetTexLevelParameterfv(target: GLenum, level: GLint, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
   def glGetTexLevelParameteriv(target: GLenum, level: GLint, pname: GLenum, params: Ptr[GLint]): Unit = extern
-  
   def glTexImage1D(target: GLenum, level: GLint, internalFormat: GLint, width: GLsizei,
                    border: GLint, format: GLenum, type_ : GLenum, pixels: Ptr[Byte]): Unit = extern
   def glTexImage2D(target: GLenum, level: GLint, internalFormat: GLint, width: GLsizei, height: GLsizei,
@@ -397,5 +396,77 @@ object GL {
                           x: GLint, y: GLint, width: GLsizei): Unit = extern
   def glCopyTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint,
                           x: GLint, y: GLint, width: GLsizei, height: GLsizei): Unit = extern
+
+  /*
+   * Evaluators
+   */
+  def glMap1d(target: GLenum, u1: GLdouble, u2: GLdouble,
+              stride: GLint, order: GLint, points: Ptr[GLdouble]): Unit = extern
+  def glMap1f(target: GLenum, u1: GLfloat, u2: GLfloat,
+              stride: GLint, order: GLint, points: Ptr[GLfloat]): Unit = extern
+  def glMap2d(target: GLenum, u1: GLdouble, u2: GLdouble, ustride: GLint, uorder: GLint,
+  		        v1: GLdouble, v2: GLdouble, vstride: GLint, vorder: GLint, points: Ptr[GLdouble]): Unit = extern
+  def glMap2f(target: GLenum, u1: GLfloat, u2: GLfloat, ustride: GLint, uorder: GLint,
+  		        v1: GLfloat, v2: GLfloat, vstride: GLint, vorder: GLint, points: Ptr[GLfloat]): Unit = extern
+  def glGetMapdv(target: GLenum, query: GLenum, v: Ptr[GLdouble]): Unit = extern
+  def glGetMapfv(target: GLenum, query: GLenum, v: Ptr[GLfloat]): Unit = extern
+  def glGetMapiv(target: GLenum, query: GLenum, v: Ptr[GLint]): Unit = extern
+  def glEvalCoord1d(u: GLdouble): Unit = extern
+  def glEvalCoord1f(u: GLfloat): Unit = extern
+  def glEvalCoord1dv(u: Ptr[GLdouble]): Unit = extern
+  def glEvalCoord1fv(u: Ptr[GLfloat]): Unit = extern
+  def glEvalCoord2d(u: GLdouble, v: GLdouble): Unit = extern
+  def glEvalCoord2f(u: GLfloat, v: GLfloat): Unit = extern
+  def glEvalCoord2dv(u: Ptr[GLdouble]): Unit = extern
+  def glEvalCoord2fv(u: Ptr[GLfloat]): Unit = extern
+  def glMapGrid1d(un: GLint, u1: GLdouble, u2: GLdouble): Unit = extern
+  def glMapGrid1f(un: GLint, u1: GLfloat, u2: GLfloat): Unit = extern
+  def glMapGrid2d(un: GLint, u1: GLdouble, u2: GLdouble, vn: GLint, v1: GLdouble, v2: GLdouble): Unit = extern
+  def glMapGrid2f(un: GLint, u1: GLfloat, u2: GLfloat, vn: GLint, v1: GLfloat, v2: GLfloat): Unit = extern
+  def glEvalPoint1(i: GLint): Unit = extern
+  def glEvalPoint2(i: GLint, j: GLint): Unit = extern
+  def glEvalMesh1(mode: GLenum, i1: GLint, i2: GLint): Unit = extern
+  def glEvalMesh2(mode: GLenum, i1: GLint, i2: GLint, j1: GLint, j2: GLint): Unit = extern
+  
+  /*
+   * Fog
+   */
+  def glFogf(pname: GLenum, param: GLfloat): Unit = extern
+  def glFogi(pname: GLenum, param: GLint): Unit = extern
+  def glFogfv(pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glFogiv(pname: GLenum, params: Ptr[GLint]): Unit = extern
+  
+  /*
+   * Selection and Feedback
+   */
+  def glFeedbackBuffer(size: GLsizei, type_ : GLenum, buffer: Ptr[GLfloat]): Unit = extern
+  def glPassThrough(token: GLfloat): Unit = extern
+  def glSelectBuffer(size: GLsizei, buffer: Ptr[GLuint]): Unit = extern
+  def glInitNames(): Unit = extern
+  def glLoadName(name: GLuint): Unit = extern
+  def glPushName(name: GLuint): Unit = extern
+  def glPopName(): Unit = extern
+
+  /*
+   * OpenGL 1.2
+   */
+  def glDrawRangeElements(mode: GLenum, start: GLuint, end: GLuint, count: GLsizei, 
+                          type_ : GLenum, indices: Ptr[Byte]): Unit = extern
+  def glTexImage3D(target: GLenum, level: GLint, internalFormat: GLint, width: GLsizei, height: GLsizei,
+                   depth: GLsizei, border: GLint, format: GLenum, type_ : GLenum, pixels: Ptr[Byte]): Unit = extern
+  def glTexSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint,
+                      width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum,
+                      type_ : GLenum, pixels: Ptr[Byte]): Unit = extern
+  def glCopyTexSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint,
+                          x: GLint, y: GLint, width: GLsizei, height: GLsizei): Unit = extern
+  type PFNGLDRAWRANGEELEMENTSPROC = CFunctionPtr6[GLenum, GLuint, GLuint, GLsizei, GLenum, Ptr[Byte], Unit]
+  type PFNGLTEXIMAGE3DPROC = 
+    CFunctionPtr10[GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, 
+                   GLenum, GLenum, Ptr[Byte], Unit]
+  type PFNGLTEXSUBIMAGE3DPROC = 
+    CFunctionPtr11[GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, 
+                   GLenum, GLenum, Ptr[Byte], Unit]
+  type PFNGLCOPYTEXSUBIMAGE3DPROC =
+    CFunctionPtr9[GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, Unit]
 
 }
