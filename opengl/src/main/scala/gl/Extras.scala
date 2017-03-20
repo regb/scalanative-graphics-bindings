@@ -5,11 +5,6 @@ import scalanative.native._
 object Extras {
   import GL._
 
-  val GL_VERSION_1_1: UByte = 1.toUByte
-  val GL_VERSION_1_2: UByte = 1.toUByte
-  val GL_VERSION_1_3: UByte = 1.toUByte
-  val GL_ARB_imaging: UByte = 1.toUByte
-
   /*
    * Constants
    */
@@ -845,4 +840,56 @@ object Extras {
   /* texture_border_clamp */
   val GL_CLAMP_TO_BORDER: UShort = 0x812D.toUShort
 
+  /*
+   * OpenGL 1.4
+   */
+  val GL_BLEND_DST_RGB: UShort = 0x80C8.toUShort
+  val GL_BLEND_SRC_RGB: UShort = 0x80C9.toUShort
+  val GL_BLEND_DST_ALPHA: UShort = 0x80CA.toUShort
+  val GL_BLEND_SRC_ALPHA: UShort = 0x80CB.toUShort
+  val GL_POINT_FADE_THRESHOLD_SIZE: UShort = 0x8128.toUShort
+  val GL_DEPTH_COMPONENT16: UShort = 0x81A5.toUShort
+  val GL_DEPTH_COMPONENT24: UShort = 0x81A6.toUShort
+  val GL_DEPTH_COMPONENT32: UShort = 0x81A7.toUShort
+  val GL_MIRRORED_REPEAT: UShort = 0x8370.toUShort
+  val GL_MAX_TEXTURE_LOD_BIAS: UShort = 0x84FD.toUShort
+  val GL_TEXTURE_LOD_BIAS: UShort = 0x8501.toUShort
+  val GL_INCR_WRAP: UShort = 0x8507.toUShort
+  val GL_DECR_WRAP: UShort = 0x8508.toUShort
+  val GL_TEXTURE_DEPTH_SIZE: UShort = 0x884A.toUShort
+  val GL_TEXTURE_COMPARE_MODE: UShort = 0x884C.toUShort
+  val GL_TEXTURE_COMPARE_FUNC: UShort = 0x884D.toUShort
+  val GL_POINT_SIZE_MIN: UShort = 0x8126.toUShort
+  val GL_POINT_SIZE_MAX: UShort = 0x8127.toUShort
+  val GL_POINT_DISTANCE_ATTENUATION: UShort = 0x8129.toUShort
+  val GL_GENERATE_MIPMAP: UShort = 0x8191.toUShort
+  val GL_GENERATE_MIPMAP_HINT: UShort = 0x8192.toUShort
+  val GL_FOG_COORDINATE_SOURCE: UShort = 0x8450.toUShort
+  val GL_FOG_COORDINATE: UShort = 0x8451.toUShort
+  val GL_FRAGMENT_DEPTH: UShort = 0x8452.toUShort
+  val GL_CURRENT_FOG_COORDINATE: UShort = 0x8453.toUShort
+  val GL_FOG_COORDINATE_ARRAY_TYPE: UShort = 0x8454.toUShort
+  val GL_FOG_COORDINATE_ARRAY_STRIDE: UShort = 0x8455.toUShort
+  val GL_FOG_COORDINATE_ARRAY_POINTER: UShort = 0x8456.toUShort
+  val GL_FOG_COORDINATE_ARRAY: UShort = 0x8457.toUShort
+  val GL_COLOR_SUM: UShort = 0x8458.toUShort
+  val GL_CURRENT_SECONDARY_COLOR: UShort = 0x8459.toUShort
+  val GL_SECONDARY_COLOR_ARRAY_SIZE: UShort = 0x845A.toUShort
+  val GL_SECONDARY_COLOR_ARRAY_TYPE: UShort = 0x845B.toUShort
+  val GL_SECONDARY_COLOR_ARRAY_STRIDE: UShort = 0x845C.toUShort
+  val GL_SECONDARY_COLOR_ARRAY_POINTER: UShort = 0x845D.toUShort
+  val GL_SECONDARY_COLOR_ARRAY: UShort = 0x845E.toUShort
+  val GL_TEXTURE_FILTER_CONTROL: UShort = 0x8500.toUShort
+  val GL_DEPTH_TEXTURE_MODE: UShort = 0x884B.toUShort
+  val GL_COMPARE_R_TO_TEXTURE: UShort = 0x884E.toUShort
+  //these are already defined on other sections
+  //val GL_FUNC_ADD: UShort = 0x8006.toUShort
+  //val GL_FUNC_SUBTRACT: UShort = 0x800A.toUShort
+  //val GL_FUNC_REVERSE_SUBTRACT: UShort = 0x800B.toUShort
+  //val GL_MIN: UShort = 0x8007.toUShort
+  //val GL_MAX: UShort = 0x8008.toUShort
+  //val GL_CONSTANT_COLOR: UShort = 0x8001.toUShort
+  //val GL_ONE_MINUS_CONSTANT_COLOR: UShort = 0x8002.toUShort
+  //val GL_CONSTANT_ALPHA: UShort = 0x8003.toUShort
+  //val GL_ONE_MINUS_CONSTANT_ALPHA: UShort = 0x8004.toUShort
 }

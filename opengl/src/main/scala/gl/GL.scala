@@ -591,4 +591,55 @@ object GL {
     CFunctionPtr7[GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, Ptr[Byte], Unit]
   type PFNGLGETCOMPRESSEDTEXIMAGEPROC = CFunctionPtr3[GLenum, GLint, Ptr[Byte], Unit]
 
+  /*
+   * OpenGL 1.4
+   */
+  def glBlendFuncSeparate(sfactorRGB: GLenum, dfactorRGB: GLenum, sfactorAlpha: GLenum, dfactorAlpha: GLenum): Unit = extern
+  def glMultiDrawArrays(mode: GLenum, first: Ptr[GLint], count: Ptr[GLsizei], drawcount: GLsizei): Unit = extern
+  def glMultiDrawElements(mode: GLenum, count: Ptr[GLsizei], type_ : GLenum, indices: Ptr[Ptr[Byte]], drawcount: GLsizei): Unit = extern
+  def glPointParameterf(pname: GLenum, param: GLfloat): Unit = extern
+  def glPointParameterfv(pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glPointParameteri(pname: GLenum, param: GLint): Unit = extern
+  def glPointParameteriv(pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glFogCoordf(coord: GLfloat): Unit = extern
+  def glFogCoordfv(coord: Ptr[GLfloat]): Unit = extern
+  def glFogCoordd(coord: Ptr[GLdouble]): Unit = extern
+  def glFogCoorddv(coord: Ptr[GLdouble]): Unit = extern
+  def glFogCoordPointer(type_ : GLenum, stride: GLsizei, pointer: Ptr[Byte]): Unit = extern
+  def glSecondaryColor3b(red: GLbyte, green: GLbyte, blue: GLbyte): Unit = extern
+  def glSecondaryColor3bv(v: Ptr[GLbyte]): Unit = extern
+  def glSecondaryColor3d(red: GLdouble, green: GLdouble, blue: GLdouble): Unit = extern
+  def glSecondaryColor3dv(v: Ptr[GLdouble]): Unit = extern
+  def glSecondaryColor3f(red: GLfloat, green: GLfloat, blue: GLfloat): Unit = extern
+  def glSecondaryColor3fv(v: Ptr[GLfloat]): Unit = extern
+  def glSecondaryColor3i(red: GLint, green: GLint, blue: GLint): Unit = extern
+  def glSecondaryColor3iv(v: Ptr[GLint]): Unit = extern
+  def glSecondaryColor3s(red: GLshort, green: GLshort, blue: GLshort): Unit = extern
+  def glSecondaryColor3sv(v: Ptr[GLshort]): Unit = extern
+  def glSecondaryColor3ub(red: GLubyte, green: GLubyte, blue: GLubyte): Unit = extern
+  def glSecondaryColor3ubv(v: Ptr[GLubyte]): Unit = extern
+  def glSecondaryColor3ui(red: GLuint, green: GLuint, blue: GLuint): Unit = extern
+  def glSecondaryColor3uiv(v: Ptr[GLuint]): Unit = extern
+  def glSecondaryColor3us(red: GLushort, green: GLushort, blue: GLushort): Unit = extern
+  def glSecondaryColor3usv(v: Ptr[GLushort]): Unit = extern
+  def glSecondaryColorPointer(size: GLint, type_ : GLenum, stride: GLsizei, pointer: Ptr[Byte]): Unit = extern
+  def glWindowPos2d(x: GLdouble, y: GLdouble): Unit = extern
+  def glWindowPos2dv(v: Ptr[GLdouble]): Unit = extern
+  def glWindowPos2f(x: GLfloat, y: GLfloat): Unit = extern
+  def glWindowPos2fv(v: Ptr[GLfloat]): Unit = extern
+  def glWindowPos2i(x: GLint, y: GLint): Unit = extern
+  def glWindowPos2iv(v: Ptr[GLint]): Unit = extern
+  def glWindowPos2s(x: GLshort, y: GLshort): Unit = extern
+  def glWindowPos2sv(v: Ptr[GLshort]): Unit = extern
+  def glWindowPos3d(x: GLdouble, y: GLdouble, z: GLdouble): Unit = extern
+  def glWindowPos3dv(v: Ptr[GLdouble]): Unit = extern
+  def glWindowPos3f(x: GLfloat, y: GLfloat, z: GLfloat): Unit = extern
+  def glWindowPos3fv(v: Ptr[GLfloat]): Unit = extern
+  def glWindowPos3i(x: GLint, y: GLint, z: GLint): Unit = extern
+  def glWindowPos3iv(v: Ptr[GLint]): Unit = extern
+  def glWindowPos3s(x: GLshort, y: GLshort, z: GLshort): Unit = extern
+  def glWindowPos3sv(v: Ptr[GLshort]): Unit = extern
+  //already defined above
+  //def glBlendColor(red: GLfloat, green: GLfloat, blue: GLfloat, alpha: GLfloat): Unit = extern
+  //def glBlendEquation(mode: GLenum): Unit = extern
 }
