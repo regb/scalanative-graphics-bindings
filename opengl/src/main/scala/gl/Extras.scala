@@ -657,4 +657,192 @@ object Extras {
   val GL_MAX_3D_TEXTURE_SIZE: UShort = 0x8073.toUShort
   val GL_TEXTURE_BINDING_3D: UShort = 0x806A.toUShort
 
+  /*
+   * GL_ARB_imaging
+   */
+  val GL_CONSTANT_COLOR: UShort = 0x8001.toUShort
+  val GL_ONE_MINUS_CONSTANT_COLOR: UShort = 0x8002.toUShort
+  val GL_CONSTANT_ALPHA: UShort = 0x8003.toUShort
+  val GL_ONE_MINUS_CONSTANT_ALPHA: UShort = 0x8004.toUShort
+  val GL_COLOR_TABLE: UShort = 0x80D0.toUShort
+  val GL_POST_CONVOLUTION_COLOR_TABLE: UShort = 0x80D1.toUShort
+  val GL_POST_COLOR_MATRIX_COLOR_TABLE: UShort = 0x80D2.toUShort
+  val GL_PROXY_COLOR_TABLE: UShort = 0x80D3.toUShort
+  val GL_PROXY_POST_CONVOLUTION_COLOR_TABLE: UShort = 0x80D4.toUShort
+  val GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE: UShort = 0x80D5.toUShort
+  val GL_COLOR_TABLE_SCALE: UShort = 0x80D6.toUShort
+  val GL_COLOR_TABLE_BIAS: UShort = 0x80D7.toUShort
+  val GL_COLOR_TABLE_FORMAT: UShort = 0x80D8.toUShort
+  val GL_COLOR_TABLE_WIDTH: UShort = 0x80D9.toUShort
+  val GL_COLOR_TABLE_RED_SIZE: UShort = 0x80DA.toUShort
+  val GL_COLOR_TABLE_GREEN_SIZE: UShort = 0x80DB.toUShort
+  val GL_COLOR_TABLE_BLUE_SIZE: UShort = 0x80DC.toUShort
+  val GL_COLOR_TABLE_ALPHA_SIZE: UShort = 0x80DD.toUShort
+  val GL_COLOR_TABLE_LUMINANCE_SIZE: UShort = 0x80DE.toUShort
+  val GL_COLOR_TABLE_INTENSITY_SIZE: UShort = 0x80DF.toUShort
+  val GL_CONVOLUTION_1D: UShort = 0x8010.toUShort
+  val GL_CONVOLUTION_2D: UShort = 0x8011.toUShort
+  val GL_SEPARABLE_2D: UShort = 0x8012.toUShort
+  val GL_CONVOLUTION_BORDER_MODE: UShort = 0x8013.toUShort
+  val GL_CONVOLUTION_FILTER_SCALE: UShort = 0x8014.toUShort
+  val GL_CONVOLUTION_FILTER_BIAS: UShort = 0x8015.toUShort
+  val GL_REDUCE: UShort = 0x8016.toUShort
+  val GL_CONVOLUTION_FORMAT: UShort = 0x8017.toUShort
+  val GL_CONVOLUTION_WIDTH: UShort = 0x8018.toUShort
+  val GL_CONVOLUTION_HEIGHT: UShort = 0x8019.toUShort
+  val GL_MAX_CONVOLUTION_WIDTH: UShort = 0x801A.toUShort
+  val GL_MAX_CONVOLUTION_HEIGHT: UShort = 0x801B.toUShort
+  val GL_POST_CONVOLUTION_RED_SCALE: UShort = 0x801C.toUShort
+  val GL_POST_CONVOLUTION_GREEN_SCALE: UShort = 0x801D.toUShort
+  val GL_POST_CONVOLUTION_BLUE_SCALE: UShort = 0x801E.toUShort
+  val GL_POST_CONVOLUTION_ALPHA_SCALE: UShort = 0x801F.toUShort
+  val GL_POST_CONVOLUTION_RED_BIAS: UShort = 0x8020.toUShort
+  val GL_POST_CONVOLUTION_GREEN_BIAS: UShort = 0x8021.toUShort
+  val GL_POST_CONVOLUTION_BLUE_BIAS: UShort = 0x8022.toUShort
+  val GL_POST_CONVOLUTION_ALPHA_BIAS: UShort = 0x8023.toUShort
+  val GL_CONSTANT_BORDER: UShort = 0x8151.toUShort
+  val GL_REPLICATE_BORDER: UShort = 0x8153.toUShort
+  val GL_CONVOLUTION_BORDER_COLOR: UShort = 0x8154.toUShort
+  val GL_COLOR_MATRIX: UShort = 0x80B1.toUShort
+  val GL_COLOR_MATRIX_STACK_DEPTH: UShort = 0x80B2.toUShort
+  val GL_MAX_COLOR_MATRIX_STACK_DEPTH: UShort = 0x80B3.toUShort
+  val GL_POST_COLOR_MATRIX_RED_SCALE: UShort = 0x80B4.toUShort
+  val GL_POST_COLOR_MATRIX_GREEN_SCALE: UShort = 0x80B5.toUShort
+  val GL_POST_COLOR_MATRIX_BLUE_SCALE: UShort = 0x80B6.toUShort
+  val GL_POST_COLOR_MATRIX_ALPHA_SCALE: UShort = 0x80B7.toUShort
+  val GL_POST_COLOR_MATRIX_RED_BIAS: UShort = 0x80B8.toUShort
+  val GL_POST_COLOR_MATRIX_GREEN_BIAS: UShort = 0x80B9.toUShort
+  val GL_POST_COLOR_MATRIX_BLUE_BIAS: UShort = 0x80BA.toUShort
+  val GL_POST_COLOR_MATRIX_ALPHA_BIAS: UShort = 0x80BB.toUShort
+  val GL_HISTOGRAM: UShort = 0x8024.toUShort
+  val GL_PROXY_HISTOGRAM: UShort = 0x8025.toUShort
+  val GL_HISTOGRAM_WIDTH: UShort = 0x8026.toUShort
+  val GL_HISTOGRAM_FORMAT: UShort = 0x8027.toUShort
+  val GL_HISTOGRAM_RED_SIZE: UShort = 0x8028.toUShort
+  val GL_HISTOGRAM_GREEN_SIZE: UShort = 0x8029.toUShort
+  val GL_HISTOGRAM_BLUE_SIZE: UShort = 0x802A.toUShort
+  val GL_HISTOGRAM_ALPHA_SIZE: UShort = 0x802B.toUShort
+  val GL_HISTOGRAM_LUMINANCE_SIZE: UShort = 0x802C.toUShort
+  val GL_HISTOGRAM_SINK: UShort = 0x802D.toUShort
+  val GL_MINMAX: UShort = 0x802E.toUShort
+  val GL_MINMAX_FORMAT: UShort = 0x802F.toUShort
+  val GL_MINMAX_SINK: UShort = 0x8030.toUShort
+  val GL_TABLE_TOO_LARGE: UShort = 0x8031.toUShort
+  val GL_BLEND_EQUATION: UShort = 0x8009.toUShort
+  val GL_MIN: UShort = 0x8007.toUShort
+  val GL_MAX: UShort = 0x8008.toUShort
+  val GL_FUNC_ADD: UShort = 0x8006.toUShort
+  val GL_FUNC_SUBTRACT: UShort = 0x800A.toUShort
+  val GL_FUNC_REVERSE_SUBTRACT: UShort = 0x800B.toUShort
+  val GL_BLEND_COLOR: UShort = 0x8005.toUShort
+
+  /*
+   * OpenGL 1.3
+   */
+
+  /* multitexture */
+  val GL_TEXTURE0: UShort = 0x84C0.toUShort
+  val GL_TEXTURE1: UShort = 0x84C1.toUShort
+  val GL_TEXTURE2: UShort = 0x84C2.toUShort
+  val GL_TEXTURE3: UShort = 0x84C3.toUShort
+  val GL_TEXTURE4: UShort = 0x84C4.toUShort
+  val GL_TEXTURE5: UShort = 0x84C5.toUShort
+  val GL_TEXTURE6: UShort = 0x84C6.toUShort
+  val GL_TEXTURE7: UShort = 0x84C7.toUShort
+  val GL_TEXTURE8: UShort = 0x84C8.toUShort
+  val GL_TEXTURE9: UShort = 0x84C9.toUShort
+  val GL_TEXTURE10: UShort = 0x84CA.toUShort
+  val GL_TEXTURE11: UShort = 0x84CB.toUShort
+  val GL_TEXTURE12: UShort = 0x84CC.toUShort
+  val GL_TEXTURE13: UShort = 0x84CD.toUShort
+  val GL_TEXTURE14: UShort = 0x84CE.toUShort
+  val GL_TEXTURE15: UShort = 0x84CF.toUShort
+  val GL_TEXTURE16: UShort = 0x84D0.toUShort
+  val GL_TEXTURE17: UShort = 0x84D1.toUShort
+  val GL_TEXTURE18: UShort = 0x84D2.toUShort
+  val GL_TEXTURE19: UShort = 0x84D3.toUShort
+  val GL_TEXTURE20: UShort = 0x84D4.toUShort
+  val GL_TEXTURE21: UShort = 0x84D5.toUShort
+  val GL_TEXTURE22: UShort = 0x84D6.toUShort
+  val GL_TEXTURE23: UShort = 0x84D7.toUShort
+  val GL_TEXTURE24: UShort = 0x84D8.toUShort
+  val GL_TEXTURE25: UShort = 0x84D9.toUShort
+  val GL_TEXTURE26: UShort = 0x84DA.toUShort
+  val GL_TEXTURE27: UShort = 0x84DB.toUShort
+  val GL_TEXTURE28: UShort = 0x84DC.toUShort
+  val GL_TEXTURE29: UShort = 0x84DD.toUShort
+  val GL_TEXTURE30: UShort = 0x84DE.toUShort
+  val GL_TEXTURE31: UShort = 0x84DF.toUShort
+  val GL_ACTIVE_TEXTURE: UShort = 0x84E0.toUShort
+  val GL_CLIENT_ACTIVE_TEXTURE: UShort = 0x84E1.toUShort
+  val GL_MAX_TEXTURE_UNITS: UShort = 0x84E2.toUShort
+  /* texture_cube_map */
+  val GL_NORMAL_MAP: UShort = 0x8511.toUShort
+  val GL_REFLECTION_MAP: UShort = 0x8512.toUShort
+  val GL_TEXTURE_CUBE_MAP: UShort = 0x8513.toUShort
+  val GL_TEXTURE_BINDING_CUBE_MAP: UShort = 0x8514.toUShort
+  val GL_TEXTURE_CUBE_MAP_POSITIVE_X: UShort = 0x8515.toUShort
+  val GL_TEXTURE_CUBE_MAP_NEGATIVE_X: UShort = 0x8516.toUShort
+  val GL_TEXTURE_CUBE_MAP_POSITIVE_Y: UShort = 0x8517.toUShort
+  val GL_TEXTURE_CUBE_MAP_NEGATIVE_Y: UShort = 0x8518.toUShort
+  val GL_TEXTURE_CUBE_MAP_POSITIVE_Z: UShort = 0x8519.toUShort
+  val GL_TEXTURE_CUBE_MAP_NEGATIVE_Z: UShort = 0x851A.toUShort
+  val GL_PROXY_TEXTURE_CUBE_MAP: UShort = 0x851B.toUShort
+  val GL_MAX_CUBE_MAP_TEXTURE_SIZE: UShort = 0x851C.toUShort
+  /* texture_compression */
+  val GL_COMPRESSED_ALPHA: UShort = 0x84E9.toUShort
+  val GL_COMPRESSED_LUMINANCE: UShort = 0x84EA.toUShort
+  val GL_COMPRESSED_LUMINANCE_ALPHA: UShort = 0x84EB.toUShort
+  val GL_COMPRESSED_INTENSITY: UShort = 0x84EC.toUShort
+  val GL_COMPRESSED_RGB: UShort = 0x84ED.toUShort
+  val GL_COMPRESSED_RGBA: UShort = 0x84EE.toUShort
+  val GL_TEXTURE_COMPRESSION_HINT: UShort = 0x84EF.toUShort
+  val GL_TEXTURE_COMPRESSED_IMAGE_SIZE: UShort = 0x86A0.toUShort
+  val GL_TEXTURE_COMPRESSED: UShort = 0x86A1.toUShort
+  val GL_NUM_COMPRESSED_TEXTURE_FORMATS: UShort = 0x86A2.toUShort
+  val GL_COMPRESSED_TEXTURE_FORMATS: UShort = 0x86A3.toUShort
+  /* multisample */
+  val GL_MULTISAMPLE: UShort = 0x809D.toUShort
+  val GL_SAMPLE_ALPHA_TO_COVERAGE: UShort = 0x809E.toUShort
+  val GL_SAMPLE_ALPHA_TO_ONE: UShort = 0x809F.toUShort
+  val GL_SAMPLE_COVERAGE: UShort = 0x80A0.toUShort
+  val GL_SAMPLE_BUFFERS: UShort = 0x80A8.toUShort
+  val GL_SAMPLES: UShort = 0x80A9.toUShort
+  val GL_SAMPLE_COVERAGE_VALUE: UShort = 0x80AA.toUShort
+  val GL_SAMPLE_COVERAGE_INVERT: UShort = 0x80AB.toUShort
+  val GL_MULTISAMPLE_BIT: UInt = 0x20000000.toUInt
+  /* transpose_matrix */
+  val GL_TRANSPOSE_MODELVIEW_MATRIX: UShort = 0x84E3.toUShort
+  val GL_TRANSPOSE_PROJECTION_MATRIX: UShort = 0x84E4.toUShort
+  val GL_TRANSPOSE_TEXTURE_MATRIX: UShort = 0x84E5.toUShort
+  val GL_TRANSPOSE_COLOR_MATRIX: UShort = 0x84E6.toUShort
+  /* texture_env_combine */
+  val GL_COMBINE: UShort = 0x8570.toUShort
+  val GL_COMBINE_RGB: UShort = 0x8571.toUShort
+  val GL_COMBINE_ALPHA: UShort = 0x8572.toUShort
+  val GL_SOURCE0_RGB: UShort = 0x8580.toUShort
+  val GL_SOURCE1_RGB: UShort = 0x8581.toUShort
+  val GL_SOURCE2_RGB: UShort = 0x8582.toUShort
+  val GL_SOURCE0_ALPHA: UShort = 0x8588.toUShort
+  val GL_SOURCE1_ALPHA: UShort = 0x8589.toUShort
+  val GL_SOURCE2_ALPHA: UShort = 0x858A.toUShort
+  val GL_OPERAND0_RGB: UShort = 0x8590.toUShort
+  val GL_OPERAND1_RGB: UShort = 0x8591.toUShort
+  val GL_OPERAND2_RGB: UShort = 0x8592.toUShort
+  val GL_OPERAND0_ALPHA: UShort = 0x8598.toUShort
+  val GL_OPERAND1_ALPHA: UShort = 0x8599.toUShort
+  val GL_OPERAND2_ALPHA: UShort = 0x859A.toUShort
+  val GL_RGB_SCALE: UShort = 0x8573.toUShort
+  val GL_ADD_SIGNED: UShort = 0x8574.toUShort
+  val GL_INTERPOLATE: UShort = 0x8575.toUShort
+  val GL_SUBTRACT: UShort = 0x84E7.toUShort
+  val GL_CONSTANT: UShort = 0x8576.toUShort
+  val GL_PRIMARY_COLOR: UShort = 0x8577.toUShort
+  val GL_PREVIOUS: UShort = 0x8578.toUShort
+  /* texture_env_dot3 */
+  val GL_DOT3_RGB: UShort = 0x86AE.toUShort
+  val GL_DOT3_RGBA: UShort = 0x86AF.toUShort
+  /* texture_border_clamp */
+  val GL_CLAMP_TO_BORDER: UShort = 0x812D.toUShort
+
 }

@@ -5,6 +5,8 @@ import scalanative.native._
 @extern
 object GL {
 
+  type _16   = Nat.Digit[Nat._1, Nat._6]
+
   //OpenGL defines its own names for standard size ints/double. They
   //should be guaranteed to be the same size across platforms, which
   //pretty much matches the Scala types
@@ -468,5 +470,125 @@ object GL {
                    GLenum, GLenum, Ptr[Byte], Unit]
   type PFNGLCOPYTEXSUBIMAGE3DPROC =
     CFunctionPtr9[GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, Unit]
+
+  /*
+   * GL_ARB_imaging
+   */
+  def glColorTable(target: GLenum, internalformat: GLenum, width: GLsizei, format: GLenum,
+                   type_ : GLenum, table: Ptr[Byte]): Unit = extern
+  def glColorSubTable(target: GLenum, start: GLsizei, count: GLsizei, format: GLenum,
+                      type_ : GLenum, data: Ptr[Byte]): Unit = extern
+  def glColorTableParameteriv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glColorTableParameterfv(target: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glCopyColorSubTable(target: GLenum, start: GLsizei, x: GLint, y: GLint, width: GLsizei): Unit = extern
+  def glCopyColorTable(target: GLenum, internalformat: GLenum, x: GLint, y: GLint, width: GLsizei): Unit = extern
+  def glGetColorTable(target: GLenum, format: GLenum, type_ : GLenum, table: Ptr[Byte]): Unit = extern
+  def glGetColorTableParameterfv(target: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetColorTableParameteriv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glBlendEquation(mode: GLenum): Unit = extern
+  def glBlendColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf): Unit = extern
+  def glHistogram(target: GLenum, width: GLsizei, internalformat: GLenum, sink: GLboolean): Unit = extern
+  def glResetHistogram(target: GLenum): Unit = extern
+  def glGetHistogram(target: GLenum, reset: GLboolean, format: GLenum, type_ : GLenum,
+                     values: Ptr[Byte]): Unit = extern
+  def glGetHistogramParameterfv(target: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetHistogramParameteriv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glMinmax(target: GLenum, internalformat: GLenum, sink: GLboolean): Unit = extern
+  def glResetMinmax(target: GLenum): Unit = extern
+  def glGetMinmax(target: GLenum, reset: GLboolean, format: GLenum, types: GLenum, values: Ptr[Byte]): Unit = extern
+  def glGetMinmaxParameterfv(target: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetMinmaxParameteriv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glConvolutionFilter1D(target: GLenum, internalformat: GLenum, width: GLsizei, format: GLenum,
+                            type_ : GLenum, image: Ptr[Byte]): Unit = extern
+  def glConvolutionFilter2D(target: GLenum, internalformat: GLenum, width: GLsizei, height: GLsizei, format: GLenum,
+  	                        type_ : GLenum, image: Ptr[Byte]): Unit = extern
+  def glConvolutionParameterf(target: GLenum, pname: GLenum, params: GLfloat): Unit = extern
+  def glConvolutionParameterfv(target: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glConvolutionParameteri(target: GLenum, pname: GLenum, params: GLint): Unit = extern
+  def glConvolutionParameteriv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glCopyConvolutionFilter1D(target: GLenum, internalformat: GLenum, x: GLint, y: GLint, width: GLsizei): Unit = extern
+  def glCopyConvolutionFilter2D(target: GLenum, internalformat: GLenum, x: GLint, y: GLint,
+                                width: GLsizei, height: GLsizei): Unit = extern
+  def glGetConvolutionFilter(target: GLenum, format: GLenum, type_ : GLenum, image: Ptr[Byte]): Unit = extern
+  def glGetConvolutionParameterfv(target: GLenum, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetConvolutionParameteriv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glSeparableFilter2D(target: GLenum, internalformat: GLenum, width: GLsizei, height: GLsizei, 
+                          format: GLenum, type_ : GLenum, row: Ptr[Byte], volumn: Ptr[Byte]): Unit = extern
+  def glGetSeparableFilter(target: GLenum, format: GLenum, type_ : GLenum,
+                           row: Ptr[Byte], column: Ptr[Byte]): Unit = extern
+  
+  /*
+   * OpenGL 1.3
+   */
+  def glActiveTexture(texture: GLenum): Unit = extern
+  def glClientActiveTexture(texture: GLenum): Unit = extern
+  def glCompressedTexImage1D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei,
+                             border: GLint, imageSize: GLsizei, data: Ptr[Byte]): Unit = extern
+  def glCompressedTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei,
+                             border: GLint, imageSize: GLsizei, data: Ptr[Byte]): Unit = extern
+  def glCompressedTexImage3D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei,
+                             depth: GLsizei, border: GLint, imageSize: GLsizei, data: Ptr[Byte]): Unit = extern
+  def glCompressedTexSubImage1D(target: GLenum, level: GLint, xoffset: GLint, width: GLsizei, format: GLenum,
+                                imageSize: GLsizei, data: Ptr[Byte]): Unit = extern
+  def glCompressedTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei,
+                                format: GLenum, imageSize: GLsizei, data: Ptr[Byte]): Unit = extern
+  def glCompressedTexSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint,
+                                width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum, 
+                                imageSize: GLsizei, data: Ptr[Byte]): Unit = extern
+  def glGetCompressedTexImage(target: GLenum, lod: GLint, img: Ptr[Byte]): Unit = extern
+  def glMultiTexCoord1d(target: GLenum, s: GLdouble): Unit = extern
+  def glMultiTexCoord1dv(target: GLenum, v: Ptr[GLdouble]): Unit = extern
+  def glMultiTexCoord1f(target: GLenum, s: GLfloat): Unit = extern
+  def glMultiTexCoord1fv(target: GLenum, v: Ptr[GLfloat]): Unit = extern
+  def glMultiTexCoord1i(target: GLenum, s: GLint): Unit = extern
+  def glMultiTexCoord1iv(target: GLenum, v: Ptr[GLint]): Unit = extern
+  def glMultiTexCoord1s(target: GLenum, s: GLshort): Unit = extern
+  def glMultiTexCoord1sv(target: GLenum, v: Ptr[GLshort]): Unit = extern
+  def glMultiTexCoord2d(target: GLenum, s: GLdouble, t: GLdouble): Unit = extern
+  def glMultiTexCoord2dv(target: GLenum, v: Ptr[GLdouble]): Unit = extern
+  def glMultiTexCoord2f(target: GLenum, s: GLfloat, t: GLfloat): Unit = extern
+  def glMultiTexCoord2fv(target: GLenum, v: Ptr[GLfloat]): Unit = extern
+  def glMultiTexCoord2i(target: GLenum, s: GLint, t: GLint): Unit = extern
+  def glMultiTexCoord2iv(target: GLenum, v: Ptr[GLint]): Unit = extern
+  def glMultiTexCoord2s(target: GLenum, s: GLshort, t: GLshort): Unit = extern
+  def glMultiTexCoord2sv(target: GLenum, v: Ptr[GLshort]): Unit = extern
+  def glMultiTexCoord3d(target: GLenum, s: GLdouble, t: GLdouble, r: GLdouble): Unit = extern
+  def glMultiTexCoord3dv(target: GLenum, v: Ptr[GLdouble]): Unit = extern
+  def glMultiTexCoord3f(target: GLenum, s: GLfloat, t: GLfloat, r: GLfloat): Unit = extern
+  def glMultiTexCoord3fv(target: GLenum, v: Ptr[GLfloat]): Unit = extern
+  def glMultiTexCoord3i(target: GLenum, s: GLint, t: GLint, r: GLint): Unit = extern
+  def glMultiTexCoord3iv(target: GLenum, v: Ptr[GLint]): Unit = extern
+  def glMultiTexCoord3s(target: GLenum, s: GLshort, t: GLshort, r: GLshort): Unit = extern
+  def glMultiTexCoord3sv(target: GLenum, v: Ptr[GLshort]): Unit = extern
+  def glMultiTexCoord4d(target: GLenum, s: GLdouble, t: GLdouble, r: GLdouble, q: GLdouble): Unit = extern
+  def glMultiTexCoord4dv(target: GLenum, v: Ptr[GLdouble]): Unit = extern
+  def glMultiTexCoord4f(target: GLenum, s: GLfloat, t: GLfloat, r: GLfloat, q: GLfloat): Unit = extern
+  def glMultiTexCoord4fv(target: GLenum, v: Ptr[GLfloat]): Unit = extern
+  def glMultiTexCoord4i(target: GLenum, s: GLint, t: GLint, r: GLint, q: GLint): Unit = extern
+  def glMultiTexCoord4iv(target: GLenum, v: Ptr[GLint]): Unit = extern
+  def glMultiTexCoord4s(target: GLenum, s: GLshort, t: GLshort, r: GLshort, q: GLshort): Unit = extern
+  def glMultiTexCoord4sv(target: GLenum, v: Ptr[GLshort]): Unit = extern
+
+  def glLoadTransposeMatrixd(m: CArray[GLdouble, _16]): Unit = extern
+  def glLoadTransposeMatrixf(m: CArray[GLfloat, _16]): Unit = extern
+  def glMultTransposeMatrixd(m: CArray[GLdouble, _16]): Unit = extern
+  def glMultTransposeMatrixf(m: CArray[GLfloat, _16]): Unit = extern
+  def glSampleCoverage(value: GLclampf, invert: GLboolean): Unit = extern
+
+  type PFNGLACTIVETEXTUREPROC = CFunctionPtr1[GLenum, Unit]
+  type PFNGLSAMPLECOVERAGEPROC = CFunctionPtr2[GLclampf, GLboolean, Unit]
+  type PFNGLCOMPRESSEDTEXIMAGE3DPROC =
+    CFunctionPtr9[GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, Ptr[Byte], Unit]
+  type PFNGLCOMPRESSEDTEXIMAGE2DPROC = 
+    CFunctionPtr8[GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, Ptr[Byte], Unit]
+  type PFNGLCOMPRESSEDTEXIMAGE1DPROC = 
+    CFunctionPtr7[GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, Ptr[Byte], Unit]
+  type PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC =
+    CFunctionPtr11[GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, Ptr[Byte], Unit]
+  type PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC =
+    CFunctionPtr9[GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, Ptr[Byte], Unit]
+  type PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC =
+    CFunctionPtr7[GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, Ptr[Byte], Unit]
+  type PFNGLGETCOMPRESSEDTEXIMAGEPROC = CFunctionPtr3[GLenum, GLint, Ptr[Byte], Unit]
 
 }
