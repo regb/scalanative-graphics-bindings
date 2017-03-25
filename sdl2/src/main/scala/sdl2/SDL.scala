@@ -29,6 +29,59 @@ object SDL {
 
 
   /**************************************
+   *********** SDL_atomic.h *************
+   **************************************/
+
+  type SDL_SpinLock = CInt
+
+  def SDL_AtomicTryLock(lock: Ptr[SDL_SpinLock]): SDL_bool = extern
+  def SDL_AtomicLock(lock: Ptr[SDL_SpinLock]): Unit = extern
+  def SDL_AtomicUnlock(lock: Ptr[SDL_SpinLock]): Unit = extern
+
+  def SDL_MemoryBarrierRelease(): Unit = extern
+  def SDL_MemoryBarrierAcquire(): Unit = extern
+
+  type SDL_atomic_t = CStruct1[CInt]
+
+  def SDL_AtomicCAS(a: Ptr[SDL_atomic_t], oldval: CInt, newval: CInt): SDL_bool = extern
+  def SDL_AtomicSet(a: Ptr[SDL_atomic_t], v: CInt): CInt = extern
+  def SDL_AtomicGet(a: Ptr[SDL_atomic_t]): CInt = extern
+  def SDL_AtomicAdd(a: Ptr[SDL_atomic_t], v: CInt): CInt = extern
+
+  def SDL_AtomicCASPtr(a: Ptr[Ptr[Byte]], oldval: Ptr[Byte], newval: Ptr[Byte]): SDL_bool = extern
+  def SDL_AtomicSetPtr(a: Ptr[Ptr[Byte]], v: Ptr[Byte]): Ptr[Byte] = extern
+  def SDL_AtomicGetPtr(a: Ptr[Ptr[Byte]]): Ptr[Byte] = extern
+
+  /**************************************
+   ************ SDL_mutex.h *************
+   **************************************/
+
+  type SDL_mutex = CStruct0
+  def SDL_CreateMutex(): Ptr[SDL_mutex] = extern
+  def SDL_LockMutex(mutex: Ptr[SDL_mutex]): CInt = extern
+  def SDL_TryLockMutex(mutex: Ptr[SDL_mutex]): CInt = extern
+  def SDL_UnlockMutex(mutex: Ptr[SDL_mutex]): CInt = extern
+  def SDL_DestroyMutex(mutex: Ptr[SDL_mutex]): Unit = extern
+
+  type SDL_semaphore = CStruct0
+  type SDL_sem = SDL_semaphore
+  def SDL_CreateSemaphore(initial_value: UInt): Ptr[SDL_sem] = extern
+  def SDL_DestroySemaphore(sem: Ptr[SDL_sem]): Unit = extern
+  def SDL_SemWait(sem: Ptr[SDL_sem]): CInt = extern
+  def SDL_SemTryWait(sem: Ptr[SDL_sem]): CInt = extern
+  def SDL_SemWaitTimeout(sem: Ptr[SDL_sem], ms: UInt): CInt = extern
+  def SDL_SemPost(sem: Ptr[SDL_sem]): CInt = extern
+  def SDL_SemValue(sem: Ptr[SDL_sem]): UInt = extern
+
+  type SDL_cond = CStruct0
+  def SDL_CreateCond(): Ptr[SDL_cond] = extern
+  def SDL_DestroyCond(cond: Ptr[SDL_cond]): Unit = extern
+  def SDL_CondSignal(cond: Ptr[SDL_cond]): CInt = extern
+  def SDL_CondBroadcast(cond: Ptr[SDL_cond]): CInt = extern
+  def SDL_CondWait(cond: Ptr[SDL_cond], mutex: Ptr[SDL_mutex]): CInt = extern
+  def SDL_CondWaitTimeout(cond: Ptr[SDL_cond], mutex: Ptr[SDL_mutex], ms: UInt): CInt = extern
+
+  /**************************************
    ********** SDL_blendmode.h ***********
    **************************************/
 

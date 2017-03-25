@@ -12,6 +12,28 @@ object Extras {
    */
 
   /**************************************
+   *********** SDL_atomic.h *************
+   **************************************/
+
+  implicit class SDL_atomic_tOps(val self: Ptr[SDL_atomic_t]) extends AnyVal {
+    def value: CInt = !(self._1)
+  }
+
+  def SDL_AtomicIncRef(a: Ptr[SDL_atomic_t]): CInt = SDL_AtomicAdd(a, 1)
+  def SDL_AtomicDecRef(a: Ptr[SDL_atomic_t]): SDL_bool = if(SDL_AtomicAdd(a, -1) == 1) SDL_TRUE else SDL_FALSE
+
+  /**************************************
+   ************ SDL_mutex.h *************
+   **************************************/
+
+  val SDL_MUTEX_TIMEDOUT: CInt = 1
+  val SDL_MUTEX_MAXWAIT: UInt = ~(0.toUInt)
+
+  def SDL_mutexP(m: Ptr[SDL_mutex]): CInt = SDL_LockMutex(m)
+  def SDL_mutexV(m: Ptr[SDL_mutex]): CInt = SDL_UnlockMutex(m)
+
+
+  /**************************************
    ********** SDL_blendmode.h ***********
    **************************************/
 
