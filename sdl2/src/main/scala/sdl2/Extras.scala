@@ -81,6 +81,33 @@ object Extras {
   /* End enum SDL_ThreadPriority */
 
   /**************************************
+   ************ SDL_rwops.h *************
+   **************************************/
+
+  val SDL_RWOPS_UNKNOWN: UByte = 0.toUByte
+  val SDL_RWOPS_WINFILE: UByte = 1.toUByte
+  val SDL_RWOPS_STDFILE: UByte = 2.toUByte
+  val SDL_RWOPS_JNIFILE: UByte = 3.toUByte
+  val SDL_RWOPS_MEMORY: UByte = 4.toUByte
+  val SDL_RWOPS_MEMORY_RO: UByte = 5.toUByte
+
+  //TODO
+  //implicit class SDL_RWopsOps(val self: Ptr[SDL_RWops]) extends AnyVal
+  
+  val RW_SEEK_SET: UByte = 0.toUByte
+  val RW_SEEK_CUR: UByte = 1.toUByte
+  val RW_SEEK_END: UByte = 2.toUByte
+
+  //TODO: macros with exact rwops structure
+  //#define SDL_RWsize(ctx)         (ctx)->size(ctx)
+  //#define SDL_RWseek(ctx, offset, whence) (ctx)->seek(ctx, offset, whence)
+  //#define SDL_RWtell(ctx)         (ctx)->seek(ctx, 0, RW_SEEK_CUR)
+  //#define SDL_RWread(ctx, ptr, size, n)   (ctx)->read(ctx, ptr, size, n)
+  //#define SDL_RWwrite(ctx, ptr, size, n)  (ctx)->write(ctx, ptr, size, n)
+  //#define SDL_RWclose(ctx)        (ctx)->close(ctx)
+
+
+  /**************************************
    ********** SDL_blendmode.h ***********
    **************************************/
 
@@ -91,21 +118,6 @@ object Extras {
   val SDL_BLENDMODE_MOD: UInt = 0x00000004.toUInt
   /* End enum SDL_BlendMode */
  
-  /**************************************
-   ************ SDL_rwops.h *************
-   **************************************/
-
-  val SDL_RWOPS_UNKNOWN: UByte = 0.toUByte
-  val SDL_RWOPS_WINFILE: UByte = 1.toUByte
-  val SDL_RWOPS_STDFILE: UByte = 2.toUByte
-  val SDL_RWOPS_JNIFILE: UByte = 3.toUByte
-  val SDL_RWOPS_MEMORY: UByte = 4.toUByte
-  val SDL_RWOPS_MEMORY_RO: UByte = 5.toUByte
-  
-  /*
-   * TODO: to complete
-   */
-
   /***************************************
    ************ SDL_pixels.h *************
    ***************************************/

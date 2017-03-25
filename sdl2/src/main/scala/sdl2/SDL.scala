@@ -111,6 +111,38 @@ object SDL {
   def SDL_TLSCreate(): SDL_TLSID = extern
   def SDL_TLSGet(id: SDL_TLSID): Ptr[Byte] = extern
   def SDL_TLSSet(id: SDL_TLSID, value: Ptr[Byte], destructor: CFunctionPtr0[Unit]): CInt = extern
+
+  /**************************************
+   ************ SDL_rwops.h *************
+   **************************************/
+
+  //TODO: exact structure (with a lot of function pointers)
+  type SDL_RWops = CStruct0
+
+  def SDL_RWFromFile(file: CString, mode: CString): Ptr[SDL_RWops] = extern
+  //TODO: fp should be Ptr[FILE], from stdio
+  def SDL_RWFromFP(fp: Ptr[Byte], autoclose: SDL_bool): Ptr[SDL_RWops] = extern
+  def SDL_RWFromMem(mem: Ptr[Byte], size: CInt): Ptr[SDL_RWops] = extern
+  def SDL_RWFromConstMem(mem: Ptr[Byte], size: CInt): Ptr[SDL_RWops] = extern
+
+  def SDL_AllocRW(): Ptr[SDL_RWops] = extern
+  def SDL_FreeRW(area: Ptr[SDL_RWops]): Unit = extern
+
+  def SDL_ReadU8(src: Ptr[SDL_RWops]): UByte = extern
+  def SDL_ReadLE16(src: Ptr[SDL_RWops]): UShort = extern
+  def SDL_ReadBE16(src: Ptr[SDL_RWops]): UShort = extern
+  def SDL_ReadLE32(src: Ptr[SDL_RWops]): UInt = extern
+  def SDL_ReadBE32(src: Ptr[SDL_RWops]): UInt = extern
+  def SDL_ReadLE64(src: Ptr[SDL_RWops]): ULong = extern
+  def SDL_ReadBE64(src: Ptr[SDL_RWops]): ULong = extern
+
+  def SDL_WriteU8(dst: Ptr[SDL_RWops], value: UByte): CSize = extern
+  def SDL_WriteLE16(dst: Ptr[SDL_RWops], value: UShort): CSize = extern
+  def SDL_WriteBE16(dst: Ptr[SDL_RWops], value: UShort): CSize = extern
+  def SDL_WriteLE32(dst: Ptr[SDL_RWops], value: UInt): CSize = extern
+  def SDL_WriteBE32(dst: Ptr[SDL_RWops], value: UInt): CSize = extern
+  def SDL_WriteLE64(dst: Ptr[SDL_RWops], value: ULong): CSize = extern
+  def SDL_WriteBE64(dst: Ptr[SDL_RWops], value: ULong): CSize = extern
   
   /**************************************
    ********** SDL_blendmode.h ***********
@@ -455,16 +487,6 @@ object SDL {
 
   def SDL_GL_BindTexture(texture: Ptr[SDL_Texture], texw: Ptr[CFloat], texh: Ptr[CFloat]): CInt = extern
   def SDL_GL_UnbindTexture(texture: Ptr[SDL_Texture]): CInt = extern
-
-  /**************************************
-   ************ SDL_rwops.h *************
-   **************************************/
-
-  //TODO: exact structure
-  type SDL_RWops = CStruct0
-
-  def SDL_RWFromFile(file: CString, mode: CString): Ptr[SDL_RWops] = extern
-
 
   /**************************************
    *********** SDL_scancode.h ***********
