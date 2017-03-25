@@ -11,40 +11,6 @@ object Extras {
    * header files.
    */
 
-  /**************************************
-   *********** SDL_atomic.h *************
-   **************************************/
-
-  implicit class SDL_atomic_tOps(val self: Ptr[SDL_atomic_t]) extends AnyVal {
-    def value: CInt = !(self._1)
-  }
-
-  def SDL_AtomicIncRef(a: Ptr[SDL_atomic_t]): CInt = SDL_AtomicAdd(a, 1)
-  def SDL_AtomicDecRef(a: Ptr[SDL_atomic_t]): SDL_bool = if(SDL_AtomicAdd(a, -1) == 1) SDL_TRUE else SDL_FALSE
-
-  /**************************************
-   ************ SDL_mutex.h *************
-   **************************************/
-
-  val SDL_MUTEX_TIMEDOUT: CInt = 1
-  val SDL_MUTEX_MAXWAIT: UInt = ~(0.toUInt)
-
-  def SDL_mutexP(m: Ptr[SDL_mutex]): CInt = SDL_LockMutex(m)
-  def SDL_mutexV(m: Ptr[SDL_mutex]): CInt = SDL_UnlockMutex(m)
-
-
-  /**************************************
-   ********** SDL_blendmode.h ***********
-   **************************************/
-
-  /* Start enum SDL_BlendMode */
-  val SDL_BLENDMODE_NONE: UInt = 0x00000000.toUInt
-  val SDL_BLENDMODE_BLEND: UInt = 0x00000001.toUInt
-  val SDL_BLENDMODE_ADD: UInt = 0x00000002.toUInt
-  val SDL_BLENDMODE_MOD: UInt = 0x00000004.toUInt
-  /* End enum SDL_BlendMode */
-
- 
   /***************************************
    ************ SDL_stdinc.h *************
    ***************************************/
@@ -82,6 +48,49 @@ object Extras {
   def SDL_Unsupported(): CInt = SDL_Error(SDL_UNSUPPORTED)
   def SDL_InvalidParamError(param: CString): CInt = SDL_SetError(c"Parameter '%s' is invalid", param)
 
+
+  /**************************************
+   *********** SDL_atomic.h *************
+   **************************************/
+
+  implicit class SDL_atomic_tOps(val self: Ptr[SDL_atomic_t]) extends AnyVal {
+    def value: CInt = !(self._1)
+  }
+
+  def SDL_AtomicIncRef(a: Ptr[SDL_atomic_t]): CInt = SDL_AtomicAdd(a, 1)
+  def SDL_AtomicDecRef(a: Ptr[SDL_atomic_t]): SDL_bool = if(SDL_AtomicAdd(a, -1) == 1) SDL_TRUE else SDL_FALSE
+
+  /**************************************
+   ************ SDL_mutex.h *************
+   **************************************/
+
+  val SDL_MUTEX_TIMEDOUT: CInt = 1
+  val SDL_MUTEX_MAXWAIT: UInt = ~(0.toUInt)
+
+  def SDL_mutexP(m: Ptr[SDL_mutex]): CInt = SDL_LockMutex(m)
+  def SDL_mutexV(m: Ptr[SDL_mutex]): CInt = SDL_UnlockMutex(m)
+
+  /**************************************
+   *********** SDL_thread.h *************
+   **************************************/
+
+  /* Start enum SDL_ThreadPriority */
+  val SDL_THREAD_PRIORITY_LOW: CInt = 0
+  val SDL_THREAD_PRIORITY_NORMAL: CInt = 1
+  val SDL_THREAD_PRIORITY_HIGH: CInt = 2
+  /* End enum SDL_ThreadPriority */
+
+  /**************************************
+   ********** SDL_blendmode.h ***********
+   **************************************/
+
+  /* Start enum SDL_BlendMode */
+  val SDL_BLENDMODE_NONE: UInt = 0x00000000.toUInt
+  val SDL_BLENDMODE_BLEND: UInt = 0x00000001.toUInt
+  val SDL_BLENDMODE_ADD: UInt = 0x00000002.toUInt
+  val SDL_BLENDMODE_MOD: UInt = 0x00000004.toUInt
+  /* End enum SDL_BlendMode */
+ 
   /**************************************
    ************ SDL_rwops.h *************
    **************************************/
