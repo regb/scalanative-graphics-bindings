@@ -11,7 +11,7 @@ Scala Native projects. As such, they expose the low-level details of the API,
 which might not necessarily make sense on a platform such as the JVM. If you
 are looking for cross-platform solutions, the ScalaGL project aims to provide a
 cross-platform (Native, JS, JVM) OpenGL wrapper. Alternatively, The [Scala Game
-Library](http://github.com/regb/scala-game/library) is a complete 2D game
+Library](http://github.com/regb/scala-game-library) is a complete 2D game
 engine with cross-platform support, which uses these bindings for its native
 backend implementation.
 
