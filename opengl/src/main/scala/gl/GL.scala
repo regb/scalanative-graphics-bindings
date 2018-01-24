@@ -760,4 +760,53 @@ object GL {
   def glWindowPos3iv(v: Ptr[GLint]): Unit = extern
   def glWindowPos3s(x: GLshort, y: GLshort, z: GLshort): Unit = extern
   def glWindowPos3sv(v: Ptr[GLshort]): Unit = extern
+
+  /*
+   * OpenGL 1.5
+   */
+  type GLsizeiptr = CPtrDiff
+  type GLintptr = CPtrDiff
+
+  type PFNGLGENQUERIESPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLDELETEQUERIESPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLISQUERYPROC = CFunctionPtr1[GLuint, GLboolean]
+  type PFNGLBEGINQUERYPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLENDQUERYPROC = CFunctionPtr1[GLenum, Unit]
+  type PFNGLGETQUERYIVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETQUERYOBJECTIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETQUERYOBJECTUIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLuint], Unit]
+  type PFNGLBINDBUFFERPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLDELETEBUFFERSPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLGENBUFFERSPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLISBUFFERPROC = CFunctionPtr1[GLuint, GLboolean]
+  type PFNGLBUFFERDATAPROC = CFunctionPtr4[GLenum, GLsizeiptr, Ptr[Byte], GLenum, Unit]
+  type PFNGLBUFFERSUBDATAPROC = CFunctionPtr4[GLenum, GLintptr, GLsizeiptr, Ptr[Byte], Unit]
+  type PFNGLGETBUFFERSUBDATAPROC = CFunctionPtr4[GLenum, GLintptr, GLsizeiptr, Ptr[Byte], Unit]
+  type PFNGLMAPBUFFERPROC = CFunctionPtr2[GLenum, GLenum, Unit]
+  type PFNGLUNMAPBUFFERPROC = CFunctionPtr1[GLenum, GLboolean]
+  type PFNGLGETBUFFERPARAMETERIVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETBUFFERPOINTERVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[Ptr[Byte]], Unit]
+
+  def glGenQueries(n: GLsizei, ids: Ptr[GLuint]): Unit = extern
+  def glDeleteQueries(n: GLsizei, ids: Ptr[GLuint]): Unit = extern
+  def glIsQuery(id: GLuint): GLboolean = extern
+  def glBeginQuery(target: GLenum, id: GLuint): Unit = extern
+  def glEndQuery(target: GLenum): Unit = extern
+  def glGetQueryiv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetQueryObjectiv(id: GLuint, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetQueryObjectuiv(id: GLuint, pname: GLenum, params: Ptr[GLuint]): Unit = extern
+  def glBindBuffer(target: GLenum, buffer: GLuint): Unit = extern
+  def glDeleteBuffers(n: GLsizei, buffers: Ptr[GLuint]): Unit = extern
+  def glGenBuffers(n: GLsizei, buffers: Ptr[GLuint]): Unit = extern
+  def glIsBuffer(buffer: GLuint): GLboolean  = extern
+  def glBufferData(target: GLenum, size: GLsizeiptr, data: Ptr[Byte], usage: GLenum): Unit = extern
+  def glBufferSubData(target: GLenum, offset: GLintptr, size: GLsizeiptr, data: Ptr[Byte]): Unit = extern
+  def glGetBufferSubData(target: GLenum, offset: GLintptr, size: GLsizeiptr, data: Ptr[Byte]): Unit = extern
+  def glMapBuffer(target: GLenum, access: GLenum): Unit = extern
+  def glUnmapBuffer(target: GLenum): GLboolean = extern
+  def glGetBufferParameteriv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetBufferPointerv(target: GLenum, pname: GLenum, params: Ptr[Ptr[Byte]]): Unit = extern
+  /*
+   * End OpenGL 1.5
+   */
 }

@@ -921,4 +921,61 @@ object Extras {
   val GL_TEXTURE_FILTER_CONTROL: UShort = 0x8500.toUShort
   val GL_DEPTH_TEXTURE_MODE: UShort = 0x884B.toUShort
   val GL_COMPARE_R_TO_TEXTURE: UShort = 0x884E.toUShort
+
+  /*
+   * OpenGL 1.5
+   */
+  val GL_BUFFER_SIZE: UShort = 0x8764.toUShort
+  val GL_BUFFER_USAGE: UShort = 0x8765.toUShort
+  val GL_QUERY_COUNTER_BITS: UShort = 0x8864.toUShort
+  val GL_CURRENT_QUERY: UShort = 0x8865.toUShort
+  val GL_QUERY_RESULT: UShort = 0x8866.toUShort
+  val GL_QUERY_RESULT_AVAILABLE: UShort = 0x8867.toUShort
+  val GL_ARRAY_BUFFER: UShort = 0x8892.toUShort
+  val GL_ELEMENT_ARRAY_BUFFER: UShort = 0x8893.toUShort
+  val GL_ARRAY_BUFFER_BINDING: UShort = 0x8894.toUShort
+  val GL_ELEMENT_ARRAY_BUFFER_BINDING: UShort = 0x8895.toUShort
+  val GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING: UShort = 0x889F.toUShort
+  val GL_READ_ONLY: UShort = 0x88B8.toUShort
+  val GL_WRITE_ONLY: UShort = 0x88B9.toUShort
+  val GL_READ_WRITE: UShort = 0x88BA.toUShort
+  val GL_BUFFER_ACCESS: UShort = 0x88BB.toUShort
+  val GL_BUFFER_MAPPED: UShort = 0x88BC.toUShort
+  val GL_BUFFER_MAP_POINTER: UShort = 0x88BD.toUShort
+  val GL_STREAM_DRAW: UShort = 0x88E0.toUShort
+  val GL_STREAM_READ: UShort = 0x88E1.toUShort
+  val GL_STREAM_COPY: UShort = 0x88E2.toUShort
+  val GL_STATIC_DRAW: UShort = 0x88E4.toUShort
+  val GL_STATIC_READ: UShort = 0x88E5.toUShort
+  val GL_STATIC_COPY: UShort = 0x88E6.toUShort
+  val GL_DYNAMIC_DRAW: UShort = 0x88E8.toUShort
+  val GL_DYNAMIC_READ: UShort = 0x88E9.toUShort
+  val GL_DYNAMIC_COPY: UShort = 0x88EA.toUShort
+  val GL_SAMPLES_PASSED: UShort = 0x8914.toUShort
+  val GL_SRC1_ALPHA: UShort = 0x8589.toUShort
+  val GL_VERTEX_ARRAY_BUFFER_BINDING: UShort = 0x8896.toUShort
+  val GL_NORMAL_ARRAY_BUFFER_BINDING: UShort = 0x8897.toUShort
+  val GL_COLOR_ARRAY_BUFFER_BINDING: UShort = 0x8898.toUShort
+  val GL_INDEX_ARRAY_BUFFER_BINDING: UShort = 0x8899.toUShort
+  val GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING: UShort = 0x889A.toUShort
+  val GL_EDGE_FLAG_ARRAY_BUFFER_BINDING: UShort = 0x889B.toUShort
+  val GL_SECONDARY_COLOR_ARRAY_BUFFER_BINDING: UShort = 0x889C.toUShort
+  val GL_FOG_COORDINATE_ARRAY_BUFFER_BINDING: UShort = 0x889D.toUShort
+  val GL_WEIGHT_ARRAY_BUFFER_BINDING: UShort = 0x889E.toUShort
+  val GL_FOG_COORD_SRC: UShort = 0x8450.toUShort
+  val GL_FOG_COORD: UShort = 0x8451.toUShort
+  val GL_CURRENT_FOG_COORD: UShort = 0x8453.toUShort
+  val GL_FOG_COORD_ARRAY_TYPE: UShort = 0x8454.toUShort
+  val GL_FOG_COORD_ARRAY_STRIDE: UShort = 0x8455.toUShort
+  val GL_FOG_COORD_ARRAY_POINTER: UShort = 0x8456.toUShort
+  val GL_FOG_COORD_ARRAY: UShort = 0x8457.toUShort
+  val GL_FOG_COORD_ARRAY_BUFFER_BINDING: UShort = 0x889D.toUShort
+  val GL_SRC0_RGB: UShort = 0x8580.toUShort
+  val GL_SRC1_RGB: UShort = 0x8581.toUShort
+  val GL_SRC2_RGB: UShort = 0x8582.toUShort
+  val GL_SRC0_ALPHA: UShort = 0x8588.toUShort
+  val GL_SRC2_ALPHA: UShort = 0x858A.toUShort
+  /*
+   * End OpenGL 1.5
+   */
 }
