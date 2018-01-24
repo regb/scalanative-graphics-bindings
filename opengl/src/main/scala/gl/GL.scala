@@ -592,8 +592,129 @@ object GL {
   type PFNGLGETCOMPRESSEDTEXIMAGEPROC = CFunctionPtr3[GLenum, GLint, Ptr[Byte], Unit]
 
   /*
+   * OpenGL 1.2.1 ARB extension
+   */
+  def glActiveTextureARB(texture: GLenum): Unit = extern
+  def glClientActiveTextureARB(texture: GLenum): Unit = extern
+  def glMultiTexCoord1dARB(target: GLenum, s: GLdouble): Unit = extern
+  def glMultiTexCoord1dvARB(target: GLenum, v: Ptr[GLdouble]): Unit = extern
+  def glMultiTexCoord1fARB(target: GLenum, s: GLfloat): Unit = extern
+  def glMultiTexCoord1fvARB(target: GLenum, v: Ptr[GLfloat]): Unit = extern
+  def glMultiTexCoord1iARB(target: GLenum, s: GLint): Unit = extern
+  def glMultiTexCoord1ivARB(target: GLenum, v: Ptr[GLint]): Unit = extern
+  def glMultiTexCoord1sARB(target: GLenum, s: GLshort): Unit = extern
+  def glMultiTexCoord1svARB(target: GLenum, v: Ptr[GLfloat]): Unit = extern
+  def glMultiTexCoord2dARB(target: GLenum, s: GLdouble, t: GLdouble): Unit = extern
+  def glMultiTexCoord2dvARB(target: GLenum, v: Ptr[GLdouble]): Unit = extern
+  def glMultiTexCoord2fARB(target: GLenum, s: GLfloat, t: GLfloat): Unit = extern
+  def glMultiTexCoord2fvARB(target: GLenum, v: Ptr[GLfloat]): Unit = extern
+  def glMultiTexCoord2iARB(target: GLenum, s: GLint, t: GLint): Unit = extern
+  def glMultiTexCoord2ivARB(target: GLenum, v: Ptr[GLint]): Unit = extern
+  def glMultiTexCoord2sARB(target: GLenum, s: GLshort, t: GLshort): Unit = extern
+  def glMultiTexCoord2svARB(target: GLenum, v: Ptr[GLshort]): Unit = extern
+  def glMultiTexCoord3dARB(target: GLenum, s: GLdouble, t: GLdouble, r: GLdouble): Unit = extern
+  def glMultiTexCoord3dvARB(target: GLenum, v: Ptr[GLdouble]): Unit = extern
+  def glMultiTexCoord3fARB(target: GLenum, s: GLfloat, t: GLfloat, r: GLfloat): Unit = extern
+  def glMultiTexCoord3fvARB(target: GLenum, v: Ptr[GLfloat]): Unit = extern
+  def glMultiTexCoord3iARB(target: GLenum, s: GLint, t: GLint, r: GLint): Unit = extern
+  def glMultiTexCoord3ivARB(target: GLenum, v: Ptr[GLint]): Unit = extern
+  def glMultiTexCoord3sARB(target: GLenum, s: GLshort, t: GLshort, r: GLshort): Unit = extern
+  def glMultiTexCoord3svARB(target: GLenum, v: Ptr[GLshort]): Unit = extern
+  def glMultiTexCoord4dARB(target: GLenum, s: GLdouble, t: GLdouble, r: GLdouble, q: GLdouble): Unit = extern
+  def glMultiTexCoord4dvARB(target: GLenum, v: Ptr[GLdouble]): Unit = extern
+  def glMultiTexCoord4fARB(target: GLenum, s: GLfloat, t: GLfloat, r: GLfloat, q: GLfloat): Unit = extern
+  def glMultiTexCoord4fvARB(target: GLenum, v: Ptr[GLfloat]): Unit = extern
+  def glMultiTexCoord4iARB(target: GLenum, s: GLint, t: GLint, r: GLint, q: GLint): Unit = extern
+  def glMultiTexCoord4ivARB(target: GLenum, v: Ptr[GLint]): Unit = extern
+  def glMultiTexCoord4sARB(target: GLenum, s: GLshort, t: GLshort, r: GLshort, q: GLshort): Unit = extern
+  def glMultiTexCoord4svARB(target: GLenum, v: Ptr[GLshort]): Unit = extern
+
+  type PFNGLACTIVETEXTUREARBPROC = CFunctionPtr1[GLenum, Unit]
+  type PFNGLCLIENTACTIVETEXTUREARBPROC = CFunctionPtr1[GLenum, Unit]
+  type PFNGLMULTITEXCOORD1DARBPROC = CFunctionPtr2[GLenum, GLdouble, Unit]
+  type PFNGLMULTITEXCOORD1DVARBPROC = CFunctionPtr2[GLenum, Ptr[GLdouble], Unit]
+  type PFNGLMULTITEXCOORD1FARBPROC = CFunctionPtr2[GLenum, GLfloat, Unit]
+  type PFNGLMULTITEXCOORD1FVARBPROC = CFunctionPtr2[GLenum, Ptr[GLfloat], Unit]
+  type PFNGLMULTITEXCOORD1IARBPROC = CFunctionPtr2[GLenum, GLint, Unit]
+  type PFNGLMULTITEXCOORD1IVARBPROC = CFunctionPtr2[GLenum, Ptr[GLint], Unit]
+  type PFNGLMULTITEXCOORD1SARBPROC = CFunctionPtr2[GLenum, GLshort, Unit]
+  type PFNGLMULTITEXCOORD1SVARBPROC = CFunctionPtr2[GLenum, Ptr[GLshort], Unit]
+  type PFNGLMULTITEXCOORD2DARBPROC = CFunctionPtr3[GLenum, GLdouble, GLdouble, Unit]
+  type PFNGLMULTITEXCOORD2DVARBPROC = CFunctionPtr2[GLenum, Ptr[GLdouble], Unit]
+  type PFNGLMULTITEXCOORD2FARBPROC = CFunctionPtr3[GLenum, GLfloat, GLfloat, Unit]
+  type PFNGLMULTITEXCOORD2FVARBPROC = CFunctionPtr2[GLenum, Ptr[GLfloat], Unit]
+  type PFNGLMULTITEXCOORD2IARBPROC = CFunctionPtr3[GLenum, GLint, GLint, Unit]
+  type PFNGLMULTITEXCOORD2IVARBPROC = CFunctionPtr2[GLenum, Ptr[GLint], Unit]
+  type PFNGLMULTITEXCOORD2SARBPROC = CFunctionPtr3[GLenum, GLshort, GLshort, Unit]
+  type PFNGLMULTITEXCOORD2SVARBPROC = CFunctionPtr2[GLenum, Ptr[GLshort], Unit]
+  type PFNGLMULTITEXCOORD3DARBPROC = CFunctionPtr4[GLenum, GLdouble, GLdouble, GLdouble, Unit]
+  type PFNGLMULTITEXCOORD3DVARBPROC = CFunctionPtr2[GLenum, Ptr[GLdouble], Unit]
+  type PFNGLMULTITEXCOORD3FARBPROC = CFunctionPtr4[GLenum, GLfloat, GLfloat, GLfloat, Unit]
+  type PFNGLMULTITEXCOORD3FVARBPROC = CFunctionPtr2[GLenum, Ptr[GLfloat], Unit]
+  type PFNGLMULTITEXCOORD3IARBPROC = CFunctionPtr4[GLenum, GLint, GLint, GLint, Unit]
+  type PFNGLMULTITEXCOORD3IVARBPROC = CFunctionPtr2[GLenum, Ptr[GLint], Unit]
+  type PFNGLMULTITEXCOORD3SARBPROC = CFunctionPtr4[GLenum, GLshort, GLshort, GLshort, Unit]
+  type PFNGLMULTITEXCOORD3SVARBPROC = CFunctionPtr2[GLenum, Ptr[GLshort], Unit]
+  type PFNGLMULTITEXCOORD4DARBPROC = CFunctionPtr5[GLenum, GLdouble, GLdouble, GLdouble, GLdouble, Unit]
+  type PFNGLMULTITEXCOORD4DVARBPROC = CFunctionPtr2[GLenum, Ptr[GLdouble], Unit]
+  type PFNGLMULTITEXCOORD4FARBPROC = CFunctionPtr5[GLenum, GLfloat, GLfloat, GLfloat, GLfloat, Unit]
+  type PFNGLMULTITEXCOORD4FVARBPROC = CFunctionPtr2[GLenum, Ptr[GLfloat], Unit]
+  type PFNGLMULTITEXCOORD4IARBPROC = CFunctionPtr5[GLenum, GLint, GLint, GLint, GLint, Unit]
+  type PFNGLMULTITEXCOORD4IVARBPROC = CFunctionPtr2[GLenum, Ptr[GLint], Unit]
+  type PFNGLMULTITEXCOORD4SARBPROC = CFunctionPtr5[GLenum, GLshort, GLshort, GLshort, GLshort, Unit]
+  type PFNGLMULTITEXCOORD4SVARBPROC = CFunctionPtr2[GLenum, Ptr[GLshort], Unit]
+
+  /*
    * OpenGL 1.4
    */
+  type PFNGLBLENDFUNCSEPARATEPROC = CFunctionPtr4[GLenum, GLenum, GLenum, GLenum, Unit]
+  type PFNGLMULTIDRAWARRAYSPROC = CFunctionPtr4[GLenum, Ptr[GLint], Ptr[GLsizei], GLsizei, Unit]
+  type PFNGLMULTIDRAWELEMENTSPROC = CFunctionPtr5[GLenum, Ptr[GLsizei], GLenum, Ptr[Ptr[Byte]], GLsizei, Unit]
+  type PFNGLPOINTPARAMETERFPROC = CFunctionPtr2[GLenum, GLfloat, Unit]
+  type PFNGLPOINTPARAMETERFVPROC = CFunctionPtr2[GLenum, Ptr[GLfloat], Unit]
+  type PFNGLPOINTPARAMETERIPROC = CFunctionPtr2[GLenum, GLint, Unit]
+  type PFNGLPOINTPARAMETERIVPROC = CFunctionPtr2[GLenum, Ptr[GLint], Unit]
+  type PFNGLFOGCOORDFPROC = CFunctionPtr1[GLfloat, Unit]
+  type PFNGLFOGCOORDFVPROC = CFunctionPtr1[Ptr[GLfloat], Unit]
+  type PFNGLFOGCOORDDPROC = CFunctionPtr1[GLdouble, Unit]
+  type PFNGLFOGCOORDDVPROC = CFunctionPtr1[Ptr[GLdouble], Unit]
+  type PFNGLFOGCOORDPOINTERPROC = CFunctionPtr3[GLenum, GLsizei, Ptr[Byte], Unit]
+  type PFNGLSECONDARYCOLOR3BPROC = CFunctionPtr3[GLbyte, GLbyte, GLbyte, Unit]
+  type PFNGLSECONDARYCOLOR3BVPROC = CFunctionPtr1[Ptr[GLbyte], Unit]
+  type PFNGLSECONDARYCOLOR3DPROC = CFunctionPtr3[GLdouble, GLdouble, GLdouble, Unit]
+  type PFNGLSECONDARYCOLOR3DVPROC = CFunctionPtr1[Ptr[GLdouble], Unit]
+  type PFNGLSECONDARYCOLOR3FPROC = CFunctionPtr3[GLfloat, GLfloat, GLfloat, Unit]
+  type PFNGLSECONDARYCOLOR3FVPROC = CFunctionPtr1[Ptr[GLfloat], Unit]
+  type PFNGLSECONDARYCOLOR3IPROC = CFunctionPtr3[GLint, GLint, GLint, Unit]
+  type PFNGLSECONDARYCOLOR3IVPROC = CFunctionPtr1[Ptr[GLint], Unit]
+  type PFNGLSECONDARYCOLOR3SPROC = CFunctionPtr3[GLshort, GLshort, GLshort, Unit]
+  type PFNGLSECONDARYCOLOR3SVPROC = CFunctionPtr1[Ptr[GLshort], Unit]
+  type PFNGLSECONDARYCOLOR3UBPROC = CFunctionPtr3[GLubyte, GLubyte, GLubyte, Unit]
+  type PFNGLSECONDARYCOLOR3UBVPROC = CFunctionPtr1[Ptr[GLubyte], Unit]
+  type PFNGLSECONDARYCOLOR3UIPROC = CFunctionPtr3[GLuint, GLuint, GLuint, Unit]
+  type PFNGLSECONDARYCOLOR3UIVPROC = CFunctionPtr1[Ptr[GLuint], Unit]
+  type PFNGLSECONDARYCOLOR3USPROC = CFunctionPtr3[GLushort, GLushort, GLushort, Unit]
+  type PFNGLSECONDARYCOLOR3USVPROC = CFunctionPtr1[Ptr[GLushort], Unit]
+  type PFNGLSECONDARYCOLORPOINTERPROC = CFunctionPtr4[GLint, GLenum, GLsizei, Ptr[Byte], Unit]
+  type PFNGLWINDOWPOS2DPROC = CFunctionPtr2[GLdouble, GLdouble, Unit]
+  type PFNGLWINDOWPOS2DVPROC = CFunctionPtr1[Ptr[GLdouble], Unit]
+  type PFNGLWINDOWPOS2FPROC = CFunctionPtr2[GLfloat, GLfloat, Unit]
+  type PFNGLWINDOWPOS2FVPROC = CFunctionPtr1[Ptr[GLfloat], Unit]
+  type PFNGLWINDOWPOS2IPROC = CFunctionPtr2[GLint, GLint, Unit]
+  type PFNGLWINDOWPOS2IVPROC = CFunctionPtr1[Ptr[GLint], Unit]
+  type PFNGLWINDOWPOS2SPROC = CFunctionPtr2[GLshort, GLshort, Unit]
+  type PFNGLWINDOWPOS2SVPROC = CFunctionPtr1[Ptr[GLshort], Unit]
+  type PFNGLWINDOWPOS3DPROC = CFunctionPtr3[GLdouble, GLdouble, GLdouble, Unit]
+  type PFNGLWINDOWPOS3DVPROC = CFunctionPtr1[Ptr[GLdouble], Unit]
+  type PFNGLWINDOWPOS3FPROC = CFunctionPtr3[GLfloat, GLfloat, GLfloat, Unit]
+  type PFNGLWINDOWPOS3FVPROC = CFunctionPtr1[Ptr[GLfloat], Unit]
+  type PFNGLWINDOWPOS3IPROC = CFunctionPtr3[GLint, GLint, GLint, Unit]
+  type PFNGLWINDOWPOS3IVPROC = CFunctionPtr1[Ptr[GLint], Unit]
+  type PFNGLWINDOWPOS3SPROC = CFunctionPtr3[GLshort, GLshort, GLshort, Unit]
+  type PFNGLWINDOWPOS3SVPROC = CFunctionPtr1[Ptr[GLshort], Unit]
+  type PFNGLBLENDCOLORPROC = CFunctionPtr4[GLfloat, GLfloat, GLfloat, GLfloat, Unit]
+  type PFNGLBLENDEQUATIONPROC = CFunctionPtr1[GLenum, Unit]
+
   def glBlendFuncSeparate(sfactorRGB: GLenum, dfactorRGB: GLenum, sfactorAlpha: GLenum, dfactorAlpha: GLenum): Unit = extern
   def glMultiDrawArrays(mode: GLenum, first: Ptr[GLint], count: Ptr[GLsizei], drawcount: GLsizei): Unit = extern
   def glMultiDrawElements(mode: GLenum, count: Ptr[GLsizei], type_ : GLenum, indices: Ptr[Ptr[Byte]], drawcount: GLsizei): Unit = extern
@@ -639,7 +760,4 @@ object GL {
   def glWindowPos3iv(v: Ptr[GLint]): Unit = extern
   def glWindowPos3s(x: GLshort, y: GLshort, z: GLshort): Unit = extern
   def glWindowPos3sv(v: Ptr[GLshort]): Unit = extern
-  //already defined above
-  //def glBlendColor(red: GLfloat, green: GLfloat, blue: GLfloat, alpha: GLfloat): Unit = extern
-  //def glBlendEquation(mode: GLenum): Unit = extern
 }

@@ -841,6 +841,45 @@ object Extras {
   val GL_CLAMP_TO_BORDER: UShort = 0x812D.toUShort
 
   /*
+   * OpenGL 1.2.1 ARB extension
+   */
+  val GL_TEXTURE0_ARB: UShort = 0x84C0.toUShort
+  val GL_TEXTURE1_ARB: UShort = 0x84C1.toUShort
+  val GL_TEXTURE2_ARB: UShort = 0x84C2.toUShort
+  val GL_TEXTURE3_ARB: UShort = 0x84C3.toUShort
+  val GL_TEXTURE4_ARB: UShort = 0x84C4.toUShort
+  val GL_TEXTURE5_ARB: UShort = 0x84C5.toUShort
+  val GL_TEXTURE6_ARB: UShort = 0x84C6.toUShort
+  val GL_TEXTURE7_ARB: UShort = 0x84C7.toUShort
+  val GL_TEXTURE8_ARB: UShort = 0x84C8.toUShort
+  val GL_TEXTURE9_ARB: UShort = 0x84C9.toUShort
+  val GL_TEXTURE10_ARB: UShort = 0x84CA.toUShort
+  val GL_TEXTURE11_ARB: UShort = 0x84CB.toUShort
+  val GL_TEXTURE12_ARB: UShort = 0x84CC.toUShort
+  val GL_TEXTURE13_ARB: UShort = 0x84CD.toUShort
+  val GL_TEXTURE14_ARB: UShort = 0x84CE.toUShort
+  val GL_TEXTURE15_ARB: UShort = 0x84CF.toUShort
+  val GL_TEXTURE16_ARB: UShort = 0x84D0.toUShort
+  val GL_TEXTURE17_ARB: UShort = 0x84D1.toUShort
+  val GL_TEXTURE18_ARB: UShort = 0x84D2.toUShort
+  val GL_TEXTURE19_ARB: UShort = 0x84D3.toUShort
+  val GL_TEXTURE20_ARB: UShort = 0x84D4.toUShort
+  val GL_TEXTURE21_ARB: UShort = 0x84D5.toUShort
+  val GL_TEXTURE22_ARB: UShort = 0x84D6.toUShort
+  val GL_TEXTURE23_ARB: UShort = 0x84D7.toUShort
+  val GL_TEXTURE24_ARB: UShort = 0x84D8.toUShort
+  val GL_TEXTURE25_ARB: UShort = 0x84D9.toUShort
+  val GL_TEXTURE26_ARB: UShort = 0x84DA.toUShort
+  val GL_TEXTURE27_ARB: UShort = 0x84DB.toUShort
+  val GL_TEXTURE28_ARB: UShort = 0x84DC.toUShort
+  val GL_TEXTURE29_ARB: UShort = 0x84DD.toUShort
+  val GL_TEXTURE30_ARB: UShort = 0x84DE.toUShort
+  val GL_TEXTURE31_ARB: UShort = 0x84DF.toUShort
+  val GL_ACTIVE_TEXTURE_ARB: UShort = 0x84E0.toUShort
+  val GL_CLIENT_ACTIVE_TEXTURE_ARB: UShort = 0x84E1.toUShort
+  val GL_MAX_TEXTURE_UNITS_ARB: UShort = 0x84E2.toUShort
+
+  /*
    * OpenGL 1.4
    */
   val GL_BLEND_DST_RGB: UShort = 0x80C8.toUShort
@@ -882,14 +921,4 @@ object Extras {
   val GL_TEXTURE_FILTER_CONTROL: UShort = 0x8500.toUShort
   val GL_DEPTH_TEXTURE_MODE: UShort = 0x884B.toUShort
   val GL_COMPARE_R_TO_TEXTURE: UShort = 0x884E.toUShort
-  //these are already defined on other sections
-  //val GL_FUNC_ADD: UShort = 0x8006.toUShort
-  //val GL_FUNC_SUBTRACT: UShort = 0x800A.toUShort
-  //val GL_FUNC_REVERSE_SUBTRACT: UShort = 0x800B.toUShort
-  //val GL_MIN: UShort = 0x8007.toUShort
-  //val GL_MAX: UShort = 0x8008.toUShort
-  //val GL_CONSTANT_COLOR: UShort = 0x8001.toUShort
-  //val GL_ONE_MINUS_CONSTANT_COLOR: UShort = 0x8002.toUShort
-  //val GL_CONSTANT_ALPHA: UShort = 0x8003.toUShort
-  //val GL_ONE_MINUS_CONSTANT_ALPHA: UShort = 0x8004.toUShort
 }
