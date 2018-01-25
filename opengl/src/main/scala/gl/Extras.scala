@@ -978,4 +978,92 @@ object Extras {
   /*
    * End OpenGL 1.5
    */
+
+  /*
+   * OpenGL 2.0
+   */
+  val GL_BLEND_EQUATION_RGB: UShort = 0x8009.toUShort
+  val GL_VERTEX_ATTRIB_ARRAY_ENABLED: UShort = 0x8622.toUShort
+  val GL_VERTEX_ATTRIB_ARRAY_SIZE: UShort = 0x8623.toUShort
+  val GL_VERTEX_ATTRIB_ARRAY_STRIDE: UShort = 0x8624.toUShort
+  val GL_VERTEX_ATTRIB_ARRAY_TYPE: UShort = 0x8625.toUShort
+  val GL_CURRENT_VERTEX_ATTRIB: UShort = 0x8626.toUShort
+  val GL_VERTEX_PROGRAM_POINT_SIZE: UShort = 0x8642.toUShort
+  val GL_VERTEX_ATTRIB_ARRAY_POINTER: UShort = 0x8645.toUShort
+  val GL_STENCIL_BACK_FUNC: UShort = 0x8800.toUShort
+  val GL_STENCIL_BACK_FAIL: UShort = 0x8801.toUShort
+  val GL_STENCIL_BACK_PASS_DEPTH_FAIL: UShort = 0x8802.toUShort
+  val GL_STENCIL_BACK_PASS_DEPTH_PASS: UShort = 0x8803.toUShort
+  val GL_MAX_DRAW_BUFFERS: UShort = 0x8824.toUShort
+  val GL_DRAW_BUFFER0: UShort = 0x8825.toUShort
+  val GL_DRAW_BUFFER1: UShort = 0x8826.toUShort
+  val GL_DRAW_BUFFER2: UShort = 0x8827.toUShort
+  val GL_DRAW_BUFFER3: UShort = 0x8828.toUShort
+  val GL_DRAW_BUFFER4: UShort = 0x8829.toUShort
+  val GL_DRAW_BUFFER5: UShort = 0x882A.toUShort
+  val GL_DRAW_BUFFER6: UShort = 0x882B.toUShort
+  val GL_DRAW_BUFFER7: UShort = 0x882C.toUShort
+  val GL_DRAW_BUFFER8: UShort = 0x882D.toUShort
+  val GL_DRAW_BUFFER9: UShort = 0x882E.toUShort
+  val GL_DRAW_BUFFER10: UShort = 0x882F.toUShort
+  val GL_DRAW_BUFFER11: UShort = 0x8830.toUShort
+  val GL_DRAW_BUFFER12: UShort = 0x8831.toUShort
+  val GL_DRAW_BUFFER13: UShort = 0x8832.toUShort
+  val GL_DRAW_BUFFER14: UShort = 0x8833.toUShort
+  val GL_DRAW_BUFFER15: UShort = 0x8834.toUShort
+  val GL_BLEND_EQUATION_ALPHA: UShort = 0x883D.toUShort
+  val GL_MAX_VERTEX_ATTRIBS: UShort = 0x8869.toUShort
+  val GL_VERTEX_ATTRIB_ARRAY_NORMALIZED: UShort = 0x886A.toUShort
+  val GL_MAX_TEXTURE_IMAGE_UNITS: UShort = 0x8872.toUShort
+  val GL_FRAGMENT_SHADER: UShort = 0x8B30.toUShort
+  val GL_VERTEX_SHADER: UShort = 0x8B31.toUShort
+  val GL_MAX_FRAGMENT_UNIFORM_COMPONENTS: UShort = 0x8B49.toUShort
+  val GL_MAX_VERTEX_UNIFORM_COMPONENTS: UShort = 0x8B4A.toUShort
+  val GL_MAX_VARYING_FLOATS: UShort = 0x8B4B.toUShort
+  val GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS: UShort = 0x8B4C.toUShort
+  val GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS: UShort = 0x8B4D.toUShort
+  val GL_SHADER_TYPE: UShort = 0x8B4F.toUShort
+  val GL_FLOAT_VEC2: UShort = 0x8B50.toUShort
+  val GL_FLOAT_VEC3: UShort = 0x8B51.toUShort
+  val GL_FLOAT_VEC4: UShort = 0x8B52.toUShort
+  val GL_INT_VEC2: UShort = 0x8B53.toUShort
+  val GL_INT_VEC3: UShort = 0x8B54.toUShort
+  val GL_INT_VEC4: UShort = 0x8B55.toUShort
+  val GL_BOOL: UShort = 0x8B56.toUShort
+  val GL_BOOL_VEC2: UShort = 0x8B57.toUShort
+  val GL_BOOL_VEC3: UShort = 0x8B58.toUShort
+  val GL_BOOL_VEC4: UShort = 0x8B59.toUShort
+  val GL_FLOAT_MAT2: UShort = 0x8B5A.toUShort
+  val GL_FLOAT_MAT3: UShort = 0x8B5B.toUShort
+  val GL_FLOAT_MAT4: UShort = 0x8B5C.toUShort
+  val GL_SAMPLER_1D: UShort = 0x8B5D.toUShort
+  val GL_SAMPLER_2D: UShort = 0x8B5E.toUShort
+  val GL_SAMPLER_3D: UShort = 0x8B5F.toUShort
+  val GL_SAMPLER_CUBE: UShort = 0x8B60.toUShort
+  val GL_SAMPLER_1D_SHADOW: UShort = 0x8B61.toUShort
+  val GL_SAMPLER_2D_SHADOW: UShort = 0x8B62.toUShort
+  val GL_DELETE_STATUS: UShort = 0x8B80.toUShort
+  val GL_COMPILE_STATUS: UShort = 0x8B81.toUShort
+  val GL_LINK_STATUS: UShort = 0x8B82.toUShort
+  val GL_VALIDATE_STATUS: UShort = 0x8B83.toUShort
+  val GL_INFO_LOG_LENGTH: UShort = 0x8B84.toUShort
+  val GL_ATTACHED_SHADERS: UShort = 0x8B85.toUShort
+  val GL_ACTIVE_UNIFORMS: UShort = 0x8B86.toUShort
+  val GL_ACTIVE_UNIFORM_MAX_LENGTH: UShort = 0x8B87.toUShort
+  val GL_SHADER_SOURCE_LENGTH: UShort = 0x8B88.toUShort
+  val GL_ACTIVE_ATTRIBUTES: UShort = 0x8B89.toUShort
+  val GL_ACTIVE_ATTRIBUTE_MAX_LENGTH: UShort = 0x8B8A.toUShort
+  val GL_FRAGMENT_SHADER_DERIVATIVE_HINT: UShort = 0x8B8B.toUShort
+  val GL_SHADING_LANGUAGE_VERSION: UShort = 0x8B8C.toUShort
+  val GL_CURRENT_PROGRAM: UShort = 0x8B8D.toUShort
+  val GL_POINT_SPRITE_COORD_ORIGIN: UShort = 0x8CA0.toUShort
+  val GL_LOWER_LEFT: UShort = 0x8CA1.toUShort
+  val GL_UPPER_LEFT: UShort = 0x8CA2.toUShort
+  val GL_STENCIL_BACK_REF: UShort = 0x8CA3.toUShort
+  val GL_STENCIL_BACK_VALUE_MASK: UShort = 0x8CA4.toUShort
+  val GL_STENCIL_BACK_WRITEMASK: UShort = 0x8CA5.toUShort
+  val GL_VERTEX_PROGRAM_TWO_SIDE: UShort = 0x8643.toUShort
+  val GL_POINT_SPRITE: UShort = 0x8861.toUShort
+  val GL_COORD_REPLACE: UShort = 0x8862.toUShort
+  val GL_MAX_TEXTURE_COORDS: UShort = 0x8871.toUShort
 }

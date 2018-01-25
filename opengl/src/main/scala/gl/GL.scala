@@ -25,6 +25,12 @@ object GL {
   type GLclampf = Float
   type GLdouble = Double
   type GLclampd = Double
+  /* Added in 1.5 */
+  type GLsizeiptr = CPtrDiff
+  type GLintptr = CPtrDiff
+  /* Added in 2.0 */
+  type GLchar = CChar
+
 
   /*
    * Miscellaneous
@@ -764,9 +770,6 @@ object GL {
   /*
    * OpenGL 1.5
    */
-  type GLsizeiptr = CPtrDiff
-  type GLintptr = CPtrDiff
-
   type PFNGLGENQUERIESPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
   type PFNGLDELETEQUERIESPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
   type PFNGLISQUERYPROC = CFunctionPtr1[GLuint, GLboolean]
@@ -808,5 +811,199 @@ object GL {
   def glGetBufferPointerv(target: GLenum, pname: GLenum, params: Ptr[Ptr[Byte]]): Unit = extern
   /*
    * End OpenGL 1.5
+   */
+
+  /*
+   * OpenGL 2.0
+   */
+  type PFNGLBLENDEQUATIONSEPARATEPROC = CFunctionPtr2[GLenum, GLenum, Unit]
+  type PFNGLDRAWBUFFERSPROC = CFunctionPtr2[GLsizei, Ptr[GLenum], Unit]
+  type PFNGLSTENCILOPSEPARATEPROC = CFunctionPtr4[GLenum, GLenum, GLenum, GLenum, Unit]
+  type PFNGLSTENCILFUNCSEPARATEPROC = CFunctionPtr4[GLenum, GLenum, GLint, GLuint, Unit]
+  type PFNGLSTENCILMASKSEPARATEPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLATTACHSHADERPROC = CFunctionPtr2[GLuint, GLuint, Unit]
+  type PFNGLBINDATTRIBLOCATIONPROC = CFunctionPtr3[GLuint, GLuint, Ptr[GLchar], Unit]
+  type PFNGLCOMPILESHADERPROC = CFunctionPtr1[GLuint, Unit]
+  type PFNGLCREATEPROGRAMPROC = CFunctionPtr0[GLuint]
+  type PFNGLCREATESHADERPROC = CFunctionPtr1[GLenum, GLuint]
+  type PFNGLDELETEPROGRAMPROC = CFunctionPtr1[GLuint, Unit]
+  type PFNGLDELETESHADERPROC = CFunctionPtr1[GLuint, Unit]
+  type PFNGLDETACHSHADERPROC = CFunctionPtr2[GLuint, GLuint, Unit]
+  type PFNGLDISABLEVERTEXATTRIBARRAYPROC = CFunctionPtr1[GLuint, Unit]
+  type PFNGLENABLEVERTEXATTRIBARRAYPROC = CFunctionPtr1[GLuint, Unit]
+  type PFNGLGETACTIVEATTRIBPROC = CFunctionPtr7[GLuint, GLuint, GLsizei, Ptr[GLsizei], Ptr[GLint], Ptr[GLenum], Ptr[GLchar], Unit]
+  type PFNGLGETACTIVEUNIFORMPROC = CFunctionPtr7[GLuint, GLuint, GLsizei, Ptr[GLsizei], Ptr[GLint], Ptr[GLenum], Ptr[GLchar], Unit]
+  type PFNGLGETATTACHEDSHADERSPROC = CFunctionPtr4[GLuint, GLsizei, Ptr[GLsizei], Ptr[GLuint], Unit]
+  type PFNGLGETATTRIBLOCATIONPROC = CFunctionPtr2[GLuint, Ptr[GLchar], GLint]
+  type PFNGLGETPROGRAMIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETPROGRAMINFOLOGPROC = CFunctionPtr4[GLuint, GLsizei, Ptr[GLsizei], Ptr[GLchar], Unit]
+  type PFNGLGETSHADERIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETSHADERINFOLOGPROC = CFunctionPtr4[GLuint, GLsizei, Ptr[GLsizei], Ptr[GLchar], Unit]
+  type PFNGLGETSHADERSOURCEPROC = CFunctionPtr4[GLuint, GLsizei, Ptr[GLsizei], Ptr[GLchar], Unit]
+  type PFNGLGETUNIFORMLOCATIONPROC = CFunctionPtr2[GLuint, Ptr[GLchar], GLint]
+  type PFNGLGETUNIFORMFVPROC = CFunctionPtr3[GLuint, GLint, Ptr[GLfloat], Unit]
+  type PFNGLGETUNIFORMIVPROC = CFunctionPtr3[GLuint, GLint, Ptr[GLint], Unit]
+  type PFNGLGETVERTEXATTRIBDVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLdouble], Unit]
+  type PFNGLGETVERTEXATTRIBFVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLfloat], Unit]
+  type PFNGLGETVERTEXATTRIBIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETVERTEXATTRIBPOINTERVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[Ptr[Byte]], Unit]
+  type PFNGLISPROGRAMPROC = CFunctionPtr1[GLuint, GLboolean]
+  type PFNGLISSHADERPROC = CFunctionPtr1[GLuint, GLboolean]
+  type PFNGLLINKPROGRAMPROC = CFunctionPtr1[GLuint, Unit]
+  type PFNGLSHADERSOURCEPROC = CFunctionPtr4[GLuint, GLsizei, Ptr[Ptr[GLchar]], Ptr[GLint], Unit]
+  type PFNGLUSEPROGRAMPROC = CFunctionPtr1[GLuint, Unit]
+  type PFNGLUNIFORM1FPROC = CFunctionPtr2[GLint, GLfloat, Unit]
+  type PFNGLUNIFORM2FPROC = CFunctionPtr3[GLint, GLfloat, GLfloat, Unit]
+  type PFNGLUNIFORM3FPROC = CFunctionPtr4[GLint, GLfloat, GLfloat, GLfloat, Unit]
+  type PFNGLUNIFORM4FPROC = CFunctionPtr5[GLint, GLfloat, GLfloat, GLfloat, GLfloat, Unit]
+  type PFNGLUNIFORM1IPROC = CFunctionPtr2[GLint, GLint, Unit]
+  type PFNGLUNIFORM2IPROC = CFunctionPtr3[GLint, GLint, GLint, Unit]
+  type PFNGLUNIFORM3IPROC = CFunctionPtr4[GLint, GLint, GLint, GLint, Unit]
+  type PFNGLUNIFORM4IPROC = CFunctionPtr5[GLint, GLint, GLint, GLint, GLint, Unit]
+  type PFNGLUNIFORM1FVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLfloat], Unit]
+  type PFNGLUNIFORM2FVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLfloat], Unit]
+  type PFNGLUNIFORM3FVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLfloat], Unit]
+  type PFNGLUNIFORM4FVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLfloat], Unit]
+  type PFNGLUNIFORM1IVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLint], Unit]
+  type PFNGLUNIFORM2IVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLint], Unit]
+  type PFNGLUNIFORM3IVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLint], Unit]
+  type PFNGLUNIFORM4IVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLint], Unit]
+  type PFNGLUNIFORMMATRIX2FVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLfloat], Unit]
+  type PFNGLUNIFORMMATRIX3FVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLfloat], Unit]
+  type PFNGLUNIFORMMATRIX4FVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLfloat], Unit]
+  type PFNGLVALIDATEPROGRAMPROC = CFunctionPtr1[GLuint, Unit]
+  type PFNGLVERTEXATTRIB1DPROC = CFunctionPtr2[GLuint, GLdouble, Unit]
+  type PFNGLVERTEXATTRIB1DVPROC = CFunctionPtr2[GLuint, Ptr[GLdouble], Unit]
+  type PFNGLVERTEXATTRIB1FPROC = CFunctionPtr2[GLuint, GLfloat, Unit]
+  type PFNGLVERTEXATTRIB1FVPROC = CFunctionPtr2[GLuint, Ptr[GLfloat], Unit]
+  type PFNGLVERTEXATTRIB1SPROC = CFunctionPtr2[GLuint, GLshort, Unit]
+  type PFNGLVERTEXATTRIB1SVPROC = CFunctionPtr2[GLuint, Ptr[GLshort], Unit]
+  type PFNGLVERTEXATTRIB2DPROC = CFunctionPtr3[GLuint, GLdouble, GLdouble, Unit]
+  type PFNGLVERTEXATTRIB2DVPROC = CFunctionPtr2[GLuint, Ptr[GLdouble], Unit]
+  type PFNGLVERTEXATTRIB2FPROC = CFunctionPtr3[GLuint, GLfloat, GLfloat, Unit]
+  type PFNGLVERTEXATTRIB2FVPROC = CFunctionPtr2[GLuint, Ptr[GLfloat], Unit]
+  type PFNGLVERTEXATTRIB2SPROC = CFunctionPtr3[GLuint, GLshort, GLshort, Unit]
+  type PFNGLVERTEXATTRIB2SVPROC = CFunctionPtr2[GLuint, Ptr[GLshort], Unit]
+  type PFNGLVERTEXATTRIB3DPROC = CFunctionPtr4[GLuint, GLdouble, GLdouble, GLdouble, Unit]
+  type PFNGLVERTEXATTRIB3DVPROC = CFunctionPtr2[GLuint, Ptr[GLdouble], Unit]
+  type PFNGLVERTEXATTRIB3FPROC = CFunctionPtr4[GLuint, GLfloat, GLfloat, GLfloat, Unit]
+  type PFNGLVERTEXATTRIB3FVPROC = CFunctionPtr2[GLuint, Ptr[GLfloat], Unit]
+  type PFNGLVERTEXATTRIB3SPROC = CFunctionPtr4[GLuint, GLshort, GLshort, GLshort, Unit]
+  type PFNGLVERTEXATTRIB3SVPROC = CFunctionPtr2[GLuint, Ptr[GLshort], Unit]
+  type PFNGLVERTEXATTRIB4NBVPROC = CFunctionPtr2[GLuint, Ptr[GLbyte], Unit]
+  type PFNGLVERTEXATTRIB4NIVPROC = CFunctionPtr2[GLuint, Ptr[GLint], Unit]
+  type PFNGLVERTEXATTRIB4NSVPROC = CFunctionPtr2[GLuint, Ptr[GLshort], Unit]
+  type PFNGLVERTEXATTRIB4NUBPROC = CFunctionPtr5[GLuint, GLubyte, GLubyte, GLubyte, GLubyte, Unit]
+  type PFNGLVERTEXATTRIB4NUBVPROC = CFunctionPtr2[GLuint, Ptr[GLubyte], Unit]
+  type PFNGLVERTEXATTRIB4NUIVPROC = CFunctionPtr2[GLuint, Ptr[GLuint], Unit]
+  type PFNGLVERTEXATTRIB4NUSVPROC = CFunctionPtr2[GLuint, Ptr[GLushort], Unit]
+  type PFNGLVERTEXATTRIB4BVPROC = CFunctionPtr2[GLuint, Ptr[GLbyte], Unit]
+  type PFNGLVERTEXATTRIB4DPROC = CFunctionPtr5[GLuint, GLdouble, GLdouble, GLdouble, GLdouble, Unit]
+  type PFNGLVERTEXATTRIB4DVPROC = CFunctionPtr2[GLuint, Ptr[GLdouble], Unit]
+  type PFNGLVERTEXATTRIB4FPROC = CFunctionPtr5[GLuint, GLfloat, GLfloat, GLfloat, GLfloat, Unit]
+  type PFNGLVERTEXATTRIB4FVPROC = CFunctionPtr2[GLuint, Ptr[GLfloat], Unit]
+  type PFNGLVERTEXATTRIB4IVPROC = CFunctionPtr2[GLuint, Ptr[GLint], Unit]
+  type PFNGLVERTEXATTRIB4SPROC = CFunctionPtr5[GLuint, GLshort, GLshort, GLshort, GLshort, Unit]
+  type PFNGLVERTEXATTRIB4SVPROC = CFunctionPtr2[GLuint, Ptr[GLshort], Unit]
+  type PFNGLVERTEXATTRIB4UBVPROC = CFunctionPtr2[GLuint, Ptr[GLubyte], Unit]
+  type PFNGLVERTEXATTRIB4UIVPROC = CFunctionPtr2[GLuint, Ptr[GLuint], Unit]
+  type PFNGLVERTEXATTRIB4USVPROC = CFunctionPtr2[GLuint, Ptr[GLushort], Unit]
+  type PFNGLVERTEXATTRIBPOINTERPROC = CFunctionPtr6[GLuint, GLint, GLenum, GLboolean, GLsizei, Ptr[Byte], Unit]
+
+  def glBlendEquationSeparate(modeRGB: GLenum, modeAlpha: GLenum): Unit = extern
+  def glDrawBuffers(n: GLsizei, bufs: Ptr[GLenum]): Unit = extern
+  def glStencilOpSeparate(face: GLenum, sfail: GLenum, dpfail: GLenum, dppass: GLenum): Unit = extern
+  def glStencilFuncSeparate(face: GLenum, func: GLenum, ref: GLint, mask: GLuint): Unit = extern
+  def glStencilMaskSeparate(face: GLenum, mask: GLuint): Unit = extern
+  def glAttachShader(program: GLuint, shader: GLuint): Unit = extern
+  def glBindAttribLocation(program: GLuint, index: GLuint, name: Ptr[GLchar]): Unit = extern
+  def glCompileShader(shader: GLuint): Unit = extern
+  def glCreateProgram(): GLuint = extern
+  def glCreateShader(type_ : GLenum): GLuint = extern
+  def glDeleteProgram(program: GLuint): Unit = extern
+  def glDeleteShader(shader: GLuint): Unit = extern
+  def glDetachShader(program: GLuint, shader: GLuint): Unit = extern
+  def glDisableVertexAttribArray(index: GLuint): Unit = extern
+  def glEnableVertexAttribArray(index: GLuint): Unit = extern
+  def glGetActiveAttrib(program: GLuint, index: GLuint, bufSize: GLsizei, length: Ptr[GLsizei], size: Ptr[GLint], type_ : Ptr[GLenum], name: Ptr[GLchar]): Unit = extern
+  def glGetActiveUniform(program: GLuint, index: GLuint, bufSize: GLsizei, length: Ptr[GLsizei], size: Ptr[GLint], type_ : Ptr[GLenum], name: Ptr[GLchar]): Unit = extern
+  def glGetAttachedShaders(program: GLuint, maxCount: GLsizei, count: Ptr[GLsizei], shaders: Ptr[GLuint]): Unit = extern
+  def glGetAttribLocation(program: GLuint, name: Ptr[GLchar]): GLint = extern
+  def glGetProgramiv(program: GLuint, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetProgramInfoLog(program: GLuint, bufSize: GLsizei, length: Ptr[GLsizei], infoLog: Ptr[GLchar]): Unit = extern
+  def glGetShaderiv(shader: GLuint, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetShaderInfoLog(shader: GLuint, bufSize: GLsizei, length: Ptr[GLsizei], infoLog: Ptr[GLchar]): Unit = extern
+  def glGetShaderSource(shader: GLuint, bufSize: GLsizei, length: Ptr[GLsizei], source: Ptr[GLchar]): Unit = extern
+  def glGetUniformLocation(program: GLuint, name: Ptr[GLchar]): GLint = extern
+  def glGetUniformfv(program: GLuint, location: GLint, params: Ptr[GLfloat]): Unit = extern
+  def glGetUniformiv(program: GLuint, location: GLint, params: Ptr[GLint]): Unit = extern
+  def glGetVertexAttribdv(index: GLuint, pname: GLenum, params: Ptr[GLdouble]): Unit = extern
+  def glGetVertexAttribfv(index: GLuint, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetVertexAttribiv(index: GLuint, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetVertexAttribPointerv(index: GLuint, pname: GLenum, pointer: Ptr[Ptr[Byte]]): Unit = extern
+  def glIsProgram(program: GLuint): GLboolean = extern
+  def glIsShader(shader: GLuint): GLboolean = extern
+  def glLinkProgram(program: GLuint): Unit = extern
+  def glShaderSource(shader: GLuint, count: GLsizei, string: Ptr[Ptr[GLchar]], length: Ptr[GLint]): Unit = extern
+  def glUseProgram(program: GLuint): Unit = extern
+  def glUniform1f(location: GLint, v0: GLfloat): Unit = extern
+  def glUniform2f(location: GLint, v0: GLfloat, v1: GLfloat): Unit = extern
+  def glUniform3f(location: GLint, v0: GLfloat, v1: GLfloat, v2: GLfloat): Unit = extern
+  def glUniform4f(location: GLint, v0: GLfloat, v1: GLfloat, v2: GLfloat, v3: GLfloat): Unit = extern
+  def glUniform1i(location: GLint, v0: GLint): Unit = extern
+  def glUniform2i(location: GLint, v0: GLint, v1: GLint): Unit = extern
+  def glUniform3i(location: GLint, v0: GLint, v1: GLint, v2: GLint): Unit = extern
+  def glUniform4i(location: GLint, v0: GLint, v1: GLint, v2: GLint, v3: GLint): Unit = extern
+  def glUniform1fv(location: GLint, count: GLsizei, value: Ptr[GLfloat]): Unit = extern
+  def glUniform2fv(location: GLint, count: GLsizei, value: Ptr[GLfloat]): Unit = extern
+  def glUniform3fv(location: GLint, count: GLsizei, value: Ptr[GLfloat]): Unit = extern
+  def glUniform4fv(location: GLint, count: GLsizei, value: Ptr[GLfloat]): Unit = extern
+  def glUniform1iv(location: GLint, count: GLsizei, value: Ptr[GLint]): Unit = extern
+  def glUniform2iv(location: GLint, count: GLsizei, value: Ptr[GLint]): Unit = extern
+  def glUniform3iv(location: GLint, count: GLsizei, value: Ptr[GLint]): Unit = extern
+  def glUniform4iv(location: GLint, count: GLsizei, value: Ptr[GLint]): Unit = extern
+  def glUniformMatrix2fv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLfloat]): Unit = extern
+  def glUniformMatrix3fv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLfloat]): Unit = extern
+  def glUniformMatrix4fv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLfloat]): Unit = extern
+  def glValidateProgram(program: GLuint): Unit = extern
+  def glVertexAttrib1d(index: GLuint, x: GLdouble): Unit = extern
+  def glVertexAttrib1dv(index: GLuint, v: Ptr[GLdouble]): Unit = extern
+  def glVertexAttrib1f(index: GLuint, x: GLfloat): Unit = extern
+  def glVertexAttrib1fv(index: GLuint, v: Ptr[GLfloat]): Unit = extern
+  def glVertexAttrib1s(index: GLuint, x: GLshort): Unit = extern
+  def glVertexAttrib1sv(index: GLuint, v: Ptr[GLshort]): Unit = extern
+  def glVertexAttrib2d(index: GLuint, x: GLdouble, y: GLdouble): Unit = extern
+  def glVertexAttrib2dv(index: GLuint, v: Ptr[GLdouble]): Unit = extern
+  def glVertexAttrib2f(index: GLuint, x: GLfloat, y: GLfloat): Unit = extern
+  def glVertexAttrib2fv(index: GLuint, v: Ptr[GLfloat]): Unit = extern
+  def glVertexAttrib2s(index: GLuint, x: GLshort, y: GLshort): Unit = extern
+  def glVertexAttrib2sv(index: GLuint, v: Ptr[GLshort]): Unit = extern
+  def glVertexAttrib3d(index: GLuint, x: GLdouble, y: GLdouble, z: GLdouble): Unit = extern
+  def glVertexAttrib3dv(index: GLuint, v: Ptr[GLdouble]): Unit = extern
+  def glVertexAttrib3f(index: GLuint, x: GLfloat, y: GLfloat, z: GLfloat): Unit = extern
+  def glVertexAttrib3fv(index: GLuint, v: Ptr[GLfloat]): Unit = extern
+  def glVertexAttrib3s(index: GLuint, x: GLshort, y: GLshort, z: GLshort): Unit = extern
+  def glVertexAttrib3sv(index: GLuint, v: Ptr[GLshort]): Unit = extern
+  def glVertexAttrib4Nbv(index: GLuint, v: Ptr[GLbyte]): Unit = extern
+  def glVertexAttrib4Niv(index: GLuint, v: Ptr[GLint]): Unit = extern
+  def glVertexAttrib4Nsv(index: GLuint, v: Ptr[GLshort]): Unit = extern
+  def glVertexAttrib4Nub(index: GLuint, x: GLubyte, y: GLubyte, z: GLubyte, w: GLubyte): Unit = extern
+  def glVertexAttrib4Nubv(index: GLuint, v: Ptr[GLubyte]): Unit = extern
+  def glVertexAttrib4Nuiv(index: GLuint, v: Ptr[GLuint]): Unit = extern
+  def glVertexAttrib4Nusv(index: GLuint, v: Ptr[GLushort]): Unit = extern
+  def glVertexAttrib4bv(index: GLuint, v: Ptr[GLbyte]): Unit = extern
+  def glVertexAttrib4d(index: GLuint, x: GLdouble, y: GLdouble, z: GLdouble, w: GLdouble): Unit = extern
+  def glVertexAttrib4dv(index: GLuint, v: Ptr[GLdouble]): Unit = extern
+  def glVertexAttrib4f(index: GLuint, x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat): Unit = extern
+  def glVertexAttrib4fv(index: GLuint, v: Ptr[GLfloat]): Unit = extern
+  def glVertexAttrib4iv(index: GLuint, v: Ptr[GLint]): Unit = extern
+  def glVertexAttrib4s(index: GLuint, x: GLshort, y: GLshort, z: GLshort, w: GLshort): Unit = extern
+  def glVertexAttrib4sv(index: GLuint, v: Ptr[GLshort]): Unit = extern
+  def glVertexAttrib4ubv(index: GLuint, v: Ptr[GLubyte]): Unit = extern
+  def glVertexAttrib4uiv(index: GLuint, v: Ptr[GLuint]): Unit = extern
+  def glVertexAttrib4usv(index: GLuint, v: Ptr[GLushort]): Unit = extern
+  def glVertexAttribPointer(index: GLuint, size: GLint, type_ : GLenum, normalized: GLboolean, stride: GLsizei, pointer: Ptr[Byte]): Unit = extern
+  /*
+   * End OpenGL 2.0
    */
 }
