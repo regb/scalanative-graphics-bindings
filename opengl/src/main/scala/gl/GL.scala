@@ -30,7 +30,8 @@ object GL {
   type GLintptr = CPtrDiff
   /* Added in 2.0 */
   type GLchar = CChar
-
+  /* OpenGL 3.0 */
+  type GLhalf = UShort
 
   /*
    * Miscellaneous
@@ -766,6 +767,9 @@ object GL {
   def glWindowPos3iv(v: Ptr[GLint]): Unit = extern
   def glWindowPos3s(x: GLshort, y: GLshort, z: GLshort): Unit = extern
   def glWindowPos3sv(v: Ptr[GLshort]): Unit = extern
+  /*
+   * End OpenGL 1.4
+   */
 
   /*
    * OpenGL 1.5
@@ -1005,5 +1009,201 @@ object GL {
   def glVertexAttribPointer(index: GLuint, size: GLint, type_ : GLenum, normalized: GLboolean, stride: GLsizei, pointer: Ptr[Byte]): Unit = extern
   /*
    * End OpenGL 2.0
+   */
+
+  /*
+   * OpenGL 2.1
+   */
+  type PFNGLUNIFORMMATRIX2X3FVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLfloat], Unit]
+  type PFNGLUNIFORMMATRIX3X2FVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLfloat], Unit]
+  type PFNGLUNIFORMMATRIX2X4FVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLfloat], Unit]
+  type PFNGLUNIFORMMATRIX4X2FVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLfloat], Unit]
+  type PFNGLUNIFORMMATRIX3X4FVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLfloat], Unit]
+  type PFNGLUNIFORMMATRIX4X3FVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLfloat], Unit]
+
+  def glUniformMatrix2x3fv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLfloat]): Unit = extern
+  def glUniformMatrix3x2fv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLfloat]): Unit = extern
+  def glUniformMatrix2x4fv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLfloat]): Unit = extern
+  def glUniformMatrix4x2fv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLfloat]): Unit = extern
+  def glUniformMatrix3x4fv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLfloat]): Unit = extern
+  def glUniformMatrix4x3fv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLfloat]): Unit = extern
+  /*
+   * End OpenGL 2.1
+   */
+
+  /*
+   * OpenGL 3.0
+   */
+  type PFNGLCOLORMASKIPROC = CFunctionPtr5[GLuint, GLboolean, GLboolean, GLboolean, GLboolean, Unit]
+  type PFNGLGETBOOLEANI_VPROC = CFunctionPtr3[GLenum, GLuint, Ptr[GLboolean], Unit]
+  type PFNGLGETINTEGERI_VPROC = CFunctionPtr3[GLenum, GLuint, Ptr[GLint], Unit]
+  type PFNGLENABLEIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLDISABLEIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLISENABLEDIPROC = CFunctionPtr2[GLenum, GLuint, GLboolean]
+  type PFNGLBEGINTRANSFORMFEEDBACKPROC = CFunctionPtr1[GLenum, Unit]
+  type PFNGLENDTRANSFORMFEEDBACKPROC = CFunctionPtr0[Unit]
+  type PFNGLBINDBUFFERRANGEPROC = CFunctionPtr5[GLenum, GLuint, GLuint, GLintptr, GLsizeiptr, Unit]
+  type PFNGLBINDBUFFERBASEPROC = CFunctionPtr3[GLenum, GLuint, GLuint, Unit]
+  type PFNGLTRANSFORMFEEDBACKVARYINGSPROC = CFunctionPtr4[GLuint, GLsizei, Ptr[Ptr[GLchar]], GLenum, Unit]
+  type PFNGLGETTRANSFORMFEEDBACKVARYINGPROC = CFunctionPtr7[GLuint, GLuint, GLsizei, Ptr[GLsizei], Ptr[GLsizei], Ptr[GLenum], Ptr[GLchar], Unit]
+  type PFNGLCLAMPCOLORPROC = CFunctionPtr2[GLenum, GLenum, Unit]
+  type PFNGLBEGINCONDITIONALRENDERPROC = CFunctionPtr2[GLuint, GLenum, Unit]
+  type PFNGLENDCONDITIONALRENDERPROC = CFunctionPtr0[Unit]
+  type PFNGLVERTEXATTRIBIPOINTERPROC = CFunctionPtr5[GLuint, GLint, GLenum, GLsizei, Ptr[Byte], Unit]
+  type PFNGLGETVERTEXATTRIBIIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETVERTEXATTRIBIUIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLuint], Unit]
+  type PFNGLVERTEXATTRIBI1IPROC = CFunctionPtr2[GLuint, GLint, Unit]
+  type PFNGLVERTEXATTRIBI2IPROC = CFunctionPtr3[GLuint, GLint, GLint, Unit]
+  type PFNGLVERTEXATTRIBI3IPROC = CFunctionPtr4[GLuint, GLint, GLint, GLint, Unit]
+  type PFNGLVERTEXATTRIBI4IPROC = CFunctionPtr5[GLuint, GLint, GLint, GLint, GLint, Unit]
+  type PFNGLVERTEXATTRIBI1UIPROC = CFunctionPtr2[GLuint, GLuint, Unit]
+  type PFNGLVERTEXATTRIBI2UIPROC = CFunctionPtr3[GLuint, GLuint, GLuint, Unit]
+  type PFNGLVERTEXATTRIBI3UIPROC = CFunctionPtr4[GLuint, GLuint, GLuint, GLuint, Unit]
+  type PFNGLVERTEXATTRIBI4UIPROC = CFunctionPtr5[GLuint, GLuint, GLuint, GLuint, GLuint, Unit]
+  type PFNGLVERTEXATTRIBI1IVPROC = CFunctionPtr2[GLuint, Ptr[GLint], Unit]
+  type PFNGLVERTEXATTRIBI2IVPROC = CFunctionPtr2[GLuint, Ptr[GLint], Unit]
+  type PFNGLVERTEXATTRIBI3IVPROC = CFunctionPtr2[GLuint, Ptr[GLint], Unit]
+  type PFNGLVERTEXATTRIBI4IVPROC = CFunctionPtr2[GLuint, Ptr[GLint], Unit]
+  type PFNGLVERTEXATTRIBI1UIVPROC = CFunctionPtr2[GLuint, Ptr[GLuint], Unit]
+  type PFNGLVERTEXATTRIBI2UIVPROC = CFunctionPtr2[GLuint, Ptr[GLuint], Unit]
+  type PFNGLVERTEXATTRIBI3UIVPROC = CFunctionPtr2[GLuint, Ptr[GLuint], Unit]
+  type PFNGLVERTEXATTRIBI4UIVPROC = CFunctionPtr2[GLuint, Ptr[GLuint], Unit]
+  type PFNGLVERTEXATTRIBI4BVPROC = CFunctionPtr2[GLuint, Ptr[GLbyte], Unit]
+  type PFNGLVERTEXATTRIBI4SVPROC = CFunctionPtr2[GLuint, Ptr[GLshort], Unit]
+  type PFNGLVERTEXATTRIBI4UBVPROC = CFunctionPtr2[GLuint, Ptr[GLubyte], Unit]
+  type PFNGLVERTEXATTRIBI4USVPROC = CFunctionPtr2[GLuint, Ptr[GLushort], Unit]
+  type PFNGLGETUNIFORMUIVPROC = CFunctionPtr3[GLuint, GLint, Ptr[GLuint], Unit]
+  type PFNGLBINDFRAGDATALOCATIONPROC = CFunctionPtr3[GLuint, GLuint, Ptr[GLchar], Unit]
+  type PFNGLGETFRAGDATALOCATIONPROC = CFunctionPtr2[GLuint, Ptr[GLchar], GLint]
+  type PFNGLUNIFORM1UIPROC = CFunctionPtr2[GLint, GLuint, Unit]
+  type PFNGLUNIFORM2UIPROC = CFunctionPtr3[GLint, GLuint, GLuint, Unit]
+  type PFNGLUNIFORM3UIPROC = CFunctionPtr4[GLint, GLuint, GLuint, GLuint, Unit]
+  type PFNGLUNIFORM4UIPROC = CFunctionPtr5[GLint, GLuint, GLuint, GLuint, GLuint, Unit]
+  type PFNGLUNIFORM1UIVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLuint], Unit]
+  type PFNGLUNIFORM2UIVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLuint], Unit]
+  type PFNGLUNIFORM3UIVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLuint], Unit]
+  type PFNGLUNIFORM4UIVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLuint], Unit]
+  type PFNGLTEXPARAMETERIIVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLint], Unit]
+  type PFNGLTEXPARAMETERIUIVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLuint], Unit]
+  type PFNGLGETTEXPARAMETERIIVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETTEXPARAMETERIUIVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLuint], Unit]
+  type PFNGLCLEARBUFFERIVPROC = CFunctionPtr3[GLenum, GLint, Ptr[GLint], Unit]
+  type PFNGLCLEARBUFFERUIVPROC = CFunctionPtr3[GLenum, GLint, Ptr[GLuint], Unit]
+  type PFNGLCLEARBUFFERFVPROC = CFunctionPtr3[GLenum, GLint, Ptr[GLfloat], Unit]
+  type PFNGLCLEARBUFFERFIPROC = CFunctionPtr4[GLenum, GLint, GLfloat, GLint, Unit]
+  type PFNGLGETSTRINGIPROC = CFunctionPtr2[GLenum, GLuint, Ptr[GLubyte]]
+  type PFNGLISRENDERBUFFERPROC = CFunctionPtr1[GLuint, GLboolean]
+  type PFNGLBINDRENDERBUFFERPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLDELETERENDERBUFFERSPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLGENRENDERBUFFERSPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLRENDERBUFFERSTORAGEPROC = CFunctionPtr4[GLenum, GLenum, GLsizei, GLsizei, Unit]
+  type PFNGLGETRENDERBUFFERPARAMETERIVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLint], Unit]
+  type PFNGLISFRAMEBUFFERPROC = CFunctionPtr1[GLuint, GLboolean]
+  type PFNGLBINDFRAMEBUFFERPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLDELETEFRAMEBUFFERSPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLGENFRAMEBUFFERSPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLCHECKFRAMEBUFFERSTATUSPROC = CFunctionPtr1[GLenum, GLenum]
+  type PFNGLFRAMEBUFFERTEXTURE1DPROC = CFunctionPtr5[GLenum, GLenum, GLenum, GLuint, GLint, Unit]
+  type PFNGLFRAMEBUFFERTEXTURE2DPROC = CFunctionPtr5[GLenum, GLenum, GLenum, GLuint, GLint, Unit]
+  type PFNGLFRAMEBUFFERTEXTURE3DPROC = CFunctionPtr6[GLenum, GLenum, GLenum, GLuint, GLint, GLint, Unit]
+  type PFNGLFRAMEBUFFERRENDERBUFFERPROC = CFunctionPtr4[GLenum, GLenum, GLenum, GLuint, Unit]
+  type PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC = CFunctionPtr4[GLenum, GLenum, GLenum, Ptr[GLint], Unit]
+  type PFNGLGENERATEMIPMAPPROC = CFunctionPtr1[GLenum, Unit]
+  type PFNGLBLITFRAMEBUFFERPROC = CFunctionPtr10[GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum, Unit]
+  type PFNGLRENDERBUFFERSTORAGEMULTISAMPLEPROC = CFunctionPtr5[GLenum, GLsizei, GLenum, GLsizei, GLsizei, Unit]
+  type PFNGLFRAMEBUFFERTEXTURELAYERPROC = CFunctionPtr5[GLenum, GLenum, GLuint, GLint, GLint, Unit]
+  type PFNGLMAPBUFFERRANGEPROC = CFunctionPtr4[GLenum, GLintptr, GLsizeiptr, GLbitfield, Unit]
+  type PFNGLFLUSHMAPPEDBUFFERRANGEPROC = CFunctionPtr3[GLenum, GLintptr, GLsizeiptr, Unit]
+  type PFNGLBINDVERTEXARRAYPROC = CFunctionPtr1[GLuint, Unit]
+  type PFNGLDELETEVERTEXARRAYSPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLGENVERTEXARRAYSPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLISVERTEXARRAYPROC = CFunctionPtr1[GLuint, GLboolean]
+
+  def glColorMaski(index: GLuint, r: GLboolean, g: GLboolean, b: GLboolean, a: GLboolean): Unit = extern
+  def glGetBooleani_v(target: GLenum, index: GLuint, data: Ptr[GLboolean]): Unit = extern
+  def glGetIntegeri_v(target: GLenum, index: GLuint, data: Ptr[GLint]): Unit = extern
+  def glEnablei(target: GLenum, index: GLuint): Unit = extern
+  def glDisablei(target: GLenum, index: GLuint): Unit = extern
+  def glIsEnabledi(target: GLenum, index: GLuint): GLboolean = extern
+  def glBeginTransformFeedback(primitiveMode: GLenum): Unit = extern
+  def glEndTransformFeedback(): Unit = extern
+  def glBindBufferRange(target: GLenum, index: GLuint, buffer: GLuint, offset: GLintptr, size: GLsizeiptr): Unit = extern
+  def glBindBufferBase(target: GLenum, index: GLuint, buffer: GLuint): Unit = extern
+  def glTransformFeedbackVaryings(program: GLuint, count: GLsizei, varyings: Ptr[Ptr[GLchar]], bufferMode: GLenum): Unit = extern
+  def glGetTransformFeedbackVarying(program: GLuint, index: GLuint, bufSize: GLsizei, length: Ptr[GLsizei], size: Ptr[GLsizei], type_ : Ptr[GLenum], name: Ptr[GLchar]): Unit = extern
+  def glClampColor(target: GLenum, clamp: GLenum): Unit = extern
+  def glBeginConditionalRender(id: GLuint, mode: GLenum): Unit = extern
+  def glEndConditionalRender(): Unit = extern
+  def glVertexAttribIPointer(index: GLuint, size: GLint, type_ : GLenum, stride: GLsizei, pointer: Ptr[Byte]): Unit = extern
+  def glGetVertexAttribIiv(index: GLuint, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetVertexAttribIuiv(index: GLuint, pname: GLenum, params: Ptr[GLuint]): Unit = extern
+  def glVertexAttribI1i(index: GLuint, x: GLint): Unit = extern
+  def glVertexAttribI2i(index: GLuint, x: GLint, y: GLint): Unit = extern
+  def glVertexAttribI3i(index: GLuint, x: GLint, y: GLint, z: GLint): Unit = extern
+  def glVertexAttribI4i(index: GLuint, x: GLint, y: GLint, z: GLint, w: GLint): Unit = extern
+  def glVertexAttribI1ui(index: GLuint, x: GLuint): Unit = extern
+  def glVertexAttribI2ui(index: GLuint, x: GLuint, y: GLuint): Unit = extern
+  def glVertexAttribI3ui(index: GLuint, x: GLuint, y: GLuint, z: GLuint): Unit = extern
+  def glVertexAttribI4ui(index: GLuint, x: GLuint, y: GLuint, z: GLuint, w: GLuint): Unit = extern
+  def glVertexAttribI1iv(index: GLuint, v: Ptr[GLint]): Unit = extern
+  def glVertexAttribI2iv(index: GLuint, v: Ptr[GLint]): Unit = extern
+  def glVertexAttribI3iv(index: GLuint, v: Ptr[GLint]): Unit = extern
+  def glVertexAttribI4iv(index: GLuint, v: Ptr[GLint]): Unit = extern
+  def glVertexAttribI1uiv(index: GLuint, v: Ptr[GLuint]): Unit = extern
+  def glVertexAttribI2uiv(index: GLuint, v: Ptr[GLuint]): Unit = extern
+  def glVertexAttribI3uiv(index: GLuint, v: Ptr[GLuint]): Unit = extern
+  def glVertexAttribI4uiv(index: GLuint, v: Ptr[GLuint]): Unit = extern
+  def glVertexAttribI4bv(index: GLuint, v: Ptr[GLbyte]): Unit = extern
+  def glVertexAttribI4sv(index: GLuint, v: Ptr[GLshort]): Unit = extern
+  def glVertexAttribI4ubv(index: GLuint, v: Ptr[GLubyte]): Unit = extern
+  def glVertexAttribI4usv(index: GLuint, v: Ptr[GLushort]): Unit = extern
+  def glGetUniformuiv(program: GLuint, location: GLint, params: Ptr[GLuint]): Unit = extern
+  def glBindFragDataLocation(program: GLuint, color: GLuint, name: Ptr[GLchar]): Unit = extern
+  def glGetFragDataLocation(program: GLuint, name: Ptr[GLchar]): GLint = extern
+  def glUniform1ui(location: GLint, v0: GLuint): Unit = extern
+  def glUniform2ui(location: GLint, v0: GLuint, v1: GLuint): Unit = extern
+  def glUniform3ui(location: GLint, v0: GLuint, v1: GLuint, v2: GLuint): Unit = extern
+  def glUniform4ui(location: GLint, v0: GLuint, v1: GLuint, v2: GLuint, v3: GLuint): Unit = extern
+  def glUniform1uiv(location: GLint, count: GLsizei, value: Ptr[GLuint]): Unit = extern
+  def glUniform2uiv(location: GLint, count: GLsizei, value: Ptr[GLuint]): Unit = extern
+  def glUniform3uiv(location: GLint, count: GLsizei, value: Ptr[GLuint]): Unit = extern
+  def glUniform4uiv(location: GLint, count: GLsizei, value: Ptr[GLuint]): Unit = extern
+  def glTexParameterIiv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glTexParameterIuiv(target: GLenum, pname: GLenum, params: Ptr[GLuint]): Unit = extern
+  def glGetTexParameterIiv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetTexParameterIuiv(target: GLenum, pname: GLenum, params: Ptr[GLuint]): Unit = extern
+  def glClearBufferiv(buffer: GLenum, drawbuffer: GLint, value: Ptr[GLint]): Unit = extern
+  def glClearBufferuiv(buffer: GLenum, drawbuffer: GLint, value: Ptr[GLuint]): Unit = extern
+  def glClearBufferfv(buffer: GLenum, drawbuffer: GLint, value: Ptr[GLfloat]): Unit = extern
+  def glClearBufferfi(buffer: GLenum, drawbuffer: GLint, depth: GLfloat, stencil: GLint): Unit = extern
+  def glGetStringi(name: GLenum, index: GLuint): Ptr[GLubyte] = extern
+  def glIsRenderbuffer(renderbuffer: GLuint): GLboolean = extern
+  def glBindRenderbuffer(target: GLenum, renderbuffer: GLuint): Unit = extern
+  def glDeleteRenderbuffers(n: GLsizei, renderbuffers: Ptr[GLuint]): Unit = extern
+  def glGenRenderbuffers(n: GLsizei, renderbuffers: Ptr[GLuint]): Unit = extern
+  def glRenderbufferStorage(target: GLenum, internalformat: GLenum, width: GLsizei, height: GLsizei): Unit = extern
+  def glGetRenderbufferParameteriv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glIsFramebuffer(framebuffer: GLuint): GLboolean = extern
+  def glBindFramebuffer(target: GLenum, framebuffer: GLuint): Unit = extern
+  def glDeleteFramebuffers(n: GLsizei, framebuffers: Ptr[GLuint]): Unit = extern
+  def glGenFramebuffers(n: GLsizei, framebuffers: Ptr[GLuint]): Unit = extern
+  def glCheckFramebufferStatus(target: GLenum): GLenum = extern
+  def glFramebufferTexture1D(target: GLenum, attachment: GLenum, textarget: GLenum, texture: GLuint, level: GLint): Unit = extern
+  def glFramebufferTexture2D(target: GLenum, attachment: GLenum, textarget: GLenum, texture: GLuint, level: GLint): Unit = extern
+  def glFramebufferTexture3D(target: GLenum, attachment: GLenum, textarget: GLenum, texture: GLuint, level: GLint, zoffset: GLint): Unit = extern
+  def glFramebufferRenderbuffer(target: GLenum, attachment: GLenum, renderbuffertarget: GLenum, renderbuffer: GLuint): Unit = extern
+  def glGetFramebufferAttachmentParameteriv(target: GLenum, attachment: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGenerateMipmap(target: GLenum): Unit = extern
+  def glBlitFramebuffer(srcX0: GLint, srcY0: GLint, srcX1: GLint, srcY1: GLint, dstX0: GLint, dstY0: GLint, dstX1: GLint, dstY1: GLint, mask: GLbitfield, filter: GLenum): Unit = extern
+  def glRenderbufferStorageMultisample(target: GLenum, samples: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei): Unit = extern
+  def glFramebufferTextureLayer(target: GLenum, attachment: GLenum, texture: GLuint, level: GLint, layer: GLint): Unit = extern
+  def APIENTRYglMapBufferRange(target: GLenum, offset: GLintptr, length: GLsizeiptr, access: GLbitfield): Unit = extern
+  def glFlushMappedBufferRange(target: GLenum, offset: GLintptr, length: GLsizeiptr): Unit = extern
+  def glBindVertexArray(array: GLuint): Unit = extern
+  def glDeleteVertexArrays(n: GLsizei, arrays: Ptr[GLuint]): Unit = extern
+  def glGenVertexArrays(n: GLsizei, arrays: Ptr[GLuint]): Unit = extern
+  def glIsVertexArray(array: GLuint): GLboolean = extern
+  /*
+   * End OpenGL 3.0
    */
 }
