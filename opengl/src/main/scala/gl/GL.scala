@@ -32,6 +32,11 @@ object GL {
   type GLchar = CChar
   /* OpenGL 3.0 */
   type GLhalf = UShort
+  /* OpenGL 3.2 */
+  type __GLsync = CStruct0
+  type GLsync = Ptr[__GLsync]
+  type GLuint64 = ULong;
+  type GLint64 = Long;
 
   /*
    * Miscellaneous
@@ -1237,5 +1242,51 @@ object GL {
   def glUniformBlockBinding(program: GLuint, uniformBlockIndex: GLuint, uniformBlockBinding: GLuint): Unit = extern
   /*
    * End OpenGL 3.1
+   */
+
+  /*
+   * OpenGL 3.2
+   */
+  type PFNGLDRAWELEMENTSBASEVERTEXPROC = CFunctionPtr5[GLenum, GLsizei, GLenum, Ptr[Byte], GLint, Unit]
+  type PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC = CFunctionPtr7[GLenum, GLuint, GLuint, GLsizei, GLenum, Ptr[Byte], GLint, Unit]
+  type PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC = CFunctionPtr6[GLenum, GLsizei, GLenum, Ptr[Byte], GLsizei, GLint, Unit]
+  type PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC = CFunctionPtr6[GLenum, Ptr[GLsizei], GLenum, Ptr[Ptr[Byte]], GLsizei, Ptr[GLint], Unit]
+  type PFNGLPROVOKINGVERTEXPROC = CFunctionPtr1[GLenum, Unit]
+  type PFNGLFENCESYNCPROC = CFunctionPtr2[GLenum, GLbitfield, GLsync]
+  type PFNGLISSYNCPROC = CFunctionPtr1[GLsync, GLboolean]
+  type FNGLDELETESYNCPROC = CFunctionPtr1[GLsync, Unit]
+  type PFNGLCLIENTWAITSYNCPROC = CFunctionPtr3[GLsync, GLbitfield, GLuint64, GLenum]
+  type PFNGLWAITSYNCPROC = CFunctionPtr3[GLsync, GLbitfield, GLuint64, Unit]
+  type PFNGLGETINTEGER64VPROC = CFunctionPtr2[GLenum, Ptr[GLint64], Unit]
+  type PFNGLGETSYNCIVPROC = CFunctionPtr5[GLsync, GLenum, GLsizei, Ptr[GLsizei], Ptr[GLint], Unit]
+  type PFNGLGETINTEGER64I_VPROC = CFunctionPtr3[GLenum, GLuint, Ptr[GLint64], Unit]
+  type PFNGLGETBUFFERPARAMETERI64VPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLint64], Unit]
+  type PFNGLFRAMEBUFFERTEXTUREPROC = CFunctionPtr4[GLenum, GLenum, GLuint, GLint, Unit]
+  type PFNGLTEXIMAGE2DMULTISAMPLEPROC = CFunctionPtr6[GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean, Unit]
+  type PFNGLTEXIMAGE3DMULTISAMPLEPROC = CFunctionPtr7[GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean, Unit]
+  type PFNGLGETMULTISAMPLEFVPROC = CFunctionPtr3[GLenum, GLuint, Ptr[GLfloat], Unit]
+  type PFNGLSAMPLEMASKIPROC = CFunctionPtr2[GLuint, GLbitfield, Unit]
+
+  def glDrawElementsBaseVertex(mode: GLenum, count: GLsizei, type_ : GLenum, indices: Ptr[Byte], basevertex: GLint): Unit = extern
+  def glDrawRangeElementsBaseVertex(mode: GLenum, start: GLuint, end: GLuint, count: GLsizei, type_ : GLenum, indices: Ptr[Byte], basevertex: GLint): Unit = extern
+  def glDrawElementsInstancedBaseVertex(mode: GLenum, count: GLsizei, type_ : GLenum, indices: Ptr[Byte], instancecount: GLsizei, basevertex: GLint): Unit = extern
+  def glMultiDrawElementsBaseVertex(mode: GLenum, count: Ptr[GLsizei], type_ : GLenum, indices: Ptr[Ptr[Byte]], drawcount: GLsizei, basevertex: Ptr[GLint]): Unit = extern
+  def glProvokingVertex(mode: GLenum): Unit = extern
+  def glFenceSync(condition: GLenum, flags: GLbitfield): GLsync = extern
+  def glIsSync(sync: GLsync): GLboolean = extern
+  def glDeleteSync(sync: GLsync): Unit = extern
+  def glClientWaitSync(sync: GLsync, flags: GLbitfield, timeout: GLuint64): GLenum = extern
+  def glWaitSync(sync: GLsync, flags: GLbitfield, timeout: GLuint64): Unit = extern
+  def glGetInteger64v(pname: GLenum, data: Ptr[GLint64]): Unit = extern
+  def glGetSynciv(sync: GLsync, pname: GLenum, bufSize: GLsizei, length: Ptr[GLsizei], values: Ptr[GLint]): Unit = extern
+  def glGetInteger64i_v(target: GLenum, index: GLuint, data: Ptr[GLint64]): Unit = extern
+  def glGetBufferParameteri64v(target: GLenum, pname: GLenum, params: Ptr[GLint64]): Unit = extern
+  def glFramebufferTexture(target: GLenum, attachment: GLenum, texture: GLuint, level: GLint): Unit = extern
+  def glTexImage2DMultisample(target: GLenum, samples: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei, fixedsamplelocations: GLboolean): Unit = extern
+  def glTexImage3DMultisample(target: GLenum, samples: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei, depth: GLsizei, fixedsamplelocations: GLboolean): Unit = extern
+  def glGetMultisamplefv(pname: GLenum, index: GLuint, val_ : Ptr[GLfloat]): Unit = extern
+  def glSampleMaski(index: GLuint, mask: GLbitfield): Unit = extern
+  /*
+   * End OpenGL 3.2
    */
 }
