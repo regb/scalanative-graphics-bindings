@@ -1206,4 +1206,36 @@ object GL {
   /*
    * End OpenGL 3.0
    */
+
+  /*
+   * OpenGL 3.1
+   */
+  type PFNGLDRAWARRAYSINSTANCEDPROC = CFunctionPtr4[GLenum, GLint, GLsizei, GLsizei, Unit]
+  type PFNGLDRAWELEMENTSINSTANCEDPROC = CFunctionPtr5[GLenum, GLsizei, GLenum, Ptr[Byte], GLsizei, Unit]
+  type PFNGLTEXBUFFERPROC = CFunctionPtr3[GLenum, GLenum, GLuint, Unit]
+  type PFNGLPRIMITIVERESTARTINDEXPROC = CFunctionPtr1[GLuint, Unit]
+  type PFNGLCOPYBUFFERSUBDATAPROC = CFunctionPtr5[GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr, Unit]
+  type PFNGLGETUNIFORMINDICESPROC = CFunctionPtr4[GLuint, GLsizei, Ptr[Ptr[GLchar]], Ptr[GLuint], Unit]
+  type PFNGLGETACTIVEUNIFORMSIVPROC = CFunctionPtr5[GLuint, GLsizei, Ptr[GLuint], GLenum, Ptr[GLint], Unit]
+  type PFNGLGETACTIVEUNIFORMNAMEPROC = CFunctionPtr5[GLuint, GLuint, GLsizei, Ptr[GLsizei], Ptr[GLchar], Unit]
+  type PFNGLGETUNIFORMBLOCKINDEXPROC = CFunctionPtr2[GLuint, Ptr[GLchar], GLuint]
+  type PFNGLGETACTIVEUNIFORMBLOCKIVPROC = CFunctionPtr4[GLuint, GLuint, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETACTIVEUNIFORMBLOCKNAMEPROC = CFunctionPtr5[GLuint, GLuint, GLsizei, Ptr[GLsizei], Ptr[GLchar], Unit]
+  type PFNGLUNIFORMBLOCKBINDINGPROC = CFunctionPtr3[GLuint, GLuint, GLuint, Unit]
+
+  def glDrawArraysInstanced(mode: GLenum, first: GLint, count: GLsizei, instancecount: GLsizei): Unit = extern
+  def glDrawElementsInstanced(mode: GLenum, count: GLsizei, type_ : GLenum, indices: Ptr[Byte], instancecount: GLsizei): Unit = extern
+  def glTexBuffer(target: GLenum, internalformat: GLenum, buffer: GLuint): Unit = extern
+  def glPrimitiveRestartIndex(index: GLuint): Unit = extern
+  def glCopyBufferSubData(readTarget: GLenum, writeTarget: GLenum, readOffset: GLintptr, writeOffset: GLintptr, size: GLsizeiptr): Unit = extern
+  def glGetUniformIndices(program: GLuint, uniformCount: GLsizei, uniformNames: Ptr[Ptr[GLchar]],uniformIndices: Ptr[GLuint]): Unit = extern
+  def glGetActiveUniformsiv(program: GLuint, uniformCount: GLsizei, uniformIndices: Ptr[GLuint], pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetActiveUniformName(program: GLuint, uniformIndex: GLuint, bufSize: GLsizei, length: Ptr[GLsizei], uniformName: Ptr[GLchar]): Unit = extern
+  def glGetUniformBlockIndex (program: GLuint, uniformBlockName: Ptr[GLchar]): GLuint = extern
+  def glGetActiveUniformBlockiv(program: GLuint, uniformBlockIndex: GLuint, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetActiveUniformBlockName(program: GLuint, uniformBlockIndex: GLuint, bufSize: GLsizei, length: Ptr[GLsizei], uniformBlockName: Ptr[GLchar]): Unit = extern
+  def glUniformBlockBinding(program: GLuint, uniformBlockIndex: GLuint, uniformBlockBinding: GLuint): Unit = extern
+  /*
+   * End OpenGL 3.1
+   */
 }
