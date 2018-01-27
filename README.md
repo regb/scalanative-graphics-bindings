@@ -56,4 +56,4 @@ these bindings simply forward all definitions.
 OpenGL
 ------
 
-OpenGL functions up to 1.5 are exported.
+OpenGL functions up to 3.2 are exported.
