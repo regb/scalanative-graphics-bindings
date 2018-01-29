@@ -67,7 +67,6 @@ object Chapter1A {
       glVertex3f(0.25f, 0.75f, 0f)
     glEnd()
     glFlush()
-    glPopMatrix()
   }
 
 }
