@@ -1413,4 +1413,103 @@ object GL {
   /*
    * End OpenGL 3.3
    */
+
+  /*
+   * OpenGL 4.0
+   */
+  type PFNGLMINSAMPLESHADINGPROC = CFunctionPtr1[GLfloat, Unit]
+  type PFNGLBLENDEQUATIONIPROC = CFunctionPtr2[GLuint, GLenum, Unit]
+  type PFNGLBLENDEQUATIONSEPARATEIPROC = CFunctionPtr3[GLuint, GLenum, GLenum, Unit]
+  type PFNGLBLENDFUNCIPROC = CFunctionPtr3[GLuint, GLenum, GLenum, Unit]
+  type PFNGLBLENDFUNCSEPARATEIPROC = CFunctionPtr5[GLuint, GLenum, GLenum, GLenum, GLenum, Unit]
+  type PFNGLDRAWARRAYSINDIRECTPROC = CFunctionPtr2[GLenum, Ptr[Byte], Unit]
+  type PFNGLDRAWELEMENTSINDIRECTPROC = CFunctionPtr3[GLenum, GLenum, Ptr[Byte], Unit]
+  type PFNGLUNIFORM1DPROC = CFunctionPtr2[GLint, GLdouble, Unit]
+  type PFNGLUNIFORM2DPROC = CFunctionPtr3[GLint, GLdouble, GLdouble, Unit]
+  type PFNGLUNIFORM3DPROC = CFunctionPtr4[GLint, GLdouble, GLdouble, GLdouble, Unit]
+  type PFNGLUNIFORM4DPROC = CFunctionPtr5[GLint, GLdouble, GLdouble, GLdouble, GLdouble, Unit]
+  type PFNGLUNIFORM1DVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLdouble], Unit]
+  type PFNGLUNIFORM2DVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLdouble], Unit]
+  type PFNGLUNIFORM3DVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLdouble], Unit]
+  type PFNGLUNIFORM4DVPROC = CFunctionPtr3[GLint, GLsizei, Ptr[GLdouble], Unit]
+  type PFNGLUNIFORMMATRIX2DVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLdouble], Unit]
+  type PFNGLUNIFORMMATRIX3DVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLdouble], Unit]
+  type PFNGLUNIFORMMATRIX4DVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLdouble], Unit]
+  type PFNGLUNIFORMMATRIX2X3DVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLdouble], Unit]
+  type PFNGLUNIFORMMATRIX2X4DVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLdouble], Unit]
+  type PFNGLUNIFORMMATRIX3X2DVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLdouble], Unit]
+  type PFNGLUNIFORMMATRIX3X4DVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLdouble], Unit]
+  type PFNGLUNIFORMMATRIX4X2DVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLdouble], Unit]
+  type PFNGLUNIFORMMATRIX4X3DVPROC = CFunctionPtr4[GLint, GLsizei, GLboolean, Ptr[GLdouble], Unit]
+  type PFNGLGETUNIFORMDVPROC = CFunctionPtr3[GLuint, GLint, Ptr[GLdouble], Unit]
+  type PFNGLGETSUBROUTINEUNIFORMLOCATIONPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLchar], GLint]
+  type PFNGLGETSUBROUTINEINDEXPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLchar], GLuint]
+  type PFNGLGETACTIVESUBROUTINEUNIFORMIVPROC = CFunctionPtr5[GLuint, GLenum, GLuint, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETACTIVESUBROUTINEUNIFORMNAMEPROC = CFunctionPtr6[GLuint, GLenum, GLuint, GLsizei, Ptr[GLsizei], Ptr[GLchar], Unit]
+  type PFNGLGETACTIVESUBROUTINENAMEPROC = CFunctionPtr6[GLuint, GLenum, GLuint, GLsizei, Ptr[GLsizei], Ptr[GLchar], Unit]
+  type PFNGLUNIFORMSUBROUTINESUIVPROC = CFunctionPtr3[GLenum, GLsizei, Ptr[GLuint], Unit]
+  type PFNGLGETUNIFORMSUBROUTINEUIVPROC = CFunctionPtr3[GLenum, GLint, Ptr[GLuint], Unit]
+  type PFNGLGETPROGRAMSTAGEIVPROC = CFunctionPtr4[GLuint, GLenum, GLenum, Ptr[GLint], Unit]
+  type PFNGLPATCHPARAMETERIPROC = CFunctionPtr2[GLenum, GLint, Unit]
+  type PFNGLPATCHPARAMETERFVPROC = CFunctionPtr2[GLenum, Ptr[GLfloat], Unit]
+  type PFNGLBINDTRANSFORMFEEDBACKPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLDELETETRANSFORMFEEDBACKSPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLGENTRANSFORMFEEDBACKSPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLISTRANSFORMFEEDBACKPROC = CFunctionPtr1[GLuint, GLboolean]
+  type PFNGLPAUSETRANSFORMFEEDBACKPROC = CFunctionPtr0[Unit]
+  type PFNGLRESUMETRANSFORMFEEDBACKPROC = CFunctionPtr0[Unit]
+  type PFNGLDRAWTRANSFORMFEEDBACKPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLDRAWTRANSFORMFEEDBACKSTREAMPROC = CFunctionPtr3[GLenum, GLuint, GLuint, Unit]
+  type PFNGLBEGINQUERYINDEXEDPROC = CFunctionPtr3[GLenum, GLuint, GLuint, Unit]
+  type PFNGLENDQUERYINDEXEDPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLGETQUERYINDEXEDIVPROC = CFunctionPtr4[GLenum, GLuint, GLenum, Ptr[GLint], Unit]
+  def glMinSampleShading(value: GLfloat): Unit = extern
+  def glBlendEquationi(buf: GLuint, mode: GLenum): Unit = extern
+  def glBlendEquationSeparatei(buf: GLuint, modeRGB: GLenum, modeAlpha: GLenum): Unit = extern
+  def glBlendFunci(buf: GLuint, src: GLenum, dst: GLenum): Unit = extern
+  def glBlendFuncSeparatei(buf: GLuint, srcRGB: GLenum, dstRGB: GLenum, srcAlpha: GLenum, dstAlpha: GLenum): Unit = extern
+  def glDrawArraysIndirect(mode: GLenum, indirect: Ptr[Byte]): Unit = extern
+  def glDrawElementsIndirect(mode: GLenum, type_ : GLenum, indirect: Ptr[Byte]): Unit = extern
+  def glUniform1d(location: GLint, x: GLdouble): Unit = extern
+  def glUniform2d(location: GLint, x: GLdouble, y: GLdouble): Unit = extern
+  def glUniform3d(location: GLint, x: GLdouble, y: GLdouble, z: GLdouble): Unit = extern
+  def glUniform4d(location: GLint, x: GLdouble, y: GLdouble, z: GLdouble, w: GLdouble): Unit = extern
+  def glUniform1dv(location: GLint, count: GLsizei, value: Ptr[GLdouble]): Unit = extern
+  def glUniform2dv(location: GLint, count: GLsizei, value: Ptr[GLdouble]): Unit = extern
+  def glUniform3dv(location: GLint, count: GLsizei, value: Ptr[GLdouble]): Unit = extern
+  def glUniform4dv(location: GLint, count: GLsizei, value: Ptr[GLdouble]): Unit = extern
+  def glUniformMatrix2dv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLdouble]): Unit = extern
+  def glUniformMatrix3dv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLdouble]): Unit = extern
+  def glUniformMatrix4dv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLdouble]): Unit = extern
+  def glUniformMatrix2x3dv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLdouble]): Unit = extern
+  def glUniformMatrix2x4dv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLdouble]): Unit = extern
+  def glUniformMatrix3x2dv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLdouble]): Unit = extern
+  def glUniformMatrix3x4dv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLdouble]): Unit = extern
+  def glUniformMatrix4x2dv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLdouble]): Unit = extern
+  def glUniformMatrix4x3dv(location: GLint, count: GLsizei, transpose: GLboolean, value: Ptr[GLdouble]): Unit = extern
+  def glGetUniformdv(program: GLuint, location: GLint, params: Ptr[GLdouble]): Unit = extern
+  def glGetSubroutineUniformLocation(program: GLuint, shadertype: GLenum, name: Ptr[GLchar]): GLint = extern
+  def glGetSubroutineIndex(program: GLuint, shadertype: GLenum, name: Ptr[GLchar]): GLuint = extern
+  def glGetActiveSubroutineUniformiv(program: GLuint, shadertype: GLenum, index: GLuint, pname: GLenum, values: Ptr[GLint]): Unit = extern
+  def glGetActiveSubroutineUniformName(program: GLuint, shadertype: GLenum, index: GLuint, bufsize: GLsizei, length: Ptr[GLsizei], name: Ptr[GLchar]): Unit = extern
+  def glGetActiveSubroutineName(program: GLuint, shadertype: GLenum, index: GLuint, bufsize: GLsizei, length: Ptr[GLsizei], name: Ptr[GLchar]): Unit = extern
+  def glUniformSubroutinesuiv(shadertype: GLenum, count: GLsizei, indices: Ptr[GLuint]): Unit = extern
+  def glGetUniformSubroutineuiv(shadertype: GLenum, location: GLint, params: Ptr[GLuint]): Unit = extern
+  def glGetProgramStageiv(program: GLuint, shadertype: GLenum, pname: GLenum, values: Ptr[GLint]): Unit = extern
+  def glPatchParameteri(pname: GLenum, value: GLint): Unit = extern
+  def glPatchParameterfv(pname: GLenum, values: Ptr[GLfloat]): Unit = extern
+  def glBindTransformFeedback(target: GLenum, id: GLuint): Unit = extern
+  def glDeleteTransformFeedbacks(n: GLsizei, ids: Ptr[GLuint]): Unit = extern
+  def glGenTransformFeedbacks(n: GLsizei, ids: Ptr[GLuint]): Unit = extern
+  def glIsTransformFeedback(id: GLuint): GLboolean = extern
+  def glPauseTransformFeedback(): Unit = extern
+  def glResumeTransformFeedback(): Unit = extern
+  def glDrawTransformFeedback(mode: GLenum, id: GLuint): Unit = extern
+  def glDrawTransformFeedbackStream(mode: GLenum, id: GLuint, stream: GLuint): Unit = extern
+  def glBeginQueryIndexed(target: GLenum, index: GLuint, id: GLuint): Unit = extern
+  def glEndQueryIndexed(target: GLenum, index: GLuint): Unit = extern
+  def glGetQueryIndexediv(target: GLenum, index: GLuint, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  /*
+   * End OpenGL 4.0
+   */
 }
