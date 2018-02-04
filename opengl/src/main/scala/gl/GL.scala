@@ -1289,4 +1289,128 @@ object GL {
   /*
    * End OpenGL 3.2
    */
+
+  /*
+   * OpenGL 3.3
+   */
+  type PFNGLBINDFRAGDATALOCATIONINDEXEDPROC = CFunctionPtr4[GLuint, GLuint, GLuint, Ptr[GLchar], Unit]
+  type PFNGLGETFRAGDATAINDEXPROC = CFunctionPtr2[GLuint, Ptr[GLchar], GLint]
+  type PFNGLGENSAMPLERSPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLDELETESAMPLERSPROC = CFunctionPtr2[GLsizei, Ptr[GLuint], Unit]
+  type PFNGLISSAMPLERPROC = CFunctionPtr1[GLuint, GLboolean]
+  type PFNGLBINDSAMPLERPROC = CFunctionPtr2[GLuint, GLuint, Unit]
+  type PFNGLSAMPLERPARAMETERIPROC = CFunctionPtr3[GLuint, GLenum, GLint, Unit]
+  type PFNGLSAMPLERPARAMETERIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLint], Unit]
+  type PFNGLSAMPLERPARAMETERFPROC = CFunctionPtr3[GLuint, GLenum, GLfloat, Unit]
+  type PFNGLSAMPLERPARAMETERFVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLfloat], Unit]
+  type PFNGLSAMPLERPARAMETERIIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLint], Unit]
+  type PFNGLSAMPLERPARAMETERIUIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLuint], Unit]
+  type PFNGLGETSAMPLERPARAMETERIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETSAMPLERPARAMETERIIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETSAMPLERPARAMETERFVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLfloat], Unit]
+  type PFNGLGETSAMPLERPARAMETERIUIVPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLuint], Unit]
+  type PFNGLQUERYCOUNTERPROC = CFunctionPtr2[GLuint, GLenum, Unit]
+  type PFNGLGETQUERYOBJECTI64VPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLint64], Unit]
+  type PFNGLGETQUERYOBJECTUI64VPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLuint64], Unit]
+  type PFNGLVERTEXATTRIBDIVISORPROC = CFunctionPtr2[GLuint, GLuint, Unit]
+  type PFNGLVERTEXATTRIBP1UIPROC = CFunctionPtr4[GLuint, GLenum, GLboolean, GLuint, Unit]
+  type PFNGLVERTEXATTRIBP1UIVPROC = CFunctionPtr4[GLuint, GLenum, GLboolean, Ptr[GLuint], Unit]
+  type PFNGLVERTEXATTRIBP2UIPROC = CFunctionPtr4[GLuint, GLenum, GLboolean, GLuint, Unit]
+  type PFNGLVERTEXATTRIBP2UIVPROC = CFunctionPtr4[GLuint, GLenum, GLboolean, Ptr[GLuint], Unit]
+  type PFNGLVERTEXATTRIBP3UIPROC = CFunctionPtr4[GLuint, GLenum, GLboolean, GLuint, Unit]
+  type PFNGLVERTEXATTRIBP3UIVPROC = CFunctionPtr4[GLuint, GLenum, GLboolean, Ptr[GLuint], Unit]
+  type PFNGLVERTEXATTRIBP4UIPROC = CFunctionPtr4[GLuint, GLenum, GLboolean, GLuint, Unit]
+  type PFNGLVERTEXATTRIBP4UIVPROC = CFunctionPtr4[GLuint, GLenum, GLboolean, Ptr[GLuint], Unit]
+  type PFNGLVERTEXP2UIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLVERTEXP2UIVPROC = CFunctionPtr2[GLenum, Ptr[GLuint], Unit]
+  type PFNGLVERTEXP3UIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLVERTEXP3UIVPROC = CFunctionPtr2[GLenum, Ptr[GLuint], Unit]
+  type PFNGLVERTEXP4UIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLVERTEXP4UIVPROC = CFunctionPtr2[GLenum, Ptr[GLuint], Unit]
+  type PFNGLTEXCOORDP1UIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLTEXCOORDP1UIVPROC = CFunctionPtr2[GLenum, Ptr[GLuint], Unit]
+  type PFNGLTEXCOORDP2UIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLTEXCOORDP2UIVPROC = CFunctionPtr2[GLenum, Ptr[GLuint], Unit]
+  type PFNGLTEXCOORDP3UIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLTEXCOORDP3UIVPROC = CFunctionPtr2[GLenum, Ptr[GLuint], Unit]
+  type PFNGLTEXCOORDP4UIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLTEXCOORDP4UIVPROC = CFunctionPtr2[GLenum, Ptr[GLuint], Unit]
+  type PFNGLMULTITEXCOORDP1UIPROC = CFunctionPtr3[GLenum, GLenum, GLuint, Unit]
+  type PFNGLMULTITEXCOORDP1UIVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLuint], Unit]
+  type PFNGLMULTITEXCOORDP2UIPROC = CFunctionPtr3[GLenum, GLenum, GLuint, Unit]
+  type PFNGLMULTITEXCOORDP2UIVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLuint], Unit]
+  type PFNGLMULTITEXCOORDP3UIPROC = CFunctionPtr3[GLenum, GLenum, GLuint, Unit]
+  type PFNGLMULTITEXCOORDP3UIVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLuint], Unit]
+  type PFNGLMULTITEXCOORDP4UIPROC = CFunctionPtr3[GLenum, GLenum, GLuint, Unit]
+  type PFNGLMULTITEXCOORDP4UIVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLuint], Unit]
+  type PFNGLNORMALP3UIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLNORMALP3UIVPROC = CFunctionPtr2[GLenum, Ptr[GLuint], Unit]
+  type PFNGLCOLORP3UIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLCOLORP3UIVPROC = CFunctionPtr2[GLenum, Ptr[GLuint], Unit]
+  type PFNGLCOLORP4UIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLCOLORP4UIVPROC = CFunctionPtr2[GLenum, Ptr[GLuint], Unit]
+  type PFNGLSECONDARYCOLORP3UIPROC = CFunctionPtr2[GLenum, GLuint, Unit]
+  type PFNGLSECONDARYCOLORP3UIVPROC = CFunctionPtr2[GLenum, Ptr[GLuint], Unit]
+
+  def glBindFragDataLocationIndexed(program: GLuint, colorNumber: GLuint, index: GLuint, name: Ptr[GLchar]): Unit = extern
+  def glGetFragDataIndex(program: GLuint, name: Ptr[GLchar]): GLint = extern
+  def glGenSamplers(count: GLsizei, samplers: Ptr[GLuint]): Unit = extern
+  def glDeleteSamplers(count: GLsizei, samplers: Ptr[GLuint]): Unit = extern
+  def glIsSampler(sampler: GLuint): GLboolean = extern
+  def glBindSampler(unit: GLuint, sampler: GLuint): Unit = extern
+  def glSamplerParameteri(sampler: GLuint, pname: GLenum, param: GLint): Unit = extern
+  def glSamplerParameteriv(sampler: GLuint, pname: GLenum, param: Ptr[GLint]): Unit = extern
+  def glSamplerParameterf(sampler: GLuint, pname: GLenum, param: GLfloat): Unit = extern
+  def glSamplerParameterfv(sampler: GLuint, pname: GLenum, param: Ptr[GLfloat]): Unit = extern
+  def glSamplerParameterIiv(sampler: GLuint, pname: GLenum, param: Ptr[GLint]): Unit = extern
+  def glSamplerParameterIuiv(sampler: GLuint, pname: GLenum, param: Ptr[GLuint]): Unit = extern
+  def glGetSamplerParameteriv(sampler: GLuint, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetSamplerParameterIiv(sampler: GLuint, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetSamplerParameterfv(sampler: GLuint, pname: GLenum, params: Ptr[GLfloat]): Unit = extern
+  def glGetSamplerParameterIuiv(sampler: GLuint, pname: GLenum, params: Ptr[GLuint]): Unit = extern
+  def glQueryCounter(id: GLuint, target: GLenum): Unit = extern
+  def glGetQueryObjecti64v(id: GLuint, pname: GLenum, params: Ptr[GLint64]): Unit = extern
+  def glGetQueryObjectui64v(id: GLuint, pname: GLenum, params: Ptr[GLuint64]): Unit = extern
+  def glVertexAttribDivisor(index: GLuint, divisor: GLuint): Unit = extern
+  def glVertexAttribP1ui(index: GLuint, type_ : GLenum, normalized: GLboolean, value: GLuint): Unit = extern
+  def glVertexAttribP1uiv(index: GLuint, type_ : GLenum, normalized: GLboolean, value: Ptr[GLuint]): Unit = extern
+  def glVertexAttribP2ui(index: GLuint, type_ : GLenum, normalized: GLboolean, value: GLuint): Unit = extern
+  def glVertexAttribP2uiv(index: GLuint, type_ : GLenum, normalized: GLboolean, value: Ptr[GLuint]): Unit = extern
+  def glVertexAttribP3ui(index: GLuint, type_ : GLenum, normalized: GLboolean, value: GLuint): Unit = extern
+  def glVertexAttribP3uiv(index: GLuint, type_ : GLenum, normalized: GLboolean, value: Ptr[GLuint]): Unit = extern
+  def glVertexAttribP4ui(index: GLuint, type_ : GLenum, normalized: GLboolean, value: GLuint): Unit = extern
+  def glVertexAttribP4uiv(index: GLuint, type_ : GLenum, normalized: GLboolean, value: Ptr[GLuint]): Unit = extern
+  def glVertexP2ui(type_ : GLenum, value: GLuint): Unit = extern
+  def glVertexP2uiv(type_ : GLenum, value: Ptr[GLuint]): Unit = extern
+  def glVertexP3ui(type_ : GLenum, value: GLuint): Unit = extern
+  def glVertexP3uiv(type_ : GLenum, value: Ptr[GLuint]): Unit = extern
+  def glVertexP4ui(type_ : GLenum, value: GLuint): Unit = extern
+  def glVertexP4uiv(type_ : GLenum, value: Ptr[GLuint]): Unit = extern
+  def glTexCoordP1ui(type_ : GLenum, coords: GLuint): Unit = extern
+  def glTexCoordP1uiv(type_ : GLenum, coords: Ptr[GLuint]): Unit = extern
+  def glTexCoordP2ui(type_ : GLenum, coords: GLuint): Unit = extern
+  def glTexCoordP2uiv(type_ : GLenum, coords: Ptr[GLuint]): Unit = extern
+  def glTexCoordP3ui(type_ : GLenum, coords: GLuint): Unit = extern
+  def glTexCoordP3uiv(type_ : GLenum, coords: Ptr[GLuint]): Unit = extern
+  def glTexCoordP4ui(type_ : GLenum, coords: GLuint): Unit = extern
+  def glTexCoordP4uiv(type_ : GLenum, coords: Ptr[GLuint]): Unit = extern
+  def glMultiTexCoordP1ui(texture: GLenum, type_ : GLenum, coords: GLuint): Unit = extern
+  def glMultiTexCoordP1uiv(texture: GLenum, type_ : GLenum, coords: Ptr[GLuint]): Unit = extern
+  def glMultiTexCoordP2ui(texture: GLenum, type_ : GLenum, coords: GLuint): Unit = extern
+  def glMultiTexCoordP2uiv(texture: GLenum, type_ : GLenum, coords: Ptr[GLuint]): Unit = extern
+  def glMultiTexCoordP3ui(texture: GLenum, type_ : GLenum, coords: GLuint): Unit = extern
+  def glMultiTexCoordP3uiv(texture: GLenum, type_ : GLenum, coords: Ptr[GLuint]): Unit = extern
+  def glMultiTexCoordP4ui(texture: GLenum, type_ : GLenum, coords: GLuint): Unit = extern
+  def glMultiTexCoordP4uiv(texture: GLenum, type_ : GLenum, coords: Ptr[GLuint]): Unit = extern
+  def glNormalP3ui(type_ : GLenum, coords: GLuint): Unit = extern
+  def glNormalP3uiv(type_ : GLenum, coords: Ptr[GLuint]): Unit = extern
+  def glColorP3ui(type_ : GLenum, color: GLuint): Unit = extern
+  def glColorP3uiv(type_ : GLenum, color: Ptr[GLuint]): Unit = extern
+  def glColorP4ui(type_ : GLenum, color: GLuint): Unit = extern
+  def glColorP4uiv(type_ : GLenum, color: Ptr[GLuint]): Unit = extern
+  def glSecondaryColorP3ui(type_ : GLenum, color: GLuint): Unit = extern
+  def glSecondaryColorP3uiv(type_ : GLenum, color: Ptr[GLuint]): Unit = extern
+  /*
+   * End OpenGL 3.3
+   */
 }

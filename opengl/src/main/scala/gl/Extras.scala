@@ -1463,4 +1463,27 @@ object Extras {
   /*
    * End OpenGL 3.2
    */
+
+  /*
+   * OpenGL 3.3
+   */
+  val GL_VERTEX_ATTRIB_ARRAY_DIVISOR: UShort = 0x88FE.toUShort
+  val GL_SRC1_COLOR: UShort = 0x88F9.toUShort
+  val GL_ONE_MINUS_SRC1_COLOR: UShort = 0x88FA.toUShort
+  val GL_ONE_MINUS_SRC1_ALPHA: UShort = 0x88FB.toUShort
+  val GL_MAX_DUAL_SOURCE_DRAW_BUFFERS: UShort = 0x88FC.toUShort
+  val GL_ANY_SAMPLES_PASSED: UShort = 0x8C2F.toUShort
+  val GL_SAMPLER_BINDING: UShort = 0x8919.toUShort
+  val GL_RGB10_A2UI: UShort = 0x906F.toUShort
+  val GL_TEXTURE_SWIZZLE_R: UShort = 0x8E42.toUShort
+  val GL_TEXTURE_SWIZZLE_G: UShort = 0x8E43.toUShort
+  val GL_TEXTURE_SWIZZLE_B: UShort = 0x8E44.toUShort
+  val GL_TEXTURE_SWIZZLE_A: UShort = 0x8E45.toUShort
+  val GL_TEXTURE_SWIZZLE_RGBA: UShort = 0x8E46.toUShort
+  val GL_TIME_ELAPSED: UShort = 0x88BF.toUShort
+  val GL_TIMESTAMP: UShort = 0x8E28.toUShort
+  val GL_INT_2_10_10_10_REV: UShort = 0x8D9F.toUShort
+  /*
+   * End OpenGL 3.3
+   */
 }
