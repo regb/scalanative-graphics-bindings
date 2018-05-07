@@ -312,7 +312,15 @@ object SDL {
    ************ SDL_pixels.h *************
    ***************************************/
 
-  type SDL_Color = CStruct4[UByte, UByte, UByte, UByte]
+  /* 
+   * SDL_Color is defined as CStruct4[UByte, UByte, UByte, UByte],
+   * however it seems that after being compiled the underlying value
+   * will be equivalent to a UInt (32 bits). We use the UInt
+   * instead of the CStruct4 because scala-native does not support passing
+   * struct by value. The trick however is that, probably due to endianness
+   * on my computer, the rgba values were reveresed.
+   */
+  type SDL_Color = UInt
   type SDL_Palette = CStruct4[CInt, Ptr[SDL_Color], UInt, CInt]
 
   type SDL_PixelFormat = CStruct19[

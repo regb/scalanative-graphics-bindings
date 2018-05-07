@@ -39,11 +39,10 @@ object Fonts extends App {
 
   def onDraw(): Unit = {
     println("hey there")
-    //val color = CStruct4(100, 50, 0, 0)
-    val message = TTF_RenderText_Solid(font, c"Hello World", null)
-    //val texture = SDL_CreateTextureFromSurface(renderer, message)
-    //SDL_RenderCopy(renderer, texture, null, null)
-    //SDL_RenderPresent(renderer)
+    val message = TTF_RenderText_Solid(font, c"Hello World", SDL_Color(255.toUByte, 0.toUByte, 255.toUByte, 255.toUByte))
+    val texture = SDL_CreateTextureFromSurface(renderer, message)
+    SDL_RenderCopy(renderer, texture, null, null)
+    SDL_RenderPresent(renderer)
   }
 
   def delay(ms: UInt): Unit =

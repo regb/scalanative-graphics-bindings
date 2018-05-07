@@ -273,22 +273,20 @@ object Extras {
   val SDL_PIXELFORMAT_YVYU: UInt = SDL_DEFINE_PIXELFOURCC('Y', 'V', 'Y', 'U')
   /* End PIXELFORMAT (anonymous) enum */
 
+  def SDL_Color(r: UByte, g: UByte, b: UByte, a: UByte): UInt = {
+    // TODO: I assume little-endianness, but what happen when this is not?
+    (a<<24) | (b<<16) | (g<<8) | r
+  }
+
   implicit class SDL_ColorOps(val self: Ptr[SDL_Color]) extends AnyVal {
     def init(r: UByte, g: UByte, b: UByte, a: UByte): Ptr[SDL_Color] = {
-      !(self._1) = r
-      !(self._2) = g
-      !(self._3) = b
-      !(self._4) = a
+      !(self) = SDL_Color(r, g, b, a)
       self
     }
-    def r: UByte = !(self._1)
-    def r_=(nr: UByte): Unit = { !(self._1) = nr }
-    def g: UByte = !(self._2)
-    def g_=(ng: UByte): Unit = { !(self._2) = ng }
-    def b: UByte = !(self._3)
-    def b_=(nb: UByte): Unit = { !(self._3) = nb }
-    def a: UByte = !(self._4)
-    def a_=(na: UByte): Unit = { !(self._4) = na }
+    def r: UByte = ((!self)&0xFF.toUInt).toUByte
+    def g: UByte = (((!self)>>8)&0xFF.toUInt).toUByte
+    def b: UByte = (((!self)>>16)&0xFF.toUInt).toUByte
+    def a: UByte = (((!self)>>24)&0xFF.toUInt).toUByte
   }
   type SDL_Colour = SDL_Color
 

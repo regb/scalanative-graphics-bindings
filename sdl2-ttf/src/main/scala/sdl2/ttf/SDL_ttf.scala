@@ -86,7 +86,8 @@ object SDL_ttf {
   // TODO: Seems like we hit a non-supported feature here, scala-native cannot bind functions which
   //       take a struct by value (the SDL_Color parameter). Trying to compile a code that use this will
   //       crash the compiler. What to do?
-  def TTF_RenderText_Solid(font: Ptr[TTF_Font], text: CString, fg: SDL_Color): Ptr[SDL_Surface] = extern
+  //def TTF_RenderText_Solid(font: Ptr[TTF_Font], text: CString, fg: SDL_Color): Ptr[SDL_Surface] = extern
+  def TTF_RenderText_Solid(font: Ptr[TTF_Font], text: CString, color: SDL_Color): Ptr[SDL_Surface] = extern
 //extern DECLSPEC SDL_Surface * SDLCALL TTF_RenderUTF8_Solid(TTF_Font *font,
 //                const char *text, SDL_Color fg);
 //extern DECLSPEC SDL_Surface * SDLCALL TTF_RenderUNICODE_Solid(TTF_Font *font,
