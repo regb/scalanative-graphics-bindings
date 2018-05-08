@@ -27,76 +27,67 @@ object SDL_ttf {
   def TTF_OpenFontRW(src: Ptr[SDL_RWops], freesrc: CInt, ptsize: CInt): Ptr[TTF_Font] = extern
   def TTF_OpenFontIndexRW(src: Ptr[SDL_RWops], freesrc: CInt, ptsize: CInt, index: CLong): Ptr[TTF_Font] = extern
 
-//extern DECLSPEC int SDLCALL TTF_GetFontStyle(const TTF_Font *font);
-//extern DECLSPEC void SDLCALL TTF_SetFontStyle(TTF_Font *font, int style);
-//extern DECLSPEC int SDLCALL TTF_GetFontOutline(const TTF_Font *font);
-//extern DECLSPEC void SDLCALL TTF_SetFontOutline(TTF_Font *font, int outline);
+  def TTF_GetFontStyle(font: Ptr[TTF_Font]): CInt = extern
+  def TTF_SetFontStyle(font: Ptr[TTF_Font], style: CInt): Unit = extern
+  def TTF_GetFontOutline(font: Ptr[TTF_Font]): CInt = extern
+  def TTF_SetFontOutline(font: Ptr[TTF_Font], outline: CInt): Unit = extern
 
-//#define TTF_HINTING_NORMAL    0
-//#define TTF_HINTING_LIGHT     1
-//#define TTF_HINTING_MONO      2
-//#define TTF_HINTING_NONE      3
-//extern DECLSPEC int SDLCALL TTF_GetFontHinting(const TTF_Font *font);
-//extern DECLSPEC void SDLCALL TTF_SetFontHinting(TTF_Font *font, int hinting);
+  def TTF_GetFontHinting(font: Ptr[TTF_Font]): CInt = extern
+  def TTF_SetFontHinting(font: Ptr[TTF_Font], hinting: CInt): Unit = extern
 
-///* Get the total height of the font - usually equal to point size */
-//extern DECLSPEC int SDLCALL TTF_FontHeight(const TTF_Font *font);
-//
-///* Get the offset from the baseline to the top of the font
-//   This is a positive value, relative to the baseline.
-// */
-//extern DECLSPEC int SDLCALL TTF_FontAscent(const TTF_Font *font);
-//
-///* Get the offset from the baseline to the bottom of the font
-//   This is a negative value, relative to the baseline.
-// */
-//extern DECLSPEC int SDLCALL TTF_FontDescent(const TTF_Font *font);
-//
-///* Get the recommended spacing between lines of text for this font */
-//extern DECLSPEC int SDLCALL TTF_FontLineSkip(const TTF_Font *font);
-//
-///* Get/Set whether or not kerning is allowed for this font */
-//extern DECLSPEC int SDLCALL TTF_GetFontKerning(const TTF_Font *font);
-//extern DECLSPEC void SDLCALL TTF_SetFontKerning(TTF_Font *font, int allowed);
-//
-///* Get the number of faces of the font */
-//extern DECLSPEC long SDLCALL TTF_FontFaces(const TTF_Font *font);
-//
-///* Get the font face attributes, if any */
-//extern DECLSPEC int SDLCALL TTF_FontFaceIsFixedWidth(const TTF_Font *font);
-//extern DECLSPEC char * SDLCALL TTF_FontFaceFamilyName(const TTF_Font *font);
-//extern DECLSPEC char * SDLCALL TTF_FontFaceStyleName(const TTF_Font *font);
-//
-///* Check wether a glyph is provided by the font or not */
-//extern DECLSPEC int SDLCALL TTF_GlyphIsProvided(const TTF_Font *font, Uint16 ch);
-//
-///* Get the metrics (dimensions) of a glyph
-//   To understand what these metrics mean, here is a useful link:
-//    http://freetype.sourceforge.net/freetype2/docs/tutorial/step2.html
-// */
-//extern DECLSPEC int SDLCALL TTF_GlyphMetrics(TTF_Font *font, Uint16 ch,
-//                     int *minx, int *maxx,
-//                                     int *miny, int *maxy, int *advance);
-//
-///* Get the dimensions of a rendered string of text */
-//extern DECLSPEC int SDLCALL TTF_SizeText(TTF_Font *font, const char *text, int *w, int *h);
-//extern DECLSPEC int SDLCALL TTF_SizeUTF8(TTF_Font *font, const char *text, int *w, int *h);
-//extern DECLSPEC int SDLCALL TTF_SizeUNICODE(TTF_Font *font, const Uint16 *text, int *w, int *h);
+  def TTF_FontHeight(font: Ptr[TTF_Font]): CInt = extern
 
-  // TODO: Seems like we hit a non-supported feature here, scala-native cannot bind functions which
-  //       take a struct by value (the SDL_Color parameter). Trying to compile a code that use this will
-  //       crash the compiler. What to do?
-  //def TTF_RenderText_Solid(font: Ptr[TTF_Font], text: CString, fg: SDL_Color): Ptr[SDL_Surface] = extern
-  def TTF_RenderText_Solid(font: Ptr[TTF_Font], text: CString, color: SDL_Color): Ptr[SDL_Surface] = extern
-//extern DECLSPEC SDL_Surface * SDLCALL TTF_RenderUTF8_Solid(TTF_Font *font,
-//                const char *text, SDL_Color fg);
-//extern DECLSPEC SDL_Surface * SDLCALL TTF_RenderUNICODE_Solid(TTF_Font *font,
-//                const Uint16 *text, SDL_Color fg);
-//extern DECLSPEC SDL_Surface * SDLCALL TTF_RenderGlyph_Solid(TTF_Font *font,
-//                    Uint16 ch, SDL_Color fg);
+  def TTF_FontAscent(font: Ptr[TTF_Font]): CInt = extern
+
+  def TTF_FontDescent(font: Ptr[TTF_Font]): CInt = extern
+
+  def TTF_FontLineSkip(font: Ptr[TTF_Font]): CInt = extern
+
+  def TTF_GetFontKerning(font: Ptr[TTF_Font]): CInt = extern
+  def TTF_SetFontKerning(font: Ptr[TTF_Font], allowed: CInt): Unit = extern
+
+  def TTF_FontFaces(font: Ptr[TTF_Font]): CLong = extern
+
+  def TTF_FontFaceIsFixedWidth(font: Ptr[TTF_Font]): CInt = extern
+  def TTF_FontFaceFamilyName(font: Ptr[TTF_Font]): CString = extern
+  def TTF_FontFaceStyleName(font: Ptr[TTF_Font]): CString = extern
+
+  def TTF_GlyphIsProvided(font: Ptr[TTF_Font], ch: UShort): CInt = extern
+
+  def TTF_GlyphMetrics(font: Ptr[TTF_Font], ch: UShort,
+                       minx: Ptr[CInt], maxx: Ptr[CInt], miny: Ptr[CInt], maxy: Ptr[CInt],
+                       advance: Ptr[CInt]): CInt = extern
+
+  def TTF_SizeText(font: Ptr[TTF_Font], text: CString, w: Ptr[CInt], h: Ptr[CInt]): CInt = extern
+  def TTF_SizeUTF8(font: Ptr[TTF_Font], text: CString, w: Ptr[CInt], h: Ptr[CInt]): CInt = extern
+  def TTF_SizeUNICODE(font: Ptr[TTF_Font], text: Ptr[UShort], w: Ptr[CInt], h: Ptr[CInt]): CInt = extern
+
+  def TTF_RenderText_Solid(font: Ptr[TTF_Font], text: CString, fg: SDL_Color): Ptr[SDL_Surface] = extern
+  def TTF_RenderUTF8_Solid(font: Ptr[TTF_Font], text: CString, fg: SDL_Color): Ptr[SDL_Surface] = extern
+  def TTF_RenderUNICODE_Solid(font: Ptr[TTF_Font], text: Ptr[UShort], fg: SDL_Color): Ptr[SDL_Surface] = extern
+
+  def TTF_RenderGlyph_Solid(font: Ptr[TTF_Font], ch: UShort, fg: SDL_Color): Ptr[SDL_Surface] = extern
+
+  def TTF_RenderText_Shaded(font: Ptr[TTF_Font], text: CString, fg: SDL_Color, bg: SDL_Color): Ptr[SDL_Surface] = extern
+  def TTF_RenderUTF8_Shaded(font: Ptr[TTF_Font], text: CString, fg: SDL_Color, bg: SDL_Color): Ptr[SDL_Surface] = extern
+  def TTF_RenderUNICODE_Shaded(font: Ptr[TTF_Font], text: Ptr[UShort], fg: SDL_Color, bg: SDL_Color): Ptr[SDL_Surface] = extern
+
+  def TTF_RenderGlyph_Shaded(font: Ptr[TTF_Font], ch: UShort, fg: SDL_Color, bg: SDL_Color): Ptr[SDL_Surface] = extern
+
+  def TTF_RenderText_Blended(font: Ptr[TTF_Font], text: CString, fg: SDL_Color): Ptr[SDL_Surface] = extern
+  def TTF_RenderUTF8_Blended(font: Ptr[TTF_Font], text: CString, fg: SDL_Color): Ptr[SDL_Surface] = extern
+  def TTF_RenderUNICODE_Blended(font: Ptr[TTF_Font], text: Ptr[UShort], fg: SDL_Color): Ptr[SDL_Surface] = extern
+
+  def TTF_RenderText_Blended_Wrapped(font: Ptr[TTF_Font], text: CString, fg: SDL_Color, wrapLength: UInt): Ptr[SDL_Surface] = extern
+  def TTF_RenderUTF8_Blended_Wrapped(font: Ptr[TTF_Font], text: CString, fg: SDL_Color, wrapLength: UInt): Ptr[SDL_Surface] = extern
+  def TTF_RenderUNICODE_Blended_Wrapped(font: Ptr[TTF_Font], text: Ptr[UShort], fg: SDL_Color, wrapLength: UInt): Ptr[SDL_Surface] = extern
+
+  def TTF_RenderGlyph_Blended(font: Ptr[TTF_Font], ch: UShort, fg: SDL_Color): Ptr[SDL_Surface] = extern
 
   def TTF_CloseFont(font: Ptr[TTF_Font]): Unit = extern
 
   def TTF_Quit(): Unit = extern
   def TTF_WasInit(): CInt = extern
+
+  def TTF_GetFontKerningSizeGlyphs(font: Ptr[TTF_Font], previous_ch: UShort, ch: UShort): CInt = extern
 }

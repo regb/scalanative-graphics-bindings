@@ -17,4 +17,11 @@ object Extras {
   val TTF_STYLE_ITALIC: UShort = 0x02.toUShort
   val TTF_STYLE_UNDERLINE: UShort = 0x04.toUShort
   val TTF_STYLE_STRIKETHROUGH: UShort = 0x08.toUShort
+
+  val TTF_HINTING_NORMAL: CInt = 0
+  val TTF_HINTING_LIGHT: CInt = 1
+  val TTF_HINTING_MONO: CInt = 2
+  val TTF_HINTING_NONE: CInt = 3
+
+  def TTF_GetError(): CString = SDL_GetError()
 }

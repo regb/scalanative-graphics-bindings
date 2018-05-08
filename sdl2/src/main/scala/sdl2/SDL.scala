@@ -319,6 +319,11 @@ object SDL {
    * instead of the CStruct4 because scala-native does not support passing
    * struct by value. The trick however is that, probably due to endianness
    * on my computer, the rgba values were reveresed.
+   *
+   * TODO: One technique used by scala native implementation is to write
+   *       helper/wrapper functions in C (with supported signature, that is
+   *       with pointers) and bind these instead. See Complex implementation in
+   *       Scala native.
    */
   type SDL_Color = UInt
   type SDL_Palette = CStruct4[CInt, Ptr[SDL_Color], UInt, CInt]

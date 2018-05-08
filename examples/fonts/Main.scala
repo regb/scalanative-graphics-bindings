@@ -39,9 +39,13 @@ object Fonts extends App {
 
   def onDraw(): Unit = {
     println("hey there")
-    val message = TTF_RenderText_Solid(font, c"Hello World", SDL_Color(255.toUByte, 0.toUByte, 255.toUByte, 255.toUByte))
+    val message = TTF_RenderText_Solid(font, c"Hello World", SDL_Color(255.toUByte, 255.toUByte, 255.toUByte, 255.toUByte))
     val texture = SDL_CreateTextureFromSurface(renderer, message)
-    SDL_RenderCopy(renderer, texture, null, null)
+    val w = stackalloc[CInt]
+    val h = stackalloc[CInt]
+    SDL_QueryTexture(texture, null, null, w, h)
+    val rect = stackalloc[SDL_Rect].init(0, 0, !w, !h)
+    SDL_RenderCopy(renderer, texture, null, rect)
     SDL_RenderPresent(renderer)
   }
 
