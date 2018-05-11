@@ -1824,4 +1824,30 @@ object GL {
   /*
    * End OpenGL 4.3
    */
+
+  /*
+   * OpenGL 4.4
+   */
+  type PFNGLBUFFERSTORAGEPROC = CFunctionPtr4[GLenum, GLsizeiptr, Ptr[Byte], GLbitfield, Unit]
+  type PFNGLCLEARTEXIMAGEPROC = CFunctionPtr5[GLuint, GLint, GLenum, GLenum, Ptr[Byte], Unit]
+  type PFNGLCLEARTEXSUBIMAGEPROC = CFunctionPtr11[GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr[Byte], Unit]
+  type PFNGLBINDBUFFERSBASEPROC = CFunctionPtr4[GLenum, GLuint, GLsizei, Ptr[GLuint], Unit]
+  type PFNGLBINDBUFFERSRANGEPROC = CFunctionPtr6[GLenum, GLuint, GLsizei, Ptr[GLuint], Ptr[GLintptr], Ptr[GLsizeiptr], Unit]
+  type PFNGLBINDTEXTURESPROC = CFunctionPtr3[GLuint, GLsizei, Ptr[GLuint], Unit]
+  type PFNGLBINDSAMPLERSPROC = CFunctionPtr3[GLuint, GLsizei, Ptr[GLuint], Unit]
+  type PFNGLBINDIMAGETEXTURESPROC = CFunctionPtr3[GLuint, GLsizei, Ptr[GLuint], Unit]
+  type PFNGLBINDVERTEXBUFFERSPROC = CFunctionPtr5[GLuint, GLsizei, Ptr[GLuint], Ptr[GLintptr], Ptr[GLsizei], Unit]
+
+  def glBufferStorage(target: GLenum, size: GLsizeiptr, data: Ptr[Byte], flags: GLbitfield): Unit = extern
+  def glClearTexImage(texture: GLuint, level: GLint, format: GLenum, type_ : GLenum, data: Ptr[Byte]): Unit = extern
+  def glClearTexSubImage(texture: GLuint, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum, type_ : GLenum, data: Ptr[Byte]): Unit = extern
+  def glBindBuffersBase(target: GLenum, first: GLuint, count: GLsizei, buffers: Ptr[GLuint]): Unit = extern
+  def glBindBuffersRange(target: GLenum, first: GLuint, count: GLsizei, buffers: Ptr[GLuint], offsets: Ptr[GLintptr], sizes: Ptr[GLsizeiptr]): Unit = extern
+  def glBindTextures(first: GLuint, count: GLsizei, textures: Ptr[GLuint]): Unit = extern
+  def glBindSamplers(first: GLuint, count: GLsizei, samplers: Ptr[GLuint]): Unit = extern
+  def glBindImageTextures(first: GLuint, count: GLsizei, textures: Ptr[GLuint]): Unit = extern
+  def glBindVertexBuffers(first: GLuint, count: GLsizei, buffers: Ptr[GLuint], offsets: Ptr[GLintptr], strides: Ptr[GLsizei]): Unit = extern
+  /*
+   * End OpenGL 4.4
+   */
 }
