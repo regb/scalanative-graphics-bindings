@@ -1696,4 +1696,36 @@ object GL {
   /*
    * End OpenGL 4.1
    */
+
+  /*
+   * OpenGL 4.2
+   */
+  type PFNGLDRAWARRAYSINSTANCEDBASEINSTANCEPROC = CFunctionPtr5[GLenum, GLint, GLsizei, GLsizei, GLuint, Unit]
+  type PFNGLDRAWELEMENTSINSTANCEDBASEINSTANCEPROC = CFunctionPtr6[GLenum, GLsizei, GLenum, Ptr[Byte], GLsizei, GLuint, Unit]
+  type PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXBASEINSTANCEPROC = CFunctionPtr7[GLenum, GLsizei, GLenum, Ptr[Byte], GLsizei, GLint, GLuint, Unit]
+  type PFNGLGETINTERNALFORMATIVPROC = CFunctionPtr5[GLenum, GLenum, GLenum, GLsizei, Ptr[GLint], Unit]
+  type PFNGLGETACTIVEATOMICCOUNTERBUFFERIVPROC = CFunctionPtr4[GLuint, GLuint, GLenum, Ptr[GLint], Unit]
+  type PFNGLBINDIMAGETEXTUREPROC = CFunctionPtr7[GLuint, GLuint, GLint, GLboolean, GLint, GLenum, GLenum, Unit]
+  type PFNGLMEMORYBARRIERPROC = CFunctionPtr1[GLbitfield, Unit]
+  type PFNGLTEXSTORAGE1DPROC = CFunctionPtr4[GLenum, GLsizei, GLenum, GLsizei, Unit]
+  type PFNGLTEXSTORAGE2DPROC = CFunctionPtr5[GLenum, GLsizei, GLenum, GLsizei, GLsizei, Unit]
+  type PFNGLTEXSTORAGE3DPROC = CFunctionPtr6[GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, Unit]
+  type PFNGLDRAWTRANSFORMFEEDBACKINSTANCEDPROC = CFunctionPtr3[GLenum, GLuint, GLsizei, Unit]
+  type PFNGLDRAWTRANSFORMFEEDBACKSTREAMINSTANCEDPROC = CFunctionPtr4[GLenum, GLuint, GLuint, GLsizei, Unit]
+
+  def glDrawArraysInstancedBaseInstance(mode: GLenum, first: GLint, count: GLsizei, instancecount: GLsizei, baseinstance: GLuint): Unit = extern
+  def glDrawElementsInstancedBaseInstance(mode: GLenum, count: GLsizei, type_ : GLenum, indices: Ptr[Byte], instancecount: GLsizei, baseinstance: GLuint): Unit = extern
+  def glDrawElementsInstancedBaseVertexBaseInstance(mode: GLenum, count: GLsizei, type_ : GLenum, indices: Ptr[Byte], instancecount: GLsizei, basevertex: GLint, baseinstance: GLuint): Unit = extern
+  def glGetInternalformativ(target: GLenum, internalformat: GLenum, pname: GLenum, bufSize: GLsizei, params: Ptr[GLint]): Unit = extern
+  def glGetActiveAtomicCounterBufferiv(program: GLuint, bufferIndex: GLuint, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glBindImageTexture(unit: GLuint, texture: GLuint, level: GLint, layered: GLboolean, layer: GLint, access: GLenum, format: GLenum): Unit = extern
+  def glMemoryBarrier(barriers: GLbitfield): Unit = extern
+  def glTexStorage1D(target: GLenum, levels: GLsizei, internalformat: GLenum, width: GLsizei): Unit = extern
+  def glTexStorage2D(target: GLenum, levels: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei): Unit = extern
+  def glTexStorage3D(target: GLenum, levels: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei, depth: GLsizei): Unit = extern
+  def glDrawTransformFeedbackInstanced(mode: GLenum, id: GLuint, instancecount: GLsizei): Unit = extern
+  def glDrawTransformFeedbackStreamInstanced(mode: GLenum, id: GLuint, stream: GLuint, instancecount: GLsizei): Unit = extern
+  /*
+   * End OpenGL 4.2
+   */
 }
