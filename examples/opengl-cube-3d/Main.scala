@@ -2,8 +2,6 @@ import scalanative.native._
 
 import sdl2.SDL._
 import sdl2.Extras._
-import sdl2.image.SDL_image._
-import sdl2.image.Extras._
 import gl.GL._
 import gl.Extras._
 

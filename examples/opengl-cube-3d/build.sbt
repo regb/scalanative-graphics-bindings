@@ -1,5 +1,4 @@
 lazy val sdl2 = ProjectRef(file("../.."), "sdl2")
-lazy val sdl2Image = ProjectRef(file("../.."), "sdl2Image")
 lazy val opengl = ProjectRef(file("../.."), "opengl")
 
 val OS = sys.props("os.name").toLowerCase
@@ -23,4 +22,4 @@ lazy val root = (project in file("."))
     else
       ???
   )
-  .dependsOn(sdl2, sdl2Image, opengl)
+  .dependsOn(sdl2, opengl)

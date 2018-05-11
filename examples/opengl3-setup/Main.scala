@@ -34,15 +34,33 @@ object Main {
         return;
     }
 
-    stdio.printf(glGetString(GL_VERSION).asInstanceOf[Ptr[Byte]])
-    stdio.printf(c"\n")
+    println("OpenGL version: " + fromCString(glGetString(GL_VERSION).asInstanceOf[Ptr[Byte]]))
 
+    val programID = loadShaders(
+"""#version 330 core
+layout(location = 0) in vec3 vertexPosition_modelspace;
+
+void main(){
+  gl_Position.xyz = vertexPosition_modelspace;
+  gl_Position.w = 1.0;
+}
+""",
+"""
+#version 330 core
+out vec3 color;
+void main(){
+    color = vec3(1,0,0);
+}
+"""
+)
+
+    glClearColor(0f, 0f, 0.4f, 0f)
 
     SDL_GL_SetSwapInterval(1)
 
-    val VertexArrayID: Ptr[GLuint] = stackalloc[GLuint]
-    glGenVertexArrays(1.toUInt, VertexArrayID)
-    glBindVertexArray(!VertexArrayID)
+    val vertexArrayID: Ptr[GLuint] = stackalloc[GLuint]
+    glGenVertexArrays(1.toUInt, vertexArrayID)
+    glBindVertexArray(!vertexArrayID)
 
     //static const GLfloat g_vertex_buffer_data[] = {
     val gVertexBufferData: Ptr[Float] = stdlib.malloc(9*4).asInstanceOf[Ptr[Float]]
@@ -61,16 +79,6 @@ object Main {
     glBindBuffer(GL_ARRAY_BUFFER, !vertexbuffer);
     glBufferData(GL_ARRAY_BUFFER, 9*4, gVertexBufferData.asInstanceOf[Ptr[Byte]], GL_STATIC_DRAW);
 
-    //glMatrixMode(GL_PROJECTION)
-    //glLoadIdentity()
-    //glOrtho(-1f, 1f, -1f, 1f, -1f, 1f)
-
-    //glMatrixMode(GL_MODELVIEW)
-    //glLoadIdentity()
-    //glPushMatrix()
-
-    var x = 0f; var y = 0f
-
     var running = true
     val event: Ptr[SDL_Event] = stackalloc[SDL_Event]
 
@@ -80,26 +88,14 @@ object Main {
         event.type_ match {
           case SDL_QUIT =>
             running = false
-          case SDL_KEYDOWN =>
-            if(event.key.keysym.sym == SDLK_LEFT)
-              x -= 10f
-            else if(event.key.keysym.sym == SDLK_RIGHT)
-              x += 10f
-            else if(event.key.keysym.sym == SDLK_UP)
-              y -= 10f
-            else if(event.key.keysym.sym == SDLK_DOWN)
-              y += 10f
           case _ =>
             ()
         }
       }
 
-      //glPopMatrix()
-      //glPushMatrix()
-      //glTranslatef(x, y, 0f)
+      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
-      glClearColor(0f, 0f, 0f, 1f)
-      glClear(GL_COLOR_BUFFER_BIT)
+      glUseProgram(programID)
 
       glEnableVertexAttribArray(0.toUInt)
       glBindBuffer(GL_ARRAY_BUFFER, !vertexbuffer)
@@ -114,18 +110,6 @@ object Main {
       glDrawArrays(GL_TRIANGLES, 0, 3.toUInt)
       glDisableVertexAttribArray(0.toUInt)
 
-      //glColor3f(1f,1f,1f)
-      //glBegin(GL_QUADS)
-      //  glColor3f(1f, 0f, 0f)
-      //  glVertex2f(-0.5f, -0.5f)
-      //  glColor3f(1f, 1f, 0f)
-      //  glVertex2f(0.5f, -0.5f)
-      //  glColor3f(0f, 1f, 0f)
-      //  glVertex2f(0.5f,  0.5f)
-      //  glColor3f(0f, 1f, 1f)
-      //  glVertex2f(-0.5f, 0.5f)
-      //glEnd()
-
       SDL_GL_SwapWindow(window)
 
       SDL_Delay((1000/30).toUInt)
@@ -133,6 +117,68 @@ object Main {
 
     SDL_DestroyWindow(window);
     SDL_Quit();
+  }
+
+  def loadShaders(vertexShaderCode: String, fragmentShaderCode: String): GLuint = {
+    Zone { implicit zone =>
+      val vertexShaderID: GLuint = glCreateShader(GL_VERTEX_SHADER)
+      val fragmentShaderID: GLuint = glCreateShader(GL_FRAGMENT_SHADER)
+
+      // For checking compilation and linking.
+      val result = stackalloc[GLint]
+      val infoLogLength = stackalloc[CInt]
+
+      println("Compiling vertex shader")
+      val vertexShaderCodePointer = stackalloc[Ptr[Byte]]
+      !vertexShaderCodePointer = toCString(vertexShaderCode)
+      glShaderSource(vertexShaderID, 1.toUInt, vertexShaderCodePointer, null)
+      glCompileShader(vertexShaderID)
+
+      glGetShaderiv(vertexShaderID, GL_COMPILE_STATUS, result)
+      println("Compiling result: " + !result)
+      glGetShaderiv(vertexShaderID, GL_INFO_LOG_LENGTH, infoLogLength)
+      if(!infoLogLength > 0) {
+        val errorMsg = stdlib.malloc(!infoLogLength + 1).asInstanceOf[Ptr[Byte]]
+        glGetShaderInfoLog(vertexShaderID, (!infoLogLength).toUInt, null, errorMsg)
+        println(fromCString(errorMsg))
+      }
+
+      println("Compiling fragment shader")
+      val fragmentShaderCodePointer = stackalloc[Ptr[Byte]]
+      !fragmentShaderCodePointer = toCString(fragmentShaderCode)
+      glShaderSource(fragmentShaderID, 1.toUInt, fragmentShaderCodePointer, null)
+      glCompileShader(fragmentShaderID)
+      
+      glGetShaderiv(fragmentShaderID, GL_COMPILE_STATUS, result)
+      println("Compiling result: " + !result)
+      glGetShaderiv(fragmentShaderID, GL_INFO_LOG_LENGTH, infoLogLength)
+      if(!infoLogLength > 0) {
+        val errorMsg = stdlib.malloc(!infoLogLength + 1).asInstanceOf[Ptr[Byte]]
+        glGetShaderInfoLog(fragmentShaderID, (!infoLogLength).toUInt, null, errorMsg)
+        println(fromCString(errorMsg))
+      }
+
+      println("Linking program")
+      val programID = glCreateProgram()
+      glAttachShader(programID, vertexShaderID)
+      glAttachShader(programID, fragmentShaderID)
+      glLinkProgram(programID)
+
+      glGetProgramiv(programID, GL_LINK_STATUS, result)
+      println("Linking result: " + !result)
+      glGetProgramiv(programID, GL_INFO_LOG_LENGTH, infoLogLength)
+      if(!infoLogLength > 0) {
+        println("Problem with linking program")
+      }
+
+      glDetachShader(programID, vertexShaderID)
+      glDetachShader(programID, fragmentShaderID)
+
+      glDeleteShader(vertexShaderID)
+      glDeleteShader(fragmentShaderID)
+
+      return programID
+    }
   }
 
 }
