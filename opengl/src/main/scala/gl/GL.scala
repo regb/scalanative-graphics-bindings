@@ -1728,4 +1728,100 @@ object GL {
   /*
    * End OpenGL 4.2
    */
+
+  /*
+   * OpenGL 4.3
+   */
+  type GLDEBUGPROC = CFunctionPtr7[GLenum, GLenum, GLuint, GLenum, GLsizei, Ptr[GLchar], Ptr[Byte], Ptr[Byte]]
+
+  type PFNGLCLEARBUFFERDATAPROC = CFunctionPtr5[GLenum, GLenum, GLenum, GLenum, Ptr[Byte], Unit]
+  type PFNGLCLEARBUFFERSUBDATAPROC = CFunctionPtr7[GLenum, GLenum, GLintptr, GLsizeiptr, GLenum, GLenum, Ptr[Byte], Unit]
+  type PFNGLDISPATCHCOMPUTEPROC = CFunctionPtr3[GLuint, GLuint, GLuint, Unit]
+  type PFNGLDISPATCHCOMPUTEINDIRECTPROC = CFunctionPtr1[GLintptr, Unit]
+  type PFNGLCOPYIMAGESUBDATAPROC = CFunctionPtr15[GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, Unit]
+  type PFNGLFRAMEBUFFERPARAMETERIPROC = CFunctionPtr3[GLenum, GLenum, GLint, Unit]
+  type PFNGLGETFRAMEBUFFERPARAMETERIVPROC = CFunctionPtr3[GLenum, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETINTERNALFORMATI64VPROC = CFunctionPtr5[GLenum, GLenum, GLenum, GLsizei, Ptr[GLint64], Unit]
+  type PFNGLINVALIDATETEXSUBIMAGEPROC = CFunctionPtr8[GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, Unit]
+  type PFNGLINVALIDATETEXIMAGEPROC = CFunctionPtr2[GLuint, GLint, Unit]
+  type PFNGLINVALIDATEBUFFERSUBDATAPROC = CFunctionPtr3[GLuint, GLintptr, GLsizeiptr, Unit]
+  type PFNGLINVALIDATEBUFFERDATAPROC = CFunctionPtr1[GLuint, Unit]
+  type PFNGLINVALIDATEFRAMEBUFFERPROC = CFunctionPtr3[GLenum, GLsizei, Ptr[GLenum], Unit]
+  type PFNGLINVALIDATESUBFRAMEBUFFERPROC = CFunctionPtr7[GLenum, GLsizei, Ptr[GLenum], GLint, GLint, GLsizei, GLsizei, Unit]
+  type PFNGLMULTIDRAWARRAYSINDIRECTPROC = CFunctionPtr4[GLenum, Ptr[Byte], GLsizei, GLsizei, Unit]
+  type PFNGLMULTIDRAWELEMENTSINDIRECTPROC = CFunctionPtr5[GLenum, GLenum, Ptr[Byte], GLsizei, GLsizei, Unit]
+  type PFNGLGETPROGRAMINTERFACEIVPROC = CFunctionPtr4[GLuint, GLenum, GLenum, Ptr[GLint], Unit]
+  type PFNGLGETPROGRAMRESOURCEINDEXPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLchar], Unit]
+  type PFNGLGETPROGRAMRESOURCENAMEPROC = CFunctionPtr6[GLuint, GLenum, GLuint, GLsizei, Ptr[GLsizei], Ptr[GLchar], Unit]
+  type PFNGLGETPROGRAMRESOURCEIVPROC = CFunctionPtr8[GLuint, GLenum, GLuint, GLsizei, Ptr[GLenum], GLsizei, Ptr[GLsizei], Ptr[GLint], Unit]
+  type PFNGLGETPROGRAMRESOURCELOCATIONPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLchar], Unit]
+  type PFNGLGETPROGRAMRESOURCELOCATIONINDEXPROC = CFunctionPtr3[GLuint, GLenum, Ptr[GLchar], Unit]
+  type PFNGLSHADERSTORAGEBLOCKBINDINGPROC = CFunctionPtr3[GLuint, GLuint, GLuint, Unit]
+  type PFNGLTEXBUFFERRANGEPROC = CFunctionPtr5[GLenum, GLenum, GLuint, GLintptr, GLsizeiptr, Unit]
+  type PFNGLTEXSTORAGE2DMULTISAMPLEPROC = CFunctionPtr6[GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean, Unit]
+  type PFNGLTEXSTORAGE3DMULTISAMPLEPROC = CFunctionPtr7[GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean, Unit]
+  type PFNGLTEXTUREVIEWPROC = CFunctionPtr8[GLuint, GLenum, GLuint, GLenum, GLuint, GLuint, GLuint, GLuint, Unit]
+  type PFNGLBINDVERTEXBUFFERPROC = CFunctionPtr4[GLuint, GLuint, GLintptr, GLsizei, Unit]
+  type PFNGLVERTEXATTRIBFORMATPROC = CFunctionPtr5[GLuint, GLint, GLenum, GLboolean, GLuint, Unit]
+  type PFNGLVERTEXATTRIBIFORMATPROC = CFunctionPtr4[GLuint, GLint, GLenum, GLuint, Unit]
+  type PFNGLVERTEXATTRIBLFORMATPROC = CFunctionPtr4[GLuint, GLint, GLenum, GLuint, Unit]
+  type PFNGLVERTEXATTRIBBINDINGPROC = CFunctionPtr2[GLuint, GLuint, Unit]
+  type PFNGLVERTEXBINDINGDIVISORPROC = CFunctionPtr2[GLuint, GLuint, Unit]
+  type PFNGLDEBUGMESSAGECONTROLPROC = CFunctionPtr6[GLenum, GLenum, GLenum, GLsizei, Ptr[GLuint], GLboolean, Unit]
+  type PFNGLDEBUGMESSAGEINSERTPROC = CFunctionPtr6[GLenum, GLenum, GLuint, GLenum, GLsizei, Ptr[GLchar], Unit]
+  type PFNGLDEBUGMESSAGECALLBACKPROC = CFunctionPtr2[GLDEBUGPROC, Ptr[Byte], Unit]
+  type PFNGLGETDEBUGMESSAGELOGPROC = CFunctionPtr8[GLuint, GLsizei, Ptr[GLenum], Ptr[GLenum], Ptr[GLuint], Ptr[GLenum], Ptr[GLsizei], Ptr[GLchar], Unit]
+  type PFNGLPUSHDEBUGGROUPPROC = CFunctionPtr4[GLenum, GLuint, GLsizei, Ptr[GLchar], Unit]
+  type PFNGLPOPDEBUGGROUPPROC = CFunctionPtr1[Unit, Unit]
+  type PFNGLOBJECTLABELPROC = CFunctionPtr4[GLenum, GLuint, GLsizei, Ptr[GLchar], Unit]
+  type PFNGLGETOBJECTLABELPROC = CFunctionPtr5[GLenum, GLuint, GLsizei, Ptr[GLsizei], Ptr[GLchar], Unit]
+  type PFNGLOBJECTPTRLABELPROC = CFunctionPtr3[Ptr[Byte], GLsizei, Ptr[GLchar], Unit]
+  type PFNGLGETOBJECTPTRLABELPROC = CFunctionPtr4[Ptr[Byte], GLsizei, Ptr[GLsizei], Ptr[GLchar], Unit]
+
+  def glClearBufferData(target: GLenum, internalformat: GLenum, format: GLenum, type_ : GLenum, data: Ptr[Byte]): Unit = extern
+  def glClearBufferSubData(target: GLenum, internalformat: GLenum, offset: GLintptr, size: GLsizeiptr, format: GLenum, type_ : GLenum, data: Ptr[Byte]): Unit = extern
+  def glDispatchCompute(num_groups_x: GLuint, num_groups_y: GLuint, num_groups_z: GLuint): Unit = extern
+  def glDispatchComputeIndirect(indirect: GLintptr): Unit = extern
+  def glCopyImageSubData(srcName: GLuint, srcTarget: GLenum, srcLevel: GLint, srcX: GLint, srcY: GLint, srcZ: GLint, dstName: GLuint, dstTarget: GLenum, dstLevel: GLint, dstX: GLint, dstY: GLint, dstZ: GLint, srcWidth: GLsizei, srcHeight: GLsizei, srcDepth: GLsizei): Unit = extern
+  def glFramebufferParameteri(target: GLenum, pname: GLenum, param: GLint): Unit = extern
+  def glGetFramebufferParameteriv(target: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetInternalformati64v(target: GLenum, internalformat: GLenum, pname: GLenum, bufSize: GLsizei, params: Ptr[GLint64]): Unit = extern
+  def glInvalidateTexSubImage(texture: GLuint, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, width: GLsizei, height: GLsizei, depth: GLsizei): Unit = extern
+  def glInvalidateTexImage(texture: GLuint, level: GLint): Unit = extern
+  def glInvalidateBufferSubData(buffer: GLuint, offset: GLintptr, length: GLsizeiptr): Unit = extern
+  def glInvalidateBufferData(buffer: GLuint): Unit = extern
+  def glInvalidateFramebuffer(target: GLenum, numAttachments: GLsizei, attachments: Ptr[GLenum]): Unit = extern
+  def glInvalidateSubFramebuffer(target: GLenum, numAttachments: GLsizei, attachments: Ptr[GLenum], x: GLint, y: GLint, width: GLsizei, height: GLsizei): Unit = extern
+  def glMultiDrawArraysIndirect(mode: GLenum, indirect: Ptr[Byte], drawcount: GLsizei, stride: GLsizei): Unit = extern
+  def glMultiDrawElementsIndirect(mode: GLenum, type_ : GLenum, indirect: Ptr[Byte], drawcount: GLsizei, stride: GLsizei): Unit = extern
+  def glGetProgramInterfaceiv(program: GLuint, programInterface: GLenum, pname: GLenum, params: Ptr[GLint]): Unit = extern
+  def glGetProgramResourceIndex(program: GLuint, programInterface: GLenum, name: Ptr[GLchar]): GLuint = extern
+  def glGetProgramResourceName(program: GLuint, programInterface: GLenum, index: GLuint, bufSize: GLsizei, length: Ptr[GLsizei], name: Ptr[GLchar]): Unit = extern
+  def glGetProgramResourceiv(program: GLuint, programInterface: GLenum, index: GLuint, propCount: GLsizei, props: Ptr[GLenum], bufSize: GLsizei, length: Ptr[GLsizei], params: Ptr[GLint]): Unit = extern
+  def glGetProgramResourceLocation(program: GLuint, programInterface: GLenum, name: Ptr[GLchar]): GLint = extern
+  def glGetProgramResourceLocationIndex(program: GLuint, programInterface: GLenum, name: Ptr[GLchar]): GLint = extern
+  def glShaderStorageBlockBinding(program: GLuint, storageBlockIndex: GLuint, storageBlockBinding: GLuint): Unit = extern
+  def glTexBufferRange(target: GLenum, internalformat: GLenum, buffer: GLuint, offset: GLintptr, size: GLsizeiptr): Unit = extern
+  def glTexStorage2DMultisample(target: GLenum, samples: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei, fixedsamplelocations: GLboolean): Unit = extern
+  def glTexStorage3DMultisample(target: GLenum, samples: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei, depth: GLsizei, fixedsamplelocations: GLboolean): Unit = extern
+  def glTextureView(texture: GLuint, target: GLenum, origtexture: GLuint, internalformat: GLenum, minlevel: GLuint, numlevels: GLuint, minlayer: GLuint, numlayers: GLuint): Unit = extern
+  def glBindVertexBuffer(bindingindex: GLuint, buffer: GLuint, offset: GLintptr, stride: GLsizei): Unit = extern
+  def glVertexAttribFormat(attribindex: GLuint, size: GLint, type_ : GLenum, normalized: GLboolean, relativeoffset: GLuint): Unit = extern
+  def glVertexAttribIFormat(attribindex: GLuint, size: GLint, type_ : GLenum, relativeoffset: GLuint): Unit = extern
+  def glVertexAttribLFormat(attribindex: GLuint, size: GLint, type_ : GLenum, relativeoffset: GLuint): Unit = extern
+  def glVertexAttribBinding(attribindex: GLuint, bindingindex: GLuint): Unit = extern
+  def glVertexBindingDivisor(bindingindex: GLuint, divisor: GLuint): Unit = extern
+  def glDebugMessageControl(source: GLenum, type_ : GLenum, severity: GLenum, count: GLsizei, ids: Ptr[GLuint], enabled: GLboolean): Unit = extern
+  def glDebugMessageInsert(source: GLenum, type_ : GLenum, id: GLuint, severity: GLenum, length: GLsizei, buf: Ptr[GLchar]): Unit = extern
+  def glDebugMessageCallback(callback: GLDEBUGPROC, userParam: Ptr[Byte]): Unit = extern
+  def glGetDebugMessageLog(count: GLuint, bufSize: GLsizei, sources: Ptr[GLenum], types: Ptr[GLenum], ids: Ptr[GLuint], severities: Ptr[GLenum], lengths: Ptr[GLsizei], messageLog: Ptr[GLchar]): GLuint = extern
+  def glPushDebugGroup(source: GLenum, id: GLuint, length: GLsizei, message: Ptr[GLchar]): Unit = extern
+  def glPopDebugGroup(): Unit = extern
+  def glObjectLabel(identifier: GLenum, name: GLuint, length: GLsizei, label: Ptr[GLchar]): Unit = extern
+  def glGetObjectLabel(identifier: GLenum, name: GLuint, bufSize: GLsizei, length: Ptr[GLsizei], label: Ptr[GLchar]): Unit = extern
+  def glObjectPtrLabel(ptr: Ptr[Byte], length: GLsizei, label: Ptr[GLchar]): Unit = extern
+  def glGetObjectPtrLabel(ptr: Ptr[Byte], bufSize: GLsizei, length: GLsizei, label: GLchar): Unit = extern
+  /*
+   * End OpenGL 4.3
+   */
 }
