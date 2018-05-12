@@ -18,16 +18,19 @@ Library](http://github.com/regb/scala-game-library) is a complete 2D Scala game
 engine with cross-platform support, which uses the SDL2 and OpenGL bindings for
 its Scala Native backend implementation.
 
-To get started, you can have a look at the [examples](/examples) folder,
-containing runnable demo projects.
+To get started, have a look at the [examples](/examples) folder containing
+runnable demo projects. They demonstrate how to use the different librairies
+and extensions.
 
-The bindings are still work in progress. For this reason, no artifact is published
-yet. You can still easily add a dependency on your own project, using SBT  declarations
-to depend on GIT repository:
+## SDL2
+
+Add the following line to your `build.sbt`:
 
     val sdl2 = ProjectRef(uri("git://github.com/regb/scalanative-graphics-bindings.git#COMMIT"), "sdl2")
 
-## SDL2
+Where `COMMIT` is the commit you want to link against (in doubt, take the last one). Then
+you declare a dependency of your project to `sdl2`, by adding the `.dependsOn` call (see
+this [build file](/examples/snake/build.sbt) for an example).
 
 The bindings export most of SDL2 standard functionalities. Importing
 
@@ -38,23 +41,45 @@ is pretty much equivalent to
 
     #include "SDL.h"
 
-There are a few missing exports, in particular most of `SDL_stdinc.h` is
-ignored. Feel free to open an issue if you have a use case that requires more
-of its content.
-
-You can depend on the SDL2 bindings by adding the project to your `build.sbt`:
-
-    val sdl2 = ProjectRef(uri("git://github.com/regb/scalanative-graphics-bindings.git#COMMIT"), "sdl2")
-
-SDL2 extensions can be provided as separate dependencies. Currently, we
-have an implementation of SDL2_image, which can be included in your project
-with:
+SDL2 extensions can be provided as separate dependencies. Currently, we have an
+implementation of `SDL2_image` and `SDL_ttf`, which can be included in your
+project with, for example:
 
     val sdl2Image = ProjectRef(uri("git://github.com/regb/scalanative-graphics-bindings.git#COMMIT"), "sdl2Image")
 
-For documentation, you should refer to the official documentation of SDL, as
-these bindings simply forward all definitions.
+For more documentation, you should refer to the official documentation of SDL,
+as the bindings maintain almost the exact same interface.
 
 ## OpenGL
 
-OpenGL functions up to 4.5 are exported.
+OpenGL functions up to 4.6 are exported.
+
+Add the following line to your `build.sbt`:
+
+    val opengl = ProjectRef(uri("git://github.com/regb/scalanative-graphics-bindings.git#COMMIT"), "opengl")
+
+Where `COMMIT` is the commit you want to link against (in doubt, take the last one). Then
+you declare a dependency of your project to `opengl`, by adding the `.dependsOn` call (see
+this [build file](/examples/opengl-setup/build.sbt) for an example). You will also need to
+add an additional linking option, which will vary depending on your system. For Linux, add
+the following to your project:
+
+      nativeLinkingOptions += "-lGL"
+
+And for OSX, add the following instead:
+
+      nativeLinkingOptions ++= Seq("-framework", "OpenGL")
+
+The bindings export all of the OpenGL standard up to 4.6. Importing
+
+    import opengl.GL._
+    import opengl.Extras._
+
+will bring all of the standard functions and definitions of OpenGL.
+
+For more documentation, you should refer to the official documentation of
+OpenGL, as the bindings maintain almost the exact same interface.
+
+## OpenGL ES
+
+Coming soon..

@@ -2102,4 +2102,20 @@ object GL {
   /*
    * End OpenGL 4.5
    */
+
+  /*
+   * OpenGL 4.6
+   */
+  type PFNGLSPECIALIZESHADERPROC = CFunctionPtr5[GLuint, Ptr[GLchar], GLuint, Ptr[GLuint], Ptr[GLuint], Unit]
+  type PFNGLMULTIDRAWARRAYSINDIRECTCOUNTPROC = CFunctionPtr5[GLenum, Ptr[Byte], GLintptr, GLsizei, GLsizei, Unit]
+  type PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC = CFunctionPtr6[GLenum, GLenum, Ptr[Byte], GLintptr, GLsizei, GLsizei, Unit]
+  type PFNGLPOLYGONOFFSETCLAMPPROC = CFunctionPtr3[GLfloat, GLfloat, GLfloat, Unit]
+
+  def glSpecializeShader(shader: GLuint, pEntryPoint: Ptr[GLchar], numSpecializationConstants: GLuint, pConstantIndex: Ptr[GLuint], pConstantValue: Ptr[GLuint]): Unit = extern
+  def glMultiDrawArraysIndirectCount(mode: GLenum, indirect: Ptr[Byte], drawcount: GLintptr, maxdrawcount: GLsizei, stride: GLsizei): Unit = extern
+  def glMultiDrawElementsIndirectCount(mode: GLenum, type_ : GLenum, indirect: Ptr[Byte], drawcount: GLintptr, maxdrawcount: GLsizei, stride: GLsizei): Unit = extern
+  def glPolygonOffsetClamp(factor: GLfloat, units: GLfloat, clamp: GLfloat): Unit = extern
+  /*
+   * End OpenGL 4.6
+   */
 }
