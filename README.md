@@ -24,13 +24,9 @@ and extensions.
 
 ## SDL2
 
-Add the following line to your `build.sbt`:
+Add this to your `build.sbt`:
 
-    val sdl2 = ProjectRef(uri("git://github.com/regb/scalanative-graphics-bindings.git#COMMIT"), "sdl2")
-
-Where `COMMIT` is the commit you want to link against (in doubt, take the last one). Then
-you declare a dependency of your project to `sdl2`, by adding the `.dependsOn` call (see
-this [build file](/examples/snake/build.sbt) for an example).
+    libraryDependencies += "com.regblanc" %%% "native-sdl2" % "0.1"
 
 The bindings export most of SDL2 standard functionalities. Importing
 
@@ -43,9 +39,10 @@ is pretty much equivalent to
 
 SDL2 extensions can be provided as separate dependencies. Currently, we have an
 implementation of `SDL2_image` and `SDL_ttf`, which can be included in your
-project with, for example:
+project with:
 
-    val sdl2Image = ProjectRef(uri("git://github.com/regb/scalanative-graphics-bindings.git#COMMIT"), "sdl2Image")
+    libraryDependencies += "com.regblanc" %%% "native-sdl2-image" % "0.1"
+    libraryDependencies += "com.regblanc" %%% "native-sdl2-ttf" % "0.1"
 
 For more documentation, you should refer to the official documentation of SDL,
 as the bindings maintain almost the exact same interface.
@@ -54,15 +51,12 @@ as the bindings maintain almost the exact same interface.
 
 OpenGL functions up to 4.6 are exported.
 
-Add the following line to your `build.sbt`:
+Add this to your `build.sbt`:
 
-    val opengl = ProjectRef(uri("git://github.com/regb/scalanative-graphics-bindings.git#COMMIT"), "opengl")
+    libraryDependencies += "com.regblanc" %%% "native-opengl" % "0.1"
 
-Where `COMMIT` is the commit you want to link against (in doubt, take the last one). Then
-you declare a dependency of your project to `opengl`, by adding the `.dependsOn` call (see
-this [build file](/examples/opengl-setup/build.sbt) for an example). You will also need to
-add an additional linking option, which will vary depending on your system. For Linux, add
-the following to your project:
+You will also need to add an additional linking option, which will vary
+depending on your system. For Linux, add the following to your project:
 
       nativeLinkingOptions += "-lGL"
 
