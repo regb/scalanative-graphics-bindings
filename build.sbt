@@ -1,6 +1,6 @@
 lazy val commonSettings = Seq(
   organization   := "com.regblanc",
-  scalaVersion   := "2.11.8",
+  scalaVersion   := "2.11.12",
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature"),
 
   publishTo := Some("releases"  at "https://oss.sonatype.org/service/local/staging/deploy/maven2"),

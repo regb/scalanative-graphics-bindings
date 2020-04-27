@@ -1,6 +1,7 @@
 package sdl2
 
-import scalanative.native._
+import scalanative.unsafe._
+import scalanative.unsigned._
 
 /*
  * Provide @extern definitions for the entire SDL.h
@@ -21,17 +22,17 @@ object SDL {
   def SDL_Delay(ms: UInt): Unit = extern
 
   type _2    = Nat._2
-  type _16   = Nat.Digit[Nat._1, Nat._6]
-  type _32   = Nat.Digit[Nat._3, Nat._2]
-  type _52   = Nat.Digit[Nat._5, Nat._2]
-  type _56   = Nat.Digit[Nat._5, Nat._6]
-  type _64   = Nat.Digit[Nat._6, Nat._4]
+  type _16   = Nat.Digit2[Nat._1, Nat._6]
+  type _32   = Nat.Digit2[Nat._3, Nat._2]
+  type _52   = Nat.Digit2[Nat._5, Nat._2]
+  type _56   = Nat.Digit2[Nat._5, Nat._6]
+  type _64   = Nat.Digit2[Nat._6, Nat._4]
 
   /**************************************
    ************ SDL_error.h ************
    **************************************/
 
-  def SDL_SetError(fmt: CString, args: CVararg*): CInt = extern
+//   def SDL_SetError(fmt: CString, args: CVararg*): CInt = extern
   def SDL_GetError(): CString = extern
   def SDL_ClearError(): Unit = extern
 
@@ -99,7 +100,7 @@ object SDL {
   type SDL_threadID = CUnsignedLong
   type SDL_TLSID = CUnsignedInt
   type SDL_ThreadPriority = CInt
-  type SDL_ThreadFunction = CFunctionPtr1[Ptr[Byte], CInt]
+  type SDL_ThreadFunction = CFuncPtr1[Ptr[Byte], CInt]
 
   def SDL_CreateThread(fn: SDL_ThreadFunction, name: CString, data: Ptr[Byte]): Ptr[SDL_Thread] = extern
   def SDL_GetThreadName(thread: Ptr[SDL_Thread]): CString = extern
@@ -110,7 +111,7 @@ object SDL {
   def SDL_DetachThread(thread: Ptr[SDL_Thread]): Unit = extern
   def SDL_TLSCreate(): SDL_TLSID = extern
   def SDL_TLSGet(id: SDL_TLSID): Ptr[Byte] = extern
-  def SDL_TLSSet(id: SDL_TLSID, value: Ptr[Byte], destructor: CFunctionPtr0[Unit]): CInt = extern
+  def SDL_TLSSet(id: SDL_TLSID, value: Ptr[Byte], destructor: CFuncPtr0[Unit]): CInt = extern
 
   /**************************************
    ************ SDL_rwops.h *************

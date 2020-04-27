@@ -1,6 +1,7 @@
 package gl
 
-import scalanative.native._
+import scalanative.unsafe._
+import scalanative.unsigned._
 
 object Extras {
   import GL._

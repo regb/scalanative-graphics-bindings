@@ -1,6 +1,7 @@
 package sdl2
 
-import scalanative.native._
+import scalanative.unsafe._
+import scalanative.unsigned._
   
 import SDL._
 
@@ -15,9 +16,9 @@ object Extras {
    ************ SDL_stdinc.h *************
    ***************************************/
 
-  //def SDL_reinterpret_cast[A,B](expression: A): B = expression.cast[B]
-  //def SDL_static_cast[A,B](expression: A): B = expression.cast[B]
-  //def SDL_const_cast[A,B](expression: A): B = expression.cast[B]
+  //def SDL_reinterpret_cast[A,B](expression: A): B = expression.asInstanceOf[B]
+  //def SDL_static_cast[A,B](expression: A): B = expression.asInstanceOf[B]
+  //def SDL_const_cast[A,B](expression: A): B = expression.asInstanceOf[B]
 
 /* Define a four character code as a Uint32 */
   def SDL_FOURCC(a: CChar, b: CChar, c: CChar, d: CChar): UInt =
@@ -46,7 +47,7 @@ object Extras {
 
   def SDL_OutOfMemory(): CInt = SDL_Error(SDL_ENOMEM)
   def SDL_Unsupported(): CInt = SDL_Error(SDL_UNSUPPORTED)
-  def SDL_InvalidParamError(param: CString): CInt = SDL_SetError(c"Parameter '%s' is invalid", param)
+  // def SDL_InvalidParamError(param: CString): CInt = SDL_SetError(c"Parameter '%s' is invalid", param)
 
 
   /**************************************
@@ -54,7 +55,7 @@ object Extras {
    **************************************/
 
   implicit class SDL_atomic_tOps(val self: Ptr[SDL_atomic_t]) extends AnyVal {
-    def value: CInt = !(self._1)
+    def value: CInt = self._1
   }
 
   def SDL_AtomicIncRef(a: Ptr[SDL_atomic_t]): CInt = SDL_AtomicAdd(a, 1)
@@ -291,32 +292,32 @@ object Extras {
   type SDL_Colour = SDL_Color
 
   implicit class SDL_PaletteOps(val self: Ptr[SDL_Palette]) extends AnyVal {
-    def ncolors: CInt = !(self._1)
-    def colors: Ptr[SDL_Color] = !(self._2)
-    def version: UInt = !(self._3)
-    def refcount: CInt = !(self._4)
+    def ncolors: CInt = self._1
+    def colors: Ptr[SDL_Color] = self._2
+    def version: UInt = self._3
+    def refcount: CInt = self._4
   }
 
   implicit class SDL_PixelFormatOps(val self: Ptr[SDL_PixelFormat]) extends AnyVal {
-    def format: UInt = !(self._1)
-    def palette: Ptr[SDL_Palette] = !(self._2)
-    def BitsPerPixel: UByte = !(self._3)
-    def BytesPerPixel: UByte = !(self._4)
-    def padding: CArray[UByte, _2] = !(self._5)
-    def Rmask: UInt = !(self._6)
-    def Gmask: UInt = !(self._7)
-    def Bmask: UInt = !(self._8)
-    def Amask: UInt = !(self._9)
-    def Rloss: UByte = !(self._10)
-    def Gloss: UByte = !(self._11)
-    def Bloss: UByte = !(self._12)
-    def Aloss: UByte = !(self._13)
-    def Rshift: UByte = !(self._14)
-    def Gshift: UByte = !(self._15)
-    def Bshift: UByte = !(self._16)
-    def Ashift: UByte = !(self._17)
-    def refcount: CInt = !(self._18)
-    def next: Ptr[SDL_PixelFormat] = (!(self._19)).cast[Ptr[SDL_PixelFormat]]
+    def format: UInt = self._1
+    def palette: Ptr[SDL_Palette] = self._2
+    def BitsPerPixel: UByte = self._3
+    def BytesPerPixel: UByte = self._4
+    def padding: CArray[UByte, _2] = self._5
+    def Rmask: UInt = self._6
+    def Gmask: UInt = self._7
+    def Bmask: UInt = self._8
+    def Amask: UInt = self._9
+    def Rloss: UByte = self._10
+    def Gloss: UByte = self._11
+    def Bloss: UByte = self._12
+    def Aloss: UByte = self._13
+    def Rshift: UByte = self._14
+    def Gshift: UByte = self._15
+    def Bshift: UByte = self._16
+    def Ashift: UByte = self._17
+    def refcount: CInt = self._18
+    def next: Ptr[SDL_PixelFormat] = self._19.asInstanceOf[Ptr[SDL_PixelFormat]]
   }
 
   /**************************************
@@ -402,78 +403,78 @@ object Extras {
   /* End SDL_EventType */
 
   implicit class SDL_CommonEventOps(val self: Ptr[SDL_CommonEvent]) extends AnyVal {
-    def type_ : UInt = !(self._1)
-    def timestamp: UInt = !(self._2)
+    def type_ : UInt = self._1
+    def timestamp: UInt = self._2
   }
 
   implicit class SDL_WindowEventOps(val self: Ptr[SDL_WindowEvent]) extends AnyVal {
-    def type_ : UInt = !(self._1)
-    def timestamp: UInt = !(self._2)
-    def windowID: UInt = !(self._3)
-    def event: UByte = !(self._4)
-    def padding1: UByte = !(self._5)
-    def padding2: UByte = !(self._6)
-    def padding3: UByte = !(self._7)
-    def data1: Int = !(self._8)
-    def data2: Int = !(self._9)
+    def type_ : UInt = self._1
+    def timestamp: UInt = self._2
+    def windowID: UInt = self._3
+    def event: UByte = self._4
+    def padding1: UByte = self._5
+    def padding2: UByte = self._6
+    def padding3: UByte = self._7
+    def data1: Int = self._8
+    def data2: Int = self._9
   }
 
   implicit class SDL_KeyboardEventOps(val self: Ptr[SDL_KeyboardEvent]) extends AnyVal {
-    def type_ : UInt = !(self._1)
-    def timestamp: UInt = !(self._2)
-    def windowID: UInt = !(self._3)
-    def state: UByte = !(self._4)
-    def repeat: UByte = !(self._5)
-    def padding2: UByte = !(self._6)
-    def padding3: UByte = !(self._7)
+    def type_ : UInt = self._1
+    def timestamp: UInt = self._2
+    def windowID: UInt = self._3
+    def state: UByte = self._4
+    def repeat: UByte = self._5
+    def padding2: UByte = self._6
+    def padding3: UByte = self._7
 
     //TODO: trigger unreachable exception with NirNameEncoding.printGlobal in scala-native
-    def keysym: Ptr[SDL_Keysym] = self._8
+    def keysym: Ptr[SDL_Keysym] = self._8.toPtr
 
     //def keycode: SDL_Keycode = !(self._8._2)
   }
 
   val SDL_TEXTEDITINGEVENT_TEXT_SIZE = 32
   implicit class SDL_TextEditingEventOps(val self: Ptr[SDL_TextEditingEvent]) extends AnyVal {
-    def type_ : UInt = !(self._1)
-    def timestamp: UInt = !(self._2)
-    def windowID: UInt = !(self._3)
-    def text: CArray[CChar, _32] = !(self._4)
-    def start: Int = !(self._5)
-    def length: Int = !(self._6)
+    def type_ : UInt = self._1
+    def timestamp: UInt = self._2
+    def windowID: UInt = self._3
+    def text: CArray[CChar, _32] = self._4
+    def start: Int = self._5
+    def length: Int = self._6
   }
 
   val SDL_TEXTINPUTEVENT_TEXT_SIZE = 32
   implicit class SDL_TextInputEventOps(val self: Ptr[SDL_TextInputEvent]) extends AnyVal {
-    def type_ : UInt = !(self._1)
-    def timestamp: UInt = !(self._2)
-    def windowID: UInt = !(self._3)
-    def text: CArray[CChar, _32] = !(self._4)
+    def type_ : UInt = self._1
+    def timestamp: UInt = self._2
+    def windowID: UInt = self._3
+    def text: CArray[CChar, _32] = self._4
   }
 
   implicit class SDL_MouseMotionEventOps(val self: Ptr[SDL_MouseMotionEvent]) extends AnyVal {
-    def type_ : UInt = !(self._1)
-    def timestamp: UInt = !(self._2)
-    def windowID: UInt = !(self._3)
-    def which: UInt = !(self._4)
-    def state: UInt = !(self._5)
-    def x: Int = !(self._6)
-    def y: Int = !(self._7)
-    def xrel: Int = !(self._8)
-    def yrel: Int = !(self._9)
+    def type_ : UInt = self._1
+    def timestamp: UInt = self._2
+    def windowID: UInt = self._3
+    def which: UInt = self._4
+    def state: UInt = self._5
+    def x: Int = self._6
+    def y: Int = self._7
+    def xrel: Int = self._8
+    def yrel: Int = self._9
   }
 
   implicit class SDL_MouseButtonEventOps(val self: Ptr[SDL_MouseButtonEvent]) extends AnyVal {
-    def type_ : UInt = !(self._1)
-    def timestamp: UInt = !(self._2)
-    def windowID: UInt = !(self._3)
-    def which: UInt = !(self._4)
-    def button: UByte = !(self._5)
-    def state: UByte = !(self._6)
-    def clicks: UByte = !(self._7)
-    def padding1: UByte = !(self._8)
-    def x: Int = !(self._9)
-    def y: Int = !(self._10)
+    def type_ : UInt = self._1
+    def timestamp: UInt = self._2
+    def windowID: UInt = self._3
+    def which: UInt = self._4
+    def button: UByte = self._5
+    def state: UByte = self._6
+    def clicks: UByte = self._7
+    def padding1: UByte = self._8
+    def x: Int = self._9
+    def y: Int = self._10
   }
 
   /* TODO: insert all missing ops */
@@ -483,58 +484,58 @@ object Extras {
    * create ambiguous implicit conversions!
    */
   //implicit class SDL_QuitEventOps(val self: Ptr[SDL_QuitEvent]) extends AnyVal {
-  //  def type_ : UInt = !(self._1)
-  //  def timestamp: UInt = !(self._2)
+  //  def type_ : UInt = self._1
+  //  def timestamp: UInt = self._2
   //}
   //implicit class SDL_OSEventOps(val self: Ptr[SDL_OSEvent]) extends AnyVal {
-  //  def type_ : UInt = !(self._1)
-  //  def timestamp: UInt = !(self._2)
+  //  def type_ : UInt = self._1
+  //  def timestamp: UInt = self._2
   //}
 
   implicit class SDL_UserEventOps(val self: Ptr[SDL_UserEvent]) extends AnyVal {
-    def type_ : UInt = !(self._1)
-    def timestamp: UInt = !(self._2)
-    def windowID: UInt = !(self._3)
-    def code: Int = !(self._4)
-    def data1: Ptr[Byte] = !(self._5)
-    def data2: Ptr[Byte] = !(self._6)
+    def type_ : UInt = self._1
+    def timestamp: UInt = self._2
+    def windowID: UInt = self._3
+    def code: Int = self._4
+    def data1: Ptr[Byte] = self._5
+    def data2: Ptr[Byte] = self._6
   }
 
   implicit class SDL_SysWMEventOps(val self: Ptr[SDL_SysWMEvent]) extends AnyVal {
-    def type_ : UInt = !(self._1)
-    def timestamp: UInt = !(self._2)
-    def msg: Ptr[SDL_SysWMmsg] = !(self._3)
+    def type_ : UInt = self._1
+    def timestamp: UInt = self._2
+    def msg: Ptr[SDL_SysWMmsg] = self._3
   }
 
   implicit class SDL_EventOps(val self: Ptr[SDL_Event]) extends AnyVal {
-    def type_ : UInt = !(self._1)
+    def type_ : UInt = self._1
   
-    def common: Ptr[SDL_CommonEvent] = self.cast[Ptr[SDL_CommonEvent]]
-    def window: Ptr[SDL_WindowEvent] = self.cast[Ptr[SDL_WindowEvent]]
-    def key: Ptr[SDL_KeyboardEvent] = self.cast[Ptr[SDL_KeyboardEvent]]
-    def edit: Ptr[SDL_TextEditingEvent] = self.cast[Ptr[SDL_TextEditingEvent]]
-    def text: Ptr[SDL_TextInputEvent] = self.cast[Ptr[SDL_TextInputEvent]]
-    def motion: Ptr[SDL_MouseMotionEvent] = self.cast[Ptr[SDL_MouseMotionEvent]]
-    def button: Ptr[SDL_MouseButtonEvent] = self.cast[Ptr[SDL_MouseButtonEvent]]
-    //def wheel: Ptr[SDL_MouseWheelEvent] = self.cast[Ptr[SDL_MouseWheelEvent]]
-    //def jaxis: Ptr[SDL_JoyAxisEvent] = self.cast[Ptr[SDL_JoyAxisEvent]]
-    //def jball: Ptr[SDL_JoyBallEvent] = self.cast[Ptr[SDL_JoyBallEvent]]
-    //def jhat: Ptr[SDL_JoyHatEvent] = self.cast[Ptr[SDL_JoyHatEvent]]
-    //def jbutton: Ptr[SDL_JoyButtonEvent] = self.cast[Ptr[SDL_JoyButtonEvent]]
-    //def jdevice: Ptr[SDL_JoyDeviceEvent] = self.cast[Ptr[SDL_JoyDeviceEvent]]
-    //def caxis: Ptr[SDL_ControllerAxisEvent] = self.cast[Ptr[SDL_ControllerAxisEvent]]
-    //def cbutton: Ptr[SDL_ControllerButtonEvent] = self.cast[Ptr[SDL_ControllerButtonEvent]]
-    //def cdevice: Ptr[SDL_ControllerDeviceEvent] = self.cast[Ptr[SDL_ControllerDeviceEvent]]
-    //def adevice: Ptr[SDL_AudioDeviceEvent] = self.cast[Ptr[SDL_AudioDeviceEvent]]
-    def quit: Ptr[SDL_QuitEvent] = self.cast[Ptr[SDL_QuitEvent]]
-    def user: Ptr[SDL_UserEvent] = self.cast[Ptr[SDL_UserEvent]]
-    def syswm: Ptr[SDL_SysWMEvent] = self.cast[Ptr[SDL_SysWMEvent]]
-    //def tfinger: Ptr[SDL_TouchFingerEvent] = self.cast[Ptr[SDL_TouchFingerEvent]]
-    //def mgesture: Ptr[SDL_MultiGestureEvent] = self.cast[Ptr[SDL_MultiGestureEvent]]
-    //def dgesture: Ptr[SDL_DollarGestureEvent] = self.cast[Ptr[SDL_DollarGestureEvent]]
-    //def drop: Ptr[SDL_DropEvent] = self.cast[Ptr[SDL_DropEvent]]
+    def common: Ptr[SDL_CommonEvent] = self.asInstanceOf[Ptr[SDL_CommonEvent]]
+    def window: Ptr[SDL_WindowEvent] = self.asInstanceOf[Ptr[SDL_WindowEvent]]
+    def key: Ptr[SDL_KeyboardEvent] = self.asInstanceOf[Ptr[SDL_KeyboardEvent]]
+    def edit: Ptr[SDL_TextEditingEvent] = self.asInstanceOf[Ptr[SDL_TextEditingEvent]]
+    def text: Ptr[SDL_TextInputEvent] = self.asInstanceOf[Ptr[SDL_TextInputEvent]]
+    def motion: Ptr[SDL_MouseMotionEvent] = self.asInstanceOf[Ptr[SDL_MouseMotionEvent]]
+    def button: Ptr[SDL_MouseButtonEvent] = self.asInstanceOf[Ptr[SDL_MouseButtonEvent]]
+    //def wheel: Ptr[SDL_MouseWheelEvent] = self.asInstanceOf[Ptr[SDL_MouseWheelEvent]]
+    //def jaxis: Ptr[SDL_JoyAxisEvent] = self.asInstanceOf[Ptr[SDL_JoyAxisEvent]]
+    //def jball: Ptr[SDL_JoyBallEvent] = self.asInstanceOf[Ptr[SDL_JoyBallEvent]]
+    //def jhat: Ptr[SDL_JoyHatEvent] = self.asInstanceOf[Ptr[SDL_JoyHatEvent]]
+    //def jbutton: Ptr[SDL_JoyButtonEvent] = self.asInstanceOf[Ptr[SDL_JoyButtonEvent]]
+    //def jdevice: Ptr[SDL_JoyDeviceEvent] = self.asInstanceOf[Ptr[SDL_JoyDeviceEvent]]
+    //def caxis: Ptr[SDL_ControllerAxisEvent] = self.asInstanceOf[Ptr[SDL_ControllerAxisEvent]]
+    //def cbutton: Ptr[SDL_ControllerButtonEvent] = self.asInstanceOf[Ptr[SDL_ControllerButtonEvent]]
+    //def cdevice: Ptr[SDL_ControllerDeviceEvent] = self.asInstanceOf[Ptr[SDL_ControllerDeviceEvent]]
+    //def adevice: Ptr[SDL_AudioDeviceEvent] = self.asInstanceOf[Ptr[SDL_AudioDeviceEvent]]
+    def quit: Ptr[SDL_QuitEvent] = self.asInstanceOf[Ptr[SDL_QuitEvent]]
+    def user: Ptr[SDL_UserEvent] = self.asInstanceOf[Ptr[SDL_UserEvent]]
+    def syswm: Ptr[SDL_SysWMEvent] = self.asInstanceOf[Ptr[SDL_SysWMEvent]]
+    //def tfinger: Ptr[SDL_TouchFingerEvent] = self.asInstanceOf[Ptr[SDL_TouchFingerEvent]]
+    //def mgesture: Ptr[SDL_MultiGestureEvent] = self.asInstanceOf[Ptr[SDL_MultiGestureEvent]]
+    //def dgesture: Ptr[SDL_DollarGestureEvent] = self.asInstanceOf[Ptr[SDL_DollarGestureEvent]]
+    //def drop: Ptr[SDL_DropEvent] = self.asInstanceOf[Ptr[SDL_DropEvent]]
 
-    def padding: Ptr[Byte] = self.cast[Ptr[Byte]]
+    def padding: Ptr[Byte] = self.asInstanceOf[Ptr[Byte]]
 
   }
   
@@ -1112,10 +1113,10 @@ object Extras {
    ***************************************/
 
   implicit class SDL_KeysymOps(val self: Ptr[SDL_Keysym]) extends AnyVal {
-    def scancode: SDL_Scancode = !(self._1)
-    def sym: SDL_Keycode = !(self._2)
-    def mod: UShort = !(self._3)
-    def unused: UInt = !(self._4)
+    def scancode: SDL_Scancode = self._1
+    def sym: SDL_Keycode = self._2
+    def mod: UShort = self._3
+    def unused: UInt = self._4
   }
   
 
@@ -1162,33 +1163,33 @@ object Extras {
 
   implicit class SDL_PointOps(val self: Ptr[SDL_Point]) extends AnyVal {
     def init(x: CInt, y: CInt): Ptr[SDL_Point] = {
-      !(self._1) = x
-      !(self._2) = y
+      self._1 = x
+      self._2 = y
       self
     }
 
-    def x: CInt = !(self._1)
-    def x_=(nx: CInt): Unit = { !(self._1) = nx }
-    def y: CInt = !(self._2)
-    def y_=(ny: CInt): Unit = { !(self._2) = ny }
+    def x: CInt = self._1
+    def x_=(nx: CInt): Unit = { self._1 = nx }
+    def y: CInt = self._2
+    def y_=(ny: CInt): Unit = { self._2 = ny }
   }
   implicit class SDL_RectOps(val self: Ptr[SDL_Rect]) extends AnyVal {
     def init(x: CInt, y: CInt, w: CInt, h: CInt): Ptr[SDL_Rect] = {
-      !(self._1) = x
-      !(self._2) = y
-      !(self._3) = w
-      !(self._4) = h
+      self._1 = x
+      self._2 = y
+      self._3 = w
+      self._4 = h
       self
     }
 
-    def x: CInt = !(self._1)
-    def x_=(nx: CInt): Unit = { !(self._1) = nx }
-    def y: CInt = !(self._2)
-    def y_=(ny: CInt): Unit = { !(self._2) = ny }
-    def w: CInt = !(self._3)
-    def w_=(nw: CInt): Unit = { !(self._3) = nw }
-    def h: CInt = !(self._4)
-    def h_=(nh: CInt): Unit = { !(self._4) = nh }
+    def x: CInt = self._1
+    def x_=(nx: CInt): Unit = { self._1 = nx }
+    def y: CInt = self._2
+    def y_=(ny: CInt): Unit = { self._2 = ny }
+    def w: CInt = self._3
+    def w_=(nw: CInt): Unit = { self._3 = nw }
+    def h: CInt = self._4
+    def h_=(nh: CInt): Unit = { self._4 = nh }
   }
 
   def SDL_RectEmpty(r: Ptr[SDL_Rect]): SDL_bool =
@@ -1212,17 +1213,17 @@ object Extras {
     (s.flags & SDL_RLEACCEL) != 0.toUInt
 
   implicit class SDL_SurfaceOps(val self: Ptr[SDL_Surface]) extends AnyVal {
-    def flags: UInt = !(self._1)
-    def format: Ptr[SDL_PixelFormat] = !(self._2)
-    def w: CInt = !(self._3)
-    def h: CInt = !(self._4)
-    def pitch: CInt = !(self._5)
-    def pixels: Ptr[Byte] = !(self._6)
-    def userdata: Ptr[Byte] = !(self._7)
-    def locked: CInt = !(self._8)
-    def lock_data: Ptr[Byte] = !(self._9)
-    def clip_rect: Ptr[SDL_Rect] = self._10
-    def refcount: CInt = !(self._12)
+    def flags: UInt = self._1
+    def format: Ptr[SDL_PixelFormat] = self._2
+    def w: CInt = self._3
+    def h: CInt = self._4
+    def pitch: CInt = self._5
+    def pixels: Ptr[Byte] = self._6
+    def userdata: Ptr[Byte] = self._7
+    def locked: CInt = self._8
+    def lock_data: Ptr[Byte] = self._9
+    def clip_rect: Ptr[SDL_Rect] = self._10.toPtr
+    def refcount: CInt = self._12
   }
 
   /***************************************
@@ -1237,12 +1238,12 @@ object Extras {
   /* End SDL_RendererFlags */
 
   implicit class SDL_RendererInfoOps(val self: Ptr[SDL_RendererInfo]) extends AnyVal {
-    def name: CString = !(self._1)
-    def flags: UInt = !(self._2)
-    def num_texture_formats: UInt = !(self._3)
-    def texture_formats: CArray[UInt, _16] = !(self._4)
-    def max_texture_width: CInt = !(self._5)
-    def max_texture_height: CInt = !(self._6)
+    def name: CString = self._1
+    def flags: UInt = self._2
+    def num_texture_formats: UInt = self._3
+    def texture_formats: CArray[UInt, _16] = self._4
+    def max_texture_width: CInt = self._5
+    def max_texture_height: CInt = self._6
   }
 
   /* Start enum SDL_TextureAccess */
@@ -1268,12 +1269,12 @@ object Extras {
    **************************************/
 
   implicit class SDL_versionOps(val self: Ptr[SDL_version]) extends AnyVal {
-    def major: UByte = !(self._1)
-    def major_=(v: UByte): Unit = { !(self._1) = v }
-    def minor: UByte = !(self._2)
-    def minor_=(v: UByte): Unit = { !(self._2) = v }
-    def patch: UByte = !(self._3)
-    def patch_=(v: UByte): Unit = { !(self._3) = v }
+    def major: UByte = self._1
+    def major_=(v: UByte): Unit = { self._1 = v }
+    def minor: UByte = self._2
+    def minor_=(v: UByte): Unit = { self._2 = v }
+    def patch: UByte = self._3
+    def patch_=(v: UByte): Unit = { self._3 = v }
   }
 
   //TODO: these should use some @extern annotation (is that @name?)
@@ -1301,11 +1302,11 @@ object Extras {
    **************************************/
 
   implicit class SDL_DisplayModeOps(val self: Ptr[SDL_DisplayMode]) extends AnyVal {
-    def format: UInt = !(self._1)
-    def w: CInt = !(self._2)
-    def h: CInt = !(self._3)
-    def refresh_rate: CInt = !(self._4)
-    def driverdata: Ptr[Byte] = !(self._5)
+    def format: UInt = self._1
+    def w: CInt = self._2
+    def h: CInt = self._3
+    def refresh_rate: CInt = self._4
+    def driverdata: Ptr[Byte] = self._5
   }
 
   /* Start enum SDL_WindowFlags */

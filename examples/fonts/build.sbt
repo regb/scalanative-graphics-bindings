@@ -6,7 +6,7 @@ lazy val root = (project in file("."))
   .settings(
     name         := "fonts",
     version      := "0.1",
-    scalaVersion := "2.11.8",
+    scalaVersion := "2.11.12",
     scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
   )
   .dependsOn(sdl2, sdl2Ttf)
