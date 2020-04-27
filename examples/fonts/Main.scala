@@ -1,4 +1,4 @@
-import scalanative.native._
+import scalanative.unsafe._
 
 import sdl2.SDL._
 import sdl2.Extras._

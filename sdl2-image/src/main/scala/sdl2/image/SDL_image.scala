@@ -1,7 +1,7 @@
 package sdl2
 package image
 
-import scalanative.native._
+import scalanative.unsafe._
 
 import SDL._
 import sdl2.Extras._
@@ -71,7 +71,7 @@ object SDL_image {
   
   //IMG_SetError is defined with a macro to be SDL_SetError. We use an extern function
   //to map it directly
-  @name("SDL_SetError")
-  def IMG_SetError(fmt: CString, args: CVararg*): CInt = extern
+  // @name("SDL_SetError")
+  // def IMG_SetError(fmt: CString, args: CVararg*): CInt = extern
   
 }
