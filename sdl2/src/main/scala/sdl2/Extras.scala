@@ -13,6 +13,43 @@ object Extras {
    */
 
   /***************************************
+   ************ SDL_log.h ****************
+   ***************************************/
+
+    /* Start SDL_LogCategory */
+    val SDL_LOG_CATEGORY_APPLICATION = 0
+    val SDL_LOG_CATEGORY_ERROR = 1
+    val SDL_LOG_CATEGORY_ASSERT = 2
+    val SDL_LOG_CATEGORY_SYSTEM = 3
+    val SDL_LOG_CATEGORY_AUDIO = 4
+    val SDL_LOG_CATEGORY_VIDEO = 5
+    val SDL_LOG_CATEGORY_RENDER = 6
+    val SDL_LOG_CATEGORY_INPUT = 7
+    val SDL_LOG_CATEGORY_TEST = 8
+    /* End SDL_LogCategory */
+
+    /* Start SDL_LogPriority */
+    val SDL_LOG_PRIORITY_VERBOSE = 1
+    val SDL_LOG_PRIORITY_DEBUG = 2
+    val SDL_LOG_PRIORITY_INFO = 3
+    val SDL_LOG_PRIORITY_WARN = 4
+    val SDL_LOG_PRIORITY_ERROR = 5
+    val SDL_LOG_PRIORITY_CRITICAL = 6
+    /* End SDL_LogPriority */
+
+  /***************************************
+   ************ SDL_error_c.h *************
+   ***************************************/
+
+  implicit class SDL_errorOps(val self: Ptr[SDL_error]) extends AnyVal {
+    def error: CInt = self._1
+    def str: CString = self._2.asInstanceOf[CString]
+
+    def error_=(v: CInt): Unit = self._1 = v
+    // def str: CString = self._2.asInstanceOf[CString]
+  }
+
+  /***************************************
    ************ SDL_stdinc.h *************
    ***************************************/
 
@@ -45,6 +82,26 @@ object Extras {
   val SDL_LASTERROR: UInt = 5.toUInt
   /* End enum SDL_errorcode */
 
+  def SDL_SetError(fmt: CString, args: CVarArg*): CInt = Zone { implicit z =>
+    import SDL._
+    val ERR_MAX_STRLEN = 128.toULong
+    /* Ignore call if invalid format pointer was passed */
+    if (fmt != null) {
+
+      val error = SDL_GetErrBuf()
+
+      error.error = 1;  /* mark error as valid */
+
+      SDL_vsnprintf(error.str, ERR_MAX_STRLEN, fmt, toCVarArgList(args.toSeq));
+
+      if (SDL_LogGetPriority(SDL_LOG_CATEGORY_ERROR) <= SDL_LOG_PRIORITY_DEBUG) {
+        /* If we are in debug mode, print out the error message */
+        SDL_LogDebug(SDL_LOG_CATEGORY_ERROR, c"%s", error.str)
+      }
+    }
+
+    return -1;
+  }
   def SDL_OutOfMemory(): CInt = SDL_Error(SDL_ENOMEM)
   def SDL_Unsupported(): CInt = SDL_Error(SDL_UNSUPPORTED)
   // def SDL_InvalidParamError(param: CString): CInt = SDL_SetError(c"Parameter '%s' is invalid", param)

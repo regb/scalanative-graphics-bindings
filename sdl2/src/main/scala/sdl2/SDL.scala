@@ -29,10 +29,23 @@ object SDL {
   type _64   = Nat.Digit2[Nat._6, Nat._4]
 
   /**************************************
+   ************ SDL_log.h ************
+   **************************************/
+
+  def SDL_LogDebug(category: CInt, fmt: CString, value: CString): Unit = extern
+  def SDL_LogGetPriority(category: CInt): CInt = extern
+
+  /**************************************
+   ************ SDL_error_c.h ************
+   **************************************/
+
+  type SDL_error = CStruct2[CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]
+  def SDL_GetErrBuf(): Ptr[SDL_error] = extern
+
+  /**************************************
    ************ SDL_error.h ************
    **************************************/
 
-//   def SDL_SetError(fmt: CString, args: CVararg*): CInt = extern
   def SDL_GetError(): CString = extern
   def SDL_ClearError(): Unit = extern
 
@@ -513,6 +526,8 @@ object SDL {
    ***************************************/
 
   type SDL_bool = UInt
+  def SDL_vsnprintf(text: CString, maxlen: CSize, fmt: CString, ap: CVarArgList): CInt = extern
+
 
   /**************************************
    *********** SDL_version.h ************
