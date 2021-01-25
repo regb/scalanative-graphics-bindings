@@ -13,7 +13,7 @@ lazy val root = (project in file("."))
   .settings(
     name         := "test",
     version      := "0.1",
-    scalaVersion := "2.11.12",
+    scalaVersion := "2.13.4",
     scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature"),
     if(isLinux(OS))
       nativeLinkingOptions += "-lGL"
