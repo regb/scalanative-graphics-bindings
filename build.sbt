@@ -1,6 +1,10 @@
+val scala213 = "2.13.4"
+
+ThisBuild / scalaVersion := scala213
+ThisBuild / crossScalaVersions := Seq(scala213, "2.12.13", "2.11.12")
+
 lazy val commonSettings = Seq(
   organization   := "com.regblanc",
-  scalaVersion   := "2.11.12",
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature"),
 
   publishTo := Some("releases"  at "https://oss.sonatype.org/service/local/staging/deploy/maven2"),
