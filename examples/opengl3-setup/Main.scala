@@ -1,4 +1,6 @@
 import scalanative.unsafe._
+import scalanative.unsigned._
+import scalanative.libc._
 
 import sdl2.SDL._
 import sdl2.Extras._
@@ -63,7 +65,7 @@ void main(){
     glBindVertexArray(!vertexArrayID)
 
     //static const GLfloat g_vertex_buffer_data[] = {
-    val gVertexBufferData: Ptr[Float] = stdlib.malloc(9*4).asInstanceOf[Ptr[Float]]
+    val gVertexBufferData: Ptr[Float] = stdlib.malloc((9*4).toULong).asInstanceOf[Ptr[Float]]
     gVertexBufferData(0) = -1f
     gVertexBufferData(1) = -1f
     gVertexBufferData(2) =  0f
@@ -138,7 +140,7 @@ void main(){
       println("Compiling result: " + !result)
       glGetShaderiv(vertexShaderID, GL_INFO_LOG_LENGTH, infoLogLength)
       if(!infoLogLength > 0) {
-        val errorMsg = stdlib.malloc(!infoLogLength + 1).asInstanceOf[Ptr[Byte]]
+        val errorMsg = stdlib.malloc((!infoLogLength + 1).toULong).asInstanceOf[Ptr[Byte]]
         glGetShaderInfoLog(vertexShaderID, (!infoLogLength).toUInt, null, errorMsg)
         println(fromCString(errorMsg))
       }
@@ -153,7 +155,7 @@ void main(){
       println("Compiling result: " + !result)
       glGetShaderiv(fragmentShaderID, GL_INFO_LOG_LENGTH, infoLogLength)
       if(!infoLogLength > 0) {
-        val errorMsg = stdlib.malloc(!infoLogLength + 1).asInstanceOf[Ptr[Byte]]
+        val errorMsg = stdlib.malloc((!infoLogLength + 1).toULong).asInstanceOf[Ptr[Byte]]
         glGetShaderInfoLog(fragmentShaderID, (!infoLogLength).toUInt, null, errorMsg)
         println(fromCString(errorMsg))
       }
