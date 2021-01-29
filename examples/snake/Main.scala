@@ -1,4 +1,5 @@
 import scalanative.unsafe._
+import scalanative.unsigned._
 
 import sdl2.SDL._
 import sdl2.Extras._
