@@ -44,10 +44,7 @@ object Main {
     glLoadIdentity()
     glPushMatrix()
 
-    //val surface = SDL_LoadBMP(c"/home/reg/cat.bmp")
-    //val surface = IMG_Load(c"/home/reg/cat.bmp")
-    //val surface = IMG_Load(c"/home/reg/cat.jpg")
-    val surface = IMG_Load(c"/home/reg/vcs/games/sgl/examples/hello/assets/drawable/character.png")
+    val surface = IMG_Load(c"cat.jpeg")
     if(surface == null) {
       println("couldn't load cat image")
       sys.exit()
