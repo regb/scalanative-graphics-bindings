@@ -26,7 +26,7 @@ and extensions.
 
 Add this to your `build.sbt`:
 
-    libraryDependencies += "com.regblanc" %%% "native-sdl2" % "0.1"
+    libraryDependencies += "com.regblanc" %%% "native-sdl2" % "0.2"
 
 The bindings export most of SDL2 standard functionalities. Importing
 
@@ -41,8 +41,8 @@ SDL2 extensions can be provided as separate dependencies. Currently, we have an
 implementation of `SDL2_image` and `SDL_ttf`, which can be included in your
 project with:
 
-    libraryDependencies += "com.regblanc" %%% "native-sdl2-image" % "0.1"
-    libraryDependencies += "com.regblanc" %%% "native-sdl2-ttf" % "0.1"
+    libraryDependencies += "com.regblanc" %%% "native-sdl2-image" % "0.2"
+    libraryDependencies += "com.regblanc" %%% "native-sdl2-ttf" % "0.2"
 
 For more documentation, you should refer to the official documentation of SDL,
 as the bindings maintain almost the exact same interface.
@@ -53,7 +53,7 @@ OpenGL functions up to 4.6 are exported.
 
 Add this to your `build.sbt`:
 
-    libraryDependencies += "com.regblanc" %%% "native-opengl" % "0.1"
+    libraryDependencies += "com.regblanc" %%% "native-opengl" % "0.2"
 
 You will also need to add an additional linking option, which will vary
 depending on your system. For Linux, add the following to your project:
