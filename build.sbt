@@ -3,11 +3,12 @@ val scala213 = "2.13.4"
 ThisBuild / scalaVersion := scala213
 ThisBuild / crossScalaVersions := Seq(scala213, "2.12.13", "2.11.12")
 
+ThisBuild / publishTo := Some("releases"  at "https://oss.sonatype.org/service/local/staging/deploy/maven2")
+
 lazy val commonSettings = Seq(
   organization   := "com.regblanc",
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature"),
 
-  publishTo := Some("releases"  at "https://oss.sonatype.org/service/local/staging/deploy/maven2"),
   pomIncludeRepository := { _ => false },
   licenses := Seq("MIT-style" -> url("https://opensource.org/licenses/MIT")),
   homepage := Some(url("https://github.com/regb/scalanative-graphics-binding")),
@@ -33,7 +34,7 @@ lazy val sdl2 = (project in file("./sdl2"))
   .settings(commonSettings: _*)
   .settings(
     name    := "native-sdl2",
-    version := "0.1"
+    version := "0.2"
   )
 
 lazy val sdl2Image = (project in file("./sdl2-image"))
@@ -41,7 +42,7 @@ lazy val sdl2Image = (project in file("./sdl2-image"))
   .settings(commonSettings: _*)
   .settings(
     name := "native-sdl2-image",
-    version := "0.1"
+    version := "0.2"
   )
   .dependsOn(sdl2)
 
@@ -50,7 +51,7 @@ lazy val sdl2Ttf = (project in file("./sdl2-ttf"))
   .settings(commonSettings: _*)
   .settings(
     name := "native-sdl2-ttf",
-    version := "0.1"
+    version := "0.2"
   )
   .dependsOn(sdl2)
 
@@ -59,6 +60,6 @@ lazy val opengl = (project in file("./opengl"))
   .settings(commonSettings: _*)
   .settings(
     name := "native-opengl",
-    version := "0.1"
+    version := "0.2"
   )
 
