@@ -1,7 +1,7 @@
-val scala213 = "2.13.4"
+val scala213 = "2.13.8"
 
 ThisBuild / scalaVersion := scala213
-ThisBuild / crossScalaVersions := Seq(scala213, "2.12.13", "2.11.12")
+ThisBuild / crossScalaVersions := Seq("3.1.3", scala213, "2.12.16", "2.11.12")
 
 ThisBuild / publishTo := Some("releases"  at "https://oss.sonatype.org/service/local/staging/deploy/maven2")
 

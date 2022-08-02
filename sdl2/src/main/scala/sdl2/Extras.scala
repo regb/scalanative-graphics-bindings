@@ -16,26 +16,26 @@ object Extras {
    ************ SDL_log.h ****************
    ***************************************/
 
-    /* Start SDL_LogCategory */
-    val SDL_LOG_CATEGORY_APPLICATION = 0
-    val SDL_LOG_CATEGORY_ERROR = 1
-    val SDL_LOG_CATEGORY_ASSERT = 2
-    val SDL_LOG_CATEGORY_SYSTEM = 3
-    val SDL_LOG_CATEGORY_AUDIO = 4
-    val SDL_LOG_CATEGORY_VIDEO = 5
-    val SDL_LOG_CATEGORY_RENDER = 6
-    val SDL_LOG_CATEGORY_INPUT = 7
-    val SDL_LOG_CATEGORY_TEST = 8
-    /* End SDL_LogCategory */
+  /* Start SDL_LogCategory */
+  val SDL_LOG_CATEGORY_APPLICATION = 0
+  val SDL_LOG_CATEGORY_ERROR = 1
+  val SDL_LOG_CATEGORY_ASSERT = 2
+  val SDL_LOG_CATEGORY_SYSTEM = 3
+  val SDL_LOG_CATEGORY_AUDIO = 4
+  val SDL_LOG_CATEGORY_VIDEO = 5
+  val SDL_LOG_CATEGORY_RENDER = 6
+  val SDL_LOG_CATEGORY_INPUT = 7
+  val SDL_LOG_CATEGORY_TEST = 8
+  /* End SDL_LogCategory */
 
-    /* Start SDL_LogPriority */
-    val SDL_LOG_PRIORITY_VERBOSE = 1
-    val SDL_LOG_PRIORITY_DEBUG = 2
-    val SDL_LOG_PRIORITY_INFO = 3
-    val SDL_LOG_PRIORITY_WARN = 4
-    val SDL_LOG_PRIORITY_ERROR = 5
-    val SDL_LOG_PRIORITY_CRITICAL = 6
-    /* End SDL_LogPriority */
+  /* Start SDL_LogPriority */
+  val SDL_LOG_PRIORITY_VERBOSE = 1
+  val SDL_LOG_PRIORITY_DEBUG = 2
+  val SDL_LOG_PRIORITY_INFO = 3
+  val SDL_LOG_PRIORITY_WARN = 4
+  val SDL_LOG_PRIORITY_ERROR = 5
+  val SDL_LOG_PRIORITY_CRITICAL = 6
+  /* End SDL_LogPriority */
 
   /***************************************
    ************ SDL_error_c.h *************
